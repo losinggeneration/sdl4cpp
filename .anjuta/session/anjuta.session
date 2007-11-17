@@ -1,0 +1,10 @@
+
+[Anjuta]
+Maximized=1
+Geometry=1280x956+0+25
+
+[File Loader]
+Files=file:///usr/src/harley/SDL4Cpp/tests/TestGL.cpp#136%%%file:///usr/src/harley/SDL4Cpp/src/SDL4Cpp_video.cpp#690%%%file:///usr/src/harley/SDL4Cpp/include/SDL4Cpp_video.h#841
+
+[Execution]
+Run in terminal=2
