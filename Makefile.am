@@ -1,4 +1,4 @@
 SUBDIRS = src \
 	include 
-DIST_SUBDIRS = $(SUBDIRS) docs tests
+DIST_SUBDIRS = $(SUBDIRS) docs tests templates
 

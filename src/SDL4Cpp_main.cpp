@@ -78,5 +78,31 @@ namespace SDL
 	{
 		return SDL_Linked_Version();
 	}
+	
+	RuntimeError::RuntimeError(const std::string &message) : std::runtime_error(message), m_Message(message)
+	{
+	}
+	
+	RuntimeError::~RuntimeError() throw()
+	{
+	}
+	
+	const char* RuntimeError::what() const throw()
+	{
+		return m_Message.c_str();
+	}
+	
+	LogicError::LogicError(const std::string &message) : std::logic_error(message), m_Message(message)
+	{
+	}
+	
+	LogicError::~LogicError() throw()
+	{
+	}
+	
+	const char* LogicError::what() const throw()
+	{
+		return m_Message.c_str();
+	}
 }
 

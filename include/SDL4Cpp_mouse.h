@@ -73,7 +73,8 @@ namespace SDL
 			 * \brief Creates a new mouse cursor.
 			 *
 			 */
-			bool Create(Uint8 &data, Uint8 &mask, int w, int h, int hot_x, int hot_y);
+			bool Create(Uint8 &data, Uint8 &mask, int w, int h, int hot_x,
+						int hot_y);
 			/*!
 			 * \brief Set this Cursor to the currently active mouse cursor.
 			 *

@@ -1,34 +1,34 @@
 /*
- * This is a demo to show off Timers, some of the WM namespace, and some of the "Main" 
- * function calls such as LinkedVersion. This also gives an idea of how Event handlers
- * are used, and also how to set the window icon.
+ * This is a demo to show off GL goodnees
  */
 
 #include <iostream>
 #include <string>
-#include <stdexcept>
+
 #include "SDL4Cpp.h"
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-std::string Extensions()
+void Extensions()
 {
 	char *extensions = (char *)glGetString(GL_EXTENSIONS);
 
 	if(!extensions)
-		return "No Extensions";
+	{
+		std::cout << "No Extensions" << std::endl;
+		return;
+	}
 	
+	std::cout << "Extensions: " << std::endl;
 	while(*extensions)
 	{
 		unsigned int len = strcspn(extensions, " ");
 		char *temp = new char[len + 30];
 		strncpy(temp, extensions, len);
-		std::cout << temp << std::endl;
+		std::cout << "\t" << temp << std::endl;
 		delete [] temp;
 		extensions += len + 1;
 	}
-	
-	return "Hope that helped";
 }
 
 void DisplayTriangle(GLfloat angle)
@@ -79,9 +79,10 @@ int main(int argv, char *args[])
 
 	// Lets do some illegal things first and catch the errors
 	try {
-		void *test = SDL::GL::GetProcAddress("glNormalPointer");
+		void *test;
+		test = SDL::GL::GetProcAddress("glNormalPointer");
 	}
-	catch(std::logic_error e) {
+	catch(SDL::LogicError e) {
 		std::cout << "Caught a throw: " << e.what() << std::endl;
 	}
 	
@@ -89,31 +90,45 @@ int main(int argv, char *args[])
 		int x;
 		SDL::GL::GetAttribute(SDL_GL_DOUBLEBUFFER, x);
 	}
-	catch(std::logic_error e) {
+	catch(SDL::LogicError e) {
 		std::cout  << "I'm on a roll: " << e.what() << std::endl;
 	}
 	
-	// And that's (almost) it for the illegal GL function calls, pretty cool huh?
+	// And that's (almost) it for the illegal GL function calls, cool huh?
+	// These aren't actually needed, but we'll set them anyways
+	// Just like SDL these have to be set before the SetVideoMode to have an effect
+	// Unlike SDL, SDL4Cpp will check if SetVideoMode has been called and throw if it has
 	SDL::GL::SetAttribute(SDL_GL_RED_SIZE,   1);
 	SDL::GL::SetAttribute(SDL_GL_GREEN_SIZE, 1);
 	SDL::GL::SetAttribute(SDL_GL_BLUE_SIZE,  1);
-	SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, true);
 	screen.SetVideoMode(640, 480, 32, SDL_OPENGL);
 	
-	std::cout << Extensions() << std::endl;
+	// Query some OpenGL version info 
+	std::cout << "----------------------------------" << std::endl
+			<< "GL_VENDOR: " << glGetString(GL_VENDOR) << std::endl
+			<< "GL_RENDERER: " << glGetString(GL_RENDERER) << std::endl
+			<< "GL_VERSION: " << glGetString(GL_VERSION) << std::endl;
+	Extensions();
+	std::cout  << "---------------------------------" << std::endl;
+	
 	// Couple more
 	try {
 		SDL::GL::LoadLibrary("libglib.so");
 	}
-	catch(std::logic_error e) {
-		std::cout << "Not loading an external GL Library: " << e.what() <<std::endl;
+	catch(SDL::LogicError e) {
+		std::cout << "Not loading an external GL Library: " << e.what()
+				<< std::endl;
 	}
-	
+
+	// SetAttribute throws if the video mode is already setup
 	try {
-		SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+		SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, true);
 	}
+	// Here we'll use the standard logic_error
 	catch(std::logic_error e) {
-		std::cout  << "Caught another throw: " << e.what() << std::endl;
+		std::cout  << "Caught a throw using std::logic_error instead: "
+				<< e.what() << std::endl;
 	}
 	
 	// Ok, let's do a little bit of OpenGL fun
@@ -123,9 +138,9 @@ int main(int argv, char *args[])
 	GLfloat angle = 0;
 	while(!handler)
 	{
-		now = SDL_GetTicks();
+		now = SDL::GetTicks();
 		if((now - ticks) < 10)
-			SDL_Delay(5);
+			SDL::Delay(5);
 
 		ticks = now;
 

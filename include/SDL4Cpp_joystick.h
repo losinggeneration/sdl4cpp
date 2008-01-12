@@ -38,9 +38,12 @@ namespace SDL
 	/*!
 	 * \brief Handling of joysticks and their respective actions.
 	 *
-	 * Joystick support is initialized by passed the SDL_INIT_JOYSTICK flag to SDL::Init(). Once initilized joysticks must be opened using Joystick::Open or the appropriate constructor.
+	 * Joystick support is initialized by passed the SDL_INIT_JOYSTICK flag to
+	 * SDL::Init(). Once initilized joysticks must be opened using
+	 * Joystick::Open or the appropriate constructor.
 	 *
-	 * \note If you are not handling the joystick via the event queue then you must explicitly request a joystick update by calling JoystickUpdate.
+	 * \note If you are not handling the joystick via the event queue then you
+	 * must explicitly request a joystick update by calling JoystickUpdate.
 	 */
 	class Joystick
 	{
@@ -48,32 +51,37 @@ namespace SDL
 			/*!
 			 * \brief Default constructor.
 			 *
-			 * Constructor that doesn't try to load a joystick when being constructed.
+			 * Constructor that doesn't try to load a joystick when being
+			 * constructed.
 			 */
 			Joystick(void);
 			/*!
 			 * \brief Load a joystick on construction.
 			 *
-			 * A constructor that is passed the number of the joystick to open. 
-			 * \param index is the number of the joystick to open, from 0-[NumJoysticks-1]
+			 * A constructor that is passed the number of the joystick to
+			 * open. 
+			 * \param index is the number of the joystick to open, from
+			 * 0-[NumJoysticks-1]
 			 *
-			 * \throws std::logic_error if that joystick isn't available
+			 * \throws SDL::LogicError if that joystick isn't available
 			 */
 			Joystick(int index);
 			/*!
 			 * \brief Deconstructor
 			 *
 			 * Frees the current joystick
-			 * \throws std::runtime_error if that joystick isn't freed
+			 * \throws SDL::RuntimeError if that joystick isn't freed
 			 */
 			~Joystick(void);
 
 			/*!
 			 * \brief Opens a joystick for use.
 			 *
-			 * Opens a joystick for use within SDL. A joystick must be opened before it game be used.
+			 * Opens a joystick for use within SDL. A joystick must be opened
+			 * before it game be used.
 			 * 
-			 * \param index is the number of the joystick to open, from 0-[NumJoysticks-1]
+			 * \param index is the number of the joystick to open, from
+			 * 0-[NumJoysticks-1]
 			 *
 			 * \return False on error, True otherwise.
 			 */
@@ -87,11 +95,14 @@ namespace SDL
 			/*!
 			 * \brief Determine if a joystick has been opened
 			 *
-			 * Determines whether a joystick has already been opened within the application.
+			 * Determines whether a joystick has already been opened within
+			 * the application.
 			 *
-			 * \param index is the number of the joystick to open, from 0-[NumJoysticks-1]
+			 * \param index is the number of the joystick to open, from
+			 * 0-[NumJoysticks-1]
 			 *
-			 * \return True if a joystick at that location is opened, otherwise False.
+			 * \return True if a joystick at that location is opened,
+			 * otherwise False.
 			 */
 			static bool Opened(int index);
 
@@ -100,7 +111,7 @@ namespace SDL
 			 *
 			 * \return The index number of this Joystick.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			int Index(void);
 
@@ -109,7 +120,7 @@ namespace SDL
 			 *
 			 * \return The number of axes for this Joystick.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			int NumAxes(void);
 			/*!
@@ -119,14 +130,17 @@ namespace SDL
 			 *
 			 * \return Returns a std::string to this Joystick name.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			std::string Name();
 			/*!
 			 * \brief Updates the state of all joysticks
 			 *
-			 * Updates the state(position, buttons, etc.) of all open joysticks. 
-			 * If joystick events have been enabled with SDL_JoystickEventState then this is called automatically in the event loop.
+			 * Updates the state(position, buttons, etc.) of all open
+			 * joysticks. 
+			 * If joystick events have been enabled with
+			 * SDL_JoystickEventState then this is called automatically in the
+			 * event loop.
 			 */
 			static void Update(void);
 			/*!
@@ -134,7 +148,7 @@ namespace SDL
 			 *
 			 * \return The number of balls for this Joystick.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			int NumBalls(void);
 			/*!
@@ -142,7 +156,7 @@ namespace SDL
 			 *
 			 * \return The number of hats for this Joystick.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			int NumHats(void);
 			/*!
@@ -150,23 +164,28 @@ namespace SDL
 			 *
 			 * \return The number of buttons for this Joystick.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			int NumButtons(void);
 
 			/*!
 			 * \brief Get the current state of an axis
 			 *
-			 * On most modern joysticks the X axis is usually represented by axis 0 and the Y axis by axis 1. 
-			 * The value returned by GetAxis is a signed integer (-32768 to 32768) representing the current position of the axis, 
-			 * it maybe necessary to impose certain tolerances on these values to account for jitter. 
-			 * It is worth noting that some joysticks use axes 2 and 3 for extra buttons.
+			 * On most modern joysticks the X axis is usually represented by
+			 * axis 0 and the Y axis by axis 1. 
+			 * The value returned by GetAxis is a signed integer (-32768 to
+			 * 32768) representing the current position of the axis, 
+			 * it maybe necessary to impose certain tolerances on these values
+			 * to account for jitter. 
+			 * It is worth noting that some joysticks use axes 2 and 3 for
+			 * extra buttons.
 			 * 
 			 * \param axis is the axis you want information for.
 			 * 
-			 * \return A 16-bit signed integer representing the current position of the axis.
+			 * \return A 16-bit signed integer representing the current
+			 * position of the axis.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			Sint16 GetAxis(int axis);
 			/*!
@@ -174,7 +193,8 @@ namespace SDL
 			 *
 			 * \param hat is the hat you want the information for.
 			 *
-			 * \return The current state is returned as a Uint8 which is defined as an OR'd combination of one or more of the following
+			 * \return The current state is returned as a Uint8 which is
+			 * defined as an OR'd combination of one or more of the following
 			 * \code
 			 * SDL_HAT_CENTERED
 			 * SDL_HAT_UP
@@ -187,7 +207,7 @@ namespace SDL
 			 * SDL_HAT_LEFTDOWN
 			 * \endcode
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			Uint8 GetHat(int hat);
 			/*!
@@ -197,21 +217,24 @@ namespace SDL
 			 * 
 			 * \return True if the button is pressed, False if not.
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			bool GetButton(int button);
 			/*!
 			 * \brief Get relative trackball motion
 			 *
-			 * Trackballs can only return relative motion since the last call to GetBall, these motion deltas a placed into dx and dy.
+			 * Trackballs can only return relative motion since the last call
+			 * to GetBall, these motion deltas a placed into dx and dy.
 			 *
 			 * \param ball is the ball you want information on.
 			 * \param dx is the change in x since the last call to GetBall().
 			 * \param dy is the change in y since the last call to GetBall().
 			 *
-			 * \return False on failure, True otherwise. This does not mean False if no movement and true otherwise. That has to be determined by if there is a change in x or y
+			 * \return False on failure, True otherwise. This does not mean
+			 * False if no movement and true otherwise. That has to be
+			 * determined by if there is a change in x or y
 			 *
-			 * \throws std::logic_error if the joystick isn't initialized
+			 * \throws SDL::LogicError if the joystick isn't initialized
 			 */
 			bool GetBall(int ball, int &dx, int &dy);
 		protected:

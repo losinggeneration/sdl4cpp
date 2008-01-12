@@ -147,6 +147,12 @@ int main(int argv, char *args[])
 	atexit(SDL::Quit);
 	
 	SDL::Screen screen(640, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
+	// Set the initial cursor
+	SDL::Cursor cursor;
+	cursor.Set(hello);
+
+	std::cout << "Press Space to switch cursors" << std::endl
+		<< "Press Esc to quit" << std::endl;
 
 	while(handler == false)
 	{

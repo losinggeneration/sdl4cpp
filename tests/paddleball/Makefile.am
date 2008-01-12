@@ -1,5 +1,7 @@
 INCLUDES = -I$(top_srcdir)/include
 
+AM_CXXFLAGS = $(SDL4CPP_CFLAGS)
+
 noinst_PROGRAMS = paddleball
 
 paddleball_SOURCES = ball.cpp paddle.cpp main.cpp score.cpp computer.cpp

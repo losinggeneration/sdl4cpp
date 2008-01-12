@@ -33,9 +33,9 @@ namespace SDL
 		return SDL_EventState(type, state);
 	}
 	
-	Uint8 *GetKeyState(int &numkeys)
+	Uint8 *GetKeyState(int *numkeys)
 	{
-		return SDL_GetKeyState(&numkeys);
+		return SDL_GetKeyState(numkeys);
 	}
 	
 	Mod GetModState(void)
@@ -102,7 +102,7 @@ namespace SDL
 		return false;
 	}
 	
-	bool Handle::MouseMotion(Uint8 state,  Uint16 x, Uint16 y, Sint16 xrel, Sint16 yrel)
+	bool Handle::MouseMotion(Uint8 state, Uint16 x, Uint16 y, Sint16 xrel, Sint16 yrel)
 	{
 		return false;
 	}
@@ -182,14 +182,6 @@ namespace SDL
 		return SDL_PeepEvents(&m_Event, numevents, action, mask);
 	}
 	
-	void Event::Poll(Handle &handler)
-	{
-		while(SDL_PollEvent(&m_Event))
-		{
-			HandleEvent(handler);
-		}
-	}
-	
 	int Event::Pop(Handle &handler, Uint32 mask)
 	{
 		int isEvent;
@@ -198,7 +190,7 @@ namespace SDL
 		isEvent = Peep(1, SDL_GETEVENT, mask);
 
 		if(isEvent == 1)
-			HandleEvent(handler);
+			HandleEvents(handler);
 
 		return isEvent;
 
@@ -302,7 +294,7 @@ namespace SDL
 		isEvent = Peep(1, SDL_PEEKEVENT, mask);
 
 		if(isEvent == 1)
-			HandleEvent(handler);
+			HandleEvents(handler);
 
 		return isEvent;
 	}
@@ -522,7 +514,16 @@ namespace SDL
 			return false;
 	}
 	
-	bool Event::HandleEvent(Handle &handler)
+	void Event::Poll(Handle &handler)
+	{
+		while(SDL_PollEvent(&m_Event))
+		{
+			if(!HandleEvents(handler))
+				handler.All(m_Event);
+		}
+	}
+	
+	bool Event::HandleEvents(Handle &handler)
 	{
 		bool handled = false;
 
@@ -577,9 +578,6 @@ namespace SDL
 				handled = handler.User(m_Event.user.code, m_Event.user.data1, m_Event.user.data2);
 				break;
 		}
-
-		if(handled == false)
-			handled = handler.All(m_Event);
 
 		return handled;
 	}

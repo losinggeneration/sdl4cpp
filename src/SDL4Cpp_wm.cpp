@@ -26,41 +26,41 @@ namespace SDL
 
 	namespace WM
 	{
-		void SetCaption(std::string name, std::string icon)
+		void SetCaption(std::string title, std::string icon)
 		{
-			SDL_WM_SetCaption(name.c_str(), icon.c_str());
+			SDL_WM_SetCaption(title.c_str(), icon.c_str());
 		}
 		
-		void GetCaption(std::string &name, std::string &icon)
+		void GetCaption(std::string &title, std::string &icon)
 		{
-			char **cname = 0, **cicon = 0;
-			SDL_WM_GetCaption(cname, cicon);
+			char *ctitle = 0, *cicon = 0;
+			SDL_WM_GetCaption(&ctitle, &cicon);
 
-			if(cname != NULL)
-				name = static_cast<std::string>(*cname);
+			if(ctitle != NULL)
+				title = static_cast<std::string>(ctitle);
 
 			if(cicon != NULL)
-				icon = static_cast<std::string>(*cicon);
+				icon = static_cast<std::string>(cicon);
 		}
 
-		std::string GetName(void)
+		std::string GetTitle(void)
 		{
-			char **name;
-			SDL_WM_GetCaption(name, NULL);
+			char *title = 0;
+			SDL_WM_GetCaption(&title, NULL);
 
-			if(name != NULL)
-				return static_cast<std::string>(*name);
+			if(title != NULL)
+				return static_cast<std::string>(title);
 
 			return "";
 		}
 
 		std::string GetIcon(void)
 		{
-			char **icon = 0;
-			SDL_WM_GetCaption(NULL, icon);
+			char *icon = 0;
+			SDL_WM_GetCaption(NULL, &icon);
 
 			if(icon != NULL)
-				return static_cast<std::string>(*icon);
+				return static_cast<std::string>(icon);
 			
 			return "";
 		}
@@ -75,7 +75,9 @@ namespace SDL
 		
 		GrabMode GrabInput(GrabMode mode)
 		{
-			return static_cast<GrabMode>(SDL_WM_GrabInput(static_cast<SDL_GrabMode>(mode)));
+			return
+					static_cast<GrabMode>(SDL_WM_GrabInput(
+										  static_cast<SDL_GrabMode>(mode)));
 		}
 	}
 }

@@ -34,13 +34,13 @@ namespace SDL
 	Joystick::Joystick(int index)
 	{
 		if(!Open(index))
-			throw std::runtime_error(GetError());
+			throw SDL::RuntimeError(GetError());
 	}
 	
 	Joystick::~Joystick(void)
 	{
 		if(!Close())
-			throw std::runtime_error(GetError());
+			throw SDL::RuntimeError(GetError());
 	}
 
 	bool Joystick::Open(int index)
@@ -70,7 +70,7 @@ namespace SDL
 	int Joystick::Index(void)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to Index()");
+			throw SDL::LogicError("m_Joystick not intialized before call to Index()");
 		
 		return SDL_JoystickIndex(m_Joystick);
 	}
@@ -78,7 +78,7 @@ namespace SDL
 	std::string Joystick::Name()
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to Index()");
+			throw SDL::LogicError("m_Joystick not intialized before call to Index()");
 
 		return static_cast<std::string>(SDL_JoystickName(Index()));
 	}
@@ -91,7 +91,7 @@ namespace SDL
 	int Joystick::NumAxes(void)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to NumAxes()");
+			throw SDL::LogicError("m_Joystick not intialized before call to NumAxes()");
 
 		return SDL_JoystickNumAxes(m_Joystick);
 	}
@@ -99,7 +99,7 @@ namespace SDL
 	int Joystick::NumBalls(void)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to NumBalls()");
+			throw SDL::LogicError("m_Joystick not intialized before call to NumBalls()");
 		
 		return SDL_JoystickNumBalls(m_Joystick);
 	}
@@ -107,7 +107,7 @@ namespace SDL
 	int Joystick::NumHats(void)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to NumHats()");
+			throw SDL::LogicError("m_Joystick not intialized before call to NumHats()");
 		
 		return SDL_JoystickNumHats(m_Joystick);
 	}
@@ -115,7 +115,7 @@ namespace SDL
 	int Joystick::NumButtons(void)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to NumButtons()");
+			throw SDL::LogicError("m_Joystick not intialized before call to NumButtons()");
 		
 		return SDL_JoystickNumButtons(m_Joystick);
 	}
@@ -123,7 +123,7 @@ namespace SDL
 	Sint16 Joystick::GetAxis(int axis)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to GetAxis()");
+			throw SDL::LogicError("m_Joystick not intialized before call to GetAxis()");
 		
 		return SDL_JoystickGetAxis(m_Joystick, axis);
 	}
@@ -131,7 +131,7 @@ namespace SDL
 	Uint8 Joystick::GetHat(int hat)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to GetHat()");
+			throw SDL::LogicError("m_Joystick not intialized before call to GetHat()");
 		
 		return SDL_JoystickGetHat(m_Joystick, hat);
 	}
@@ -139,7 +139,7 @@ namespace SDL
 	bool Joystick::GetButton(int button)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to GetButton()");
+			throw SDL::LogicError("m_Joystick not intialized before call to GetButton()");
 		
 		return SDL_JoystickGetButton(m_Joystick, button);
 	}
@@ -147,7 +147,7 @@ namespace SDL
 	bool Joystick::GetBall(int ball, int &dx, int &dy)
 	{
 		if(!m_Joystick)
-			throw std::logic_error("m_Joystick not intialized before call to GetBall()");
+			throw SDL::LogicError("m_Joystick not intialized before call to GetBall()");
 
 		if(SDL_JoystickGetBall(m_Joystick, ball, &dx, &dy) == -1)
 			return false;

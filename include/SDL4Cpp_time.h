@@ -24,10 +24,16 @@
 namespace SDL
 {
 	/*!
-	 * SDL provides several cross-platform functions for dealing with time. It provides a way to get the current time, a way to wait a little while, and a simple timer mechanism. These functions give you two ways of moving an object every x milliseconds:
+	 * SDL provides several cross-platform functions for dealing with time. It
+	 * provides a way to get the current time, a way to wait a little while,
+	 * and a simple timer mechanism. These functions give you two ways of
+	 * moving an object every x milliseconds:
 	 *
-	 * Use a timer callback function. This may have the bad effect that it runs in a seperate thread or uses alarm signals, but it's easier to implement.
-	 * Or you can get the number of milliseconds passed, and move the object if, for example, 30 ms passed.
+	 * Use a timer callback function. This may have the bad effect that it runs
+	 * in a seperate thread or uses alarm signals, but it's easier to
+	 * implement.
+	 * Or you can get the number of milliseconds passed, and move the object
+	 * if, for example, 30 ms passed.
 	 */
 
 	/*!
@@ -56,16 +62,19 @@ namespace SDL
 	/*!
 	 * \brief Get the number of milliseconds since the SDL library initialization.
 	 *
-	 * \return The number of milliseconds since the SDL library initialization. 
+	 * \return The number of milliseconds since the SDL library
+	 * initialization. 
 	 * \note That this value wraps if the program runs for more than ~49 days.
 	 */
 	Uint32 GetTicks(void);
 	/*!
 	 * \brief Wait a specified number of milliseconds before returning.
 	 *
-	 * Delay() will wait at least the specified time, but possible longer due to OS scheduling.
+	 * Delay() will wait at least the specified time, but possible longer due
+	 * to OS scheduling.
 	 *
-	 * \note Count on a delay granularity of at least 10 ms. Some platforms have shorter clock ticks but this is the most common.
+	 * \note Count on a delay granularity of at least 10 ms. Some platforms
+	 * have shorter clock ticks but this is the most common.
 	 *
 	 */
 	void Delay(Uint32 ms);
@@ -73,20 +82,36 @@ namespace SDL
 	/*!
 	 * \brief Add a timer which will call a callback after the specified number of milliseconds has elapsed.
 	 *
-	 * \note Callback type definition for the "new" timer callback function is \code typedef Uint32 (*SDL_NewTimerCallback)(Uint32 interval, void *param); \endcode
+	 * \note Callback type definition for the "new" timer callback function is
+	 * \code typedef Uint32 (*SDL_NewTimerCallback)(Uint32 interval, void *param); \endcode
 	 * 
-	 * Adds a callback function to be run after the specified number of milliseconds has elapsed. The callback function is passed the current timer interval and the user supplied parameter from the AddTimer() call and returns the next timer interval. If the returned value from the callback is the same as the one passed in, the periodic alarm continues, otherwise a new alarm is scheduled.
+	 * Adds a callback function to be run after the specified number of
+	 * milliseconds has elapsed. The callback function is passed the current
+	 * timer interval and the user supplied parameter from the AddTimer() call
+	 * and returns the next timer interval. If the returned value from the
+	 * callback is the same as the one passed in, the periodic alarm
+	 * continues, otherwise a new alarm is scheduled.
 	 *
-	 * To cancel a currently running timer call RemoveTimer() with the timer ID returned from AddTimer().
+	 * To cancel a currently running timer call RemoveTimer() with the timer
+	 * ID returned from AddTimer().
 	 *
-	 * The timer callback function may run in a different thread than your main program, and so shouldn't call any functions from within itself. You may always call SDL::Event::Push(), however.
+	 * The timer callback function may run in a different thread than your
+	 * main program, and so shouldn't call any functions from within itself.
+	 * You may always call SDL::Event::Push(), however.
 	 *
-	 * The granularity of the timer is platform-dependent, but you should count on it being at least 10 ms as this is the most common number. This means that if you request a 16 ms timer, your callback will run approximately 20 ms later on an unloaded system. If you wanted to set a flag signaling a frame update at 30 frames per second (every 33 ms), you might set a timer for 30 ms (see example below). If you use this function, you need to pass SDL_INIT_TIMER to Init().
+	 * The granularity of the timer is platform-dependent, but you should
+	 * count on it being at least 10 ms as this is the most common number.
+	 * This means that if you request a 16 ms timer, your callback will run
+	 * approximately 20 ms later on an unloaded system. If you wanted to set a
+	 * flag signaling a frame update at 30 frames per second (every 33 ms),
+	 * you might set a timer for 30 ms (see example below). If you use this
+	 * function, you need to pass SDL_INIT_TIMER to Init().
 	 *
 	 *
 	 * \return An ID value for the added timer or NULL if there was an error.
 	 */
-	TimerID AddTimer(Uint32 interval, SDL_NewTimerCallback callback, void *param);
+	TimerID AddTimer(Uint32 interval, SDL_NewTimerCallback callback,
+					  void *param);
 	/*!
 	 * \brief Remove a timer which was added with AddTimer()
 	 *
@@ -96,19 +121,31 @@ namespace SDL
 	/*!
 	 * \brief Set a callback to run after the specified number of milliseconds has elapsed.
 	 *
-	 * \note Callback Function prototype for the timer callback function is \code typedef Uint32 (*SDL_TimerCallback)(Uint32 interval); \endcode
+	 * \note Callback Function prototype for the timer callback function is
+	 * \code typedef Uint32 (*SDL_TimerCallback)(Uint32 interval); \endcode
 	 * 
-	 * Set a callback to run after the specified number of milliseconds has elapsed. The callback function is passed the current timer interval and returns the next timer interval. If the returned value is the same as the one passed in, the periodic alarm continues, otherwise a new alarm is scheduled.
+	 * Set a callback to run after the specified number of milliseconds has
+	 * elapsed. The callback function is passed the current timer interval and
+	 * returns the next timer interval. If the returned value is the same as
+	 * the one passed in, the periodic alarm continues, otherwise a new alarm
+	 * is scheduled.
 	 *
 	 * To cancel a currently running timer, call SetTimer(0, NULL);
 	 *
-	 * The timer callback function may run in a different thread than your main constant, and so shouldn't call any functions from within itself.
+	 * The timer callback function may run in a different thread than your
+	 * main constant, and so shouldn't call any functions from within itself.
 	 *
-	 * The maximum resolution of this timer is 10 ms, which means that if you request a 16 ms timer, your callback will run approximately 20 ms later on an unloaded system. If you wanted to set a flag signaling a frame update at 30 frames per second (every 33 ms), you might set a timer for 30 ms (see example below).
+	 * The maximum resolution of this timer is 10 ms, which means that if you
+	 * request a 16 ms timer, your callback will run approximately 20 ms later
+	 * on an unloaded system. If you wanted to set a flag signaling a frame
+	 * update at 30 frames per second (every 33 ms), you might set a timer for
+	 * 30 ms (see example below).
 	 *
 	 * If you use this function, you need to pass SDL_INIT_TIMER to Init().
 	 *
-	 * \note This function is kept for compatibility but has been superseded by the new timer functions AddTimer and RemoveTimer which support multiple timers.
+	 * \note This function is kept for compatibility but has been superseded
+	 * by the new timer functions AddTimer and RemoveTimer which support
+	 * multiple timers.
 	 * 
 	 * \return not sure actually
 	 */
@@ -117,8 +154,10 @@ namespace SDL
 	/*!
 	 * \brief A little bit less direct Timer handling
 	 *
-	 * Same as the functions but lets the class deal with the TimerID and automatically removes the timer on destruction.
-	 * \note Only one timer is used per class and if another is added the previous is removed first.
+	 * Same as the functions but lets the class deal with the TimerID and
+	 * automatically removes the timer on destruction.
+	 * \note Only one timer is used per class and if another is added the
+	 * previous is removed first.
 	 */
 	class Timer
 	{
@@ -140,7 +179,8 @@ namespace SDL
 			 *
 			 * \return True on success, False on an error.
 			 */
-			bool Add(Uint32 interval, SDL_NewTimerCallback callback, void *param);
+			bool Add(Uint32 interval, SDL_NewTimerCallback callback,
+					 void *param);
 			/*!
 			 * \brief Removes a timer.
 			 *

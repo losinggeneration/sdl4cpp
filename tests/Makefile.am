@@ -3,6 +3,7 @@ SUBDIRS = paddleball
 INCLUDES = -I$(top_srcdir)/include `sdl-config --cflags`
 noinst_PROGRAMS = TestVideo TestEvents TestWM TestMouse TestKeyboard TestJoystick TestCD TestGL 
 #Transform (broken)
+AM_CXXFLAGS = $(SDL4CPP_CFLAGS)
 
 TestVideo_SOURCES = TestVideo.cpp
 TestEvents_SOURCES = TestEvents.cpp

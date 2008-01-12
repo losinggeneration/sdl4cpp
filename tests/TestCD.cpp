@@ -44,10 +44,10 @@ int main(int argv, char *args[])
 	if(tracks[0].type != SDL_AUDIO_TRACK)
 		exit(0);
 
-	if(tracks[0].length > 10)
+	if(tracks[0].length > 100)
 	{
-		std::cout << "Playing first track, the first ten frames.\npress 'q' without quotes and enter for next test." << std::endl;
-		if(cd.Play(tracks[0].offset, 10) == false)
+		std::cout << "Playing first track, the first 100 frames.\npress 'q' without quotes and enter for next test." << std::endl;
+		if(cd.Play(tracks[0].offset, 100) == false)
 		{
 			std::cout << SDL::GetError() << std::endl;
 			exit(-1);
@@ -62,7 +62,7 @@ int main(int argv, char *args[])
 	if(tracks[1].type != SDL_AUDIO_TRACK)
 		exit(0);
 
-	if(cd.PlayTracks(0, 0, 1, 0) == false)
+	if(cd.PlayTracks(1, 0, 1, 0) == false)
 	{
 		std::cout << SDL::GetError() << std::endl;
 		exit(-1);
@@ -75,7 +75,7 @@ int main(int argv, char *args[])
 		exit(-1);
 
 	// catch \n from last while
-	std::cin;
+	std::cin.get();
 	std::cout << "Eject for fun.\ny or n" << std::endl;
 	if(std::cin.get() == 'y')
 		cd.Eject();

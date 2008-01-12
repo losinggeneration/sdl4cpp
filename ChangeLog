@@ -1,0 +1,9 @@
+12/28/07:
+	* Most lines conform to 80 characters in headers only
+	* Added SDL::RuntimeError and SDL::LogicError
+	* Changed std::*_error to SDL::*Error
+	* Cleaned up some comments (removed the SDL_ prefix)
+12/29/07:
+	* Fixed WM::Get{Caption,Title,Icon}
+	* Renamed WM::GetName -> WM::GetTitle
+	* Added a few misc fixes and changes to TestMouse

@@ -71,6 +71,7 @@ AC_OUTPUT([	Makefile
 		src/Makefile
 		tests/Makefile
 		tests/paddleball/Makefile
+		templates/Makefile
 		docs/Makefile
 		docs/SDL4Cpp.doxy
 		include/Makefile

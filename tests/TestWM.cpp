@@ -101,7 +101,9 @@ int main(int argv, char *args[])
 	bool direction = false;
 	
 	screen.SetIcon("icon.bmp", NULL);
-	screen.SetVideoMode(640, 480, 32);
+	int bpp = SDL::Screen::VideoModeOK(640, 480, 32);
+	std::cout << bpp << std::endl;
+	screen.SetVideoMode(640, 480, bpp);
 
 	std::string caption, icon;
 	SDL::WM::SetCaption("Testing", "testarg2");
@@ -109,7 +111,7 @@ int main(int argv, char *args[])
 	SDL::WM::GetCaption(caption, icon);
 	std::cout << "Window Caption: " << caption << std::endl << "Icon: " << icon << std::endl;
 	std::cout << "Trying Again with individual functions:" << std::endl;
-	std::cout << "\tCaption: " << SDL::WM::GetName() << std::endl;
+	std::cout << "\tCaption: " << SDL::WM::GetTitle() << std::endl;
 	std::cout << "\tIcon: " << SDL::WM::GetIcon() << std::endl;
 	
 	const SDL::Version *version = SDL::LinkedVersion();

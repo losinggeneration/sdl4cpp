@@ -34,7 +34,7 @@ namespace SDL
 	CD::CD(int drive)
 	{
 		if(!Open(drive))
-			throw std::runtime_error(GetError());
+			throw SDL::RuntimeError(GetError());
 
 		m_Drive = drive;
 	}
@@ -59,7 +59,7 @@ namespace SDL
 	std::string CD::Name()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Name()");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Name()");
 
 		return static_cast<std::string>(SDL_CDName(m_Drive));
 	}
@@ -67,7 +67,7 @@ namespace SDL
 	CDstatus CD::Status()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Status()");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Status()");
 
 		return SDL_CDStatus(m_CD);
 	}
@@ -75,7 +75,7 @@ namespace SDL
 	bool CD::Play(int start, int length)
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Play(int, int)");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Play(int, int)");
 
 		if(SDL_CDPlay(m_CD, start, length) == 0)
 			return true;
@@ -86,7 +86,7 @@ namespace SDL
 	bool CD::PlayTracks(int start_track, int start_frame, int ntracks, int nframes)
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::PlayTracks(int, int,  int, int)");
+			throw SDL::LogicError("m_CD not initialized before call to CD::PlayTracks(int, int,  int, int)");
 
 		if(SDL_CDPlayTracks(m_CD, start_track, start_frame, ntracks, nframes) == 0)
 			return true;
@@ -106,7 +106,7 @@ namespace SDL
 	bool CD::Pause()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Pause()");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Pause()");
 
 		if(SDL_CDPause(m_CD) == 0)
 			return true;
@@ -117,7 +117,7 @@ namespace SDL
 	bool CD::Resume()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Resume()");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Resume()");
 
 		if(SDL_CDResume(m_CD))
 			return true;
@@ -128,7 +128,7 @@ namespace SDL
 	bool CD::Stop()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Stop()");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Stop()");
 
 		if(SDL_CDStop(m_CD)== 0)
 			return true;
@@ -139,7 +139,7 @@ namespace SDL
 	bool CD::Eject()
 	{
 		if(!m_CD)
-			throw std::logic_error("m_CD not initialized before call to CD::Eject();");
+			throw SDL::LogicError("m_CD not initialized before call to CD::Eject();");
 
 		if(SDL_CDEject(m_CD) == 0)
 			return true;

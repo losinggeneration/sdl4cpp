@@ -55,26 +55,33 @@ namespace SDL
 		 * 
 		 * Sets the title-bar and icon name of the display window.
 		 *
-		 * \param name is the name you want the window to have
+		 * \param title is the name you want the window to have
 		 * \param icon is the filename of the icon to use.
 		 */
-		void SetCaption(std::string name = "", std::string icon = "");
+		void SetCaption(std::string title = "", std::string icon = "");
 		/*!
 		 * \brief Gets the window title and icon name.
 		 *
-		 * \param name is a referance to the name to fill with the name of the window.
-		 * \param icon is a referance to the icon to fill with the file location of the icon.
+		 * \param title is a referance to the name to fill with the name of the
+		 * window.
+		 * \param icon is a referance to the icon to fill with the file
+		 * location of the icon.
+		 * \param windownumber the number of the returned string array to use.
 		 */
-		void GetCaption(std::string &name, std::string &icon);
+		void GetCaption(std::string &title, std::string &icon);
 		/*!
 		 * \brief Get just the title of a window.
 		 * 
+		 * \param windownumber the number of the returned string array to use.
+		 *
 		 * \return A std::string of the window's title.
 		 */
-		std::string GetName(void);
+		std::string GetTitle(void);
 		/*!
 		 * \brief Get just the icon of a window.
 		 * 
+		 * \param windownumber the number of the returned string array to use.
+		 *
 		 * \return A std::string of the icon's filename.
 		 */
 		std::string GetIcon(void);
@@ -82,18 +89,24 @@ namespace SDL
 		/*!
 		 * \brief Iconify/Minimise the window
 		 *
-		 * If the application is running in a window managed environment SDL attempts to iconify/minimise it.
-		 * If SDL::WM::IconifyWindow() is successful, the application will receive a SDL_APPACTIVE loss event.
+		 * If the application is running in a window managed environment SDL
+		 * attempts to iconify/minimise it.
+		 * If SDL::WM::IconifyWindow() is successful, the application will
+		 * receive a SDL_APPACTIVE loss event.
 		 *
-		 * \return False if iconification is not support or was refused by the window manager, true on success.
+		 * \return False if iconification is not support or was refused by the
+		 * window manager, true on success.
 		 */
 		bool IconifyWindow(void);
 		/*!
 		 * \brief Grabs mouse and keyboard input.
 		 *
-		 * Grabbing means that the mouse is confined to the application window, and nearly all keyboard input is passed directly to the application, and not interpreted by a window manager, if any.
+		 * Grabbing means that the mouse is confined to the application window,
+		 * and nearly all keyboard input is passed directly to the application,
+		 * and not interpreted by a window manager, if any.
 		 *
-		 * When mode is SDL_GRAB_QUERY the grab mode is not changed, but the current grab mode is returned.
+		 * When mode is SDL_GRAB_QUERY the grab mode is not changed, but the
+		 * current grab mode is returned.
 		 *
 		 * \b Enum \b Definition
 		 * \code

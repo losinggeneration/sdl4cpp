@@ -30,11 +30,19 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_ActiveEvent
 	 *
-	 * SDL_ActiveEvent is a member of the SDL_Event union and is used when an event of type SDL_ACTIVEEVENT is reported.
+	 * ActiveEvent is a member of the SDL_Event union and is used when an event
+	 * of type SDL_ACTIVEEVENT is reported.
 	 *
-	 * When the mouse leaves or enters the window area a SDL_APPMOUSEFOCUS type activation event occurs, if the mouse entered the window then gain will be 1, otherwise gain will be 0. A SDL_APPINPUTFOCUS type activation event occurs when the application loses or gains keyboard focus. This usually occurs when another application is made active. Finally, a SDL_APPACTIVE type event occurs when the application is either minimised/iconified (gain=0) or restored.
+	 * When the mouse leaves or enters the window area a SDL_APPMOUSEFOCUS type
+	 * activation event occurs, if the mouse entered the window then gain will
+	 * be 1, otherwise gain will be 0. A SDL_APPINPUTFOCUS type activation
+	 * event occurs when the application loses or gains keyboard focus. This
+	 * usually occurs when another application is made active. Finally, a
+	 * SDL_APPACTIVE type event occurs when the application is either
+	 * minimised/iconified (gain=0) or restored.
 	 *
-	 * \note This event does not occur when an application window is first created.
+	 * \note This event does not occur when an application window is first
+	 * created.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -60,9 +68,14 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_KeyboardEvent
 	 *
-	 * SDL_KeyboardEvent is a member of the SDL_Event union and is used when an event of type SDL_KEYDOWN or SDL_KEYUP is reported.
+	 * SDL_KeyboardEvent is a member of the SDL_Event union and is used when an
+	 * event of type SDL_KEYDOWN or SDL_KEYUP is reported.
 	 *
-	 * The type and state actually report the same information, they just use different values to do it! A keyboard event occurs when a key is released (type=SDK_KEYUP or state=SDL_RELEASED) and when a key is pressed (type=SDL_KEYDOWN or state=SDL_PRESSED). The information on what key was pressed or released is in the keysym structure.
+	 * The type and state actually report the same information, they just use
+	 * different values to do it! A keyboard event occurs when a key is
+	 * released (type=SDK_KEYUP or state=SDL_RELEASED) and when a key is
+	 * pressed (type=SDL_KEYDOWN or state=SDL_PRESSED). The information on what
+	 * key was pressed or released is in the keysym structure.
 	 *
 	 * \note Repeating SDL_KEYDOWN events will occur if key repeat is enabled
 	 * \sa EnableKeyRepeat()
@@ -89,12 +102,20 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_MouseMotionEvent
 	 *
-	 * SDL_MouseMotionEvent is a member of the SDL_Event union and is used when an event of type SDL_MOUSEMOTION is reported.
+	 * SDL_MouseMotionEvent is a member of the SDL_Event union and is used when
+	 * an event of type SDL_MOUSEMOTION is reported.
 	 *
-	 * Simply put, a SDL_MOUSEMOTION type event occurs when a user moves the mouse within the application window or when WarpMouse() is called. Both the absolute (x and y) and relative (xrel and yrel) coordinates are reported along with the current button states (state). The button state can be interpreted using the SDL_BUTTON macro
+	 * Simply put, a SDL_MOUSEMOTION type event occurs when a user moves the
+	 * mouse within the application window or when WarpMouse() is called. Both
+	 * the absolute (x and y) and relative (xrel and yrel) coordinates are
+	 * reported along with the current button states (state). The button state
+	 * can be interpreted using the SDL_BUTTON macro
 	 * \sa GetMouseState()
 	 *
-	 * If the cursor is hidden (ShowCursor(0)) and the input is grabbed (SDL::WM::GrabInput(SDL_GRAB_ON)), then the mouse will give relative motion events even when the cursor reaches the edge fo the screen. This is currently only implemented on Windows and Linux/Unix-a-likes.
+	 * If the cursor is hidden (ShowCursor(0)) and the input is grabbed
+	 * (SDL::WM::GrabInput(SDL_GRAB_ON)), then the mouse will give relative
+	 * motion events even when the cursor reaches the edge fo the screen. This
+	 * is currently only implemented on Windows and Linux/Unix-a-likes.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -120,9 +141,15 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_MouseButtonEvent
 	 * 
-	 * SDL_MouseButtonEvent is a member of the SDL_Event union and is used when an event of type SDL_MOUSEBUTTONDOWN or SDL_MOUSEBUTTONUP is reported.
+	 * SDL_MouseButtonEvent is a member of the SDL_Event union and is used when
+	 * an event of type SDL_MOUSEBUTTONDOWN or SDL_MOUSEBUTTONUP is reported.
 	 *
-	 * When a mouse button press or release is detected then number of the button pressed (from 1 to 255, with 1 usually being the left button and 2 the right) is placed into button, the position of the mouse when this event occured is stored in the x and the y fields. Like KeyboardEvent, information on whether the event was a press or a release event is stored in both the type and state fields, but this should be obvious.
+	 * When a mouse button press or release is detected then number of the
+	 * button pressed (from 1 to 255, with 1 usually being the left button and
+	 * 2 the right) is placed into button, the position of the mouse when this
+	 * event occured is stored in the x and the y fields. Like KeyboardEvent,
+	 * information on whether the event was a press or a release event is
+	 * stored in both the type and state fields, but this should be obvious.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -148,9 +175,14 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_JoyAxisEvent
 	 *
-	 * SDL_JoyAxisEvent is a member of the SDL_Event union and is used when an event of type SDL_JOYAXISMOTION is reported.
+	 * SDL_JoyAxisEvent is a member of the SDL_Event union and is used when an
+	 * event of type SDL_JOYAXISMOTION is reported.
 	 *
-	 * A SDL_JOYAXISMOTION event occurs when ever a user moves an axis on the joystick. The field which is the index of the joystick that reported the event and axis is the index of the axis (for a more detailed explaination see the Joystick section). value is the current position of the axis.
+	 * A SDL_JOYAXISMOTION event occurs when ever a user moves an axis on the
+	 * joystick. The field which is the index of the joystick that reported the
+	 * event and axis is the index of the axis (for a more detailed
+	 * explaination see the Joystick section). value is the current position of
+	 * the axis.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -176,9 +208,15 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_JoyButtonEvent
 	 *
-	 * SDL_JoyButtonEvent is a member of the SDL_Event union and is used when an event of type SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP is reported.
+	 * SDL_JoyButtonEvent is a member of the SDL_Event union and is used when
+	 * an event of type SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP is reported.
 	 *
-	 * A SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP event occurs when ever a user presses or releases a button on a joystick. The field which is the index of the joystick that reported the event and button is the index of the button (for a more detailed explaination see the Joystick section). state is the current state or the button which is either SDL_PRESSED or SDL_RELEASED.
+	 * A SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP event occurs when ever a user
+	 * presses or releases a button on a joystick. The field which is the index
+	 * of the joystick that reported the event and button is the index of the
+	 * button (for a more detailed explaination see the Joystick section).
+	 * state is the current state or the button which is either SDL_PRESSED or
+	 * SDL_RELEASED.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -204,9 +242,15 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_JoyHatEvent
 	 *
-	 * SDL_JoyHatEvent is a member of the SDL_Event union and is used when an event of type SDL_JOYHATMOTION is reported.
+	 * SDL_JoyHatEvent is a member of the SDL_Event union and is used when an
+	 * event of type SDL_JOYHATMOTION is reported.
 	 *
-	 * A SDL_JOYHATMOTION event occurs when ever a user moves a hat on the joystick. The field which is the index of the joystick that reported the event and hat is the index of the hat (for a more detailed exlaination see the Joystick section). value is the current position of the hat. It is a logically OR'd combination of the following values (whose meanings should be pretty obvious:) :
+	 * A SDL_JOYHATMOTION event occurs when ever a user moves a hat on the
+	 * joystick. The field which is the index of the joystick that reported the
+	 * event and hat is the index of the hat (for a more detailed exlaination
+	 * see the Joystick section). value is the current position of the hat. It
+	 * is a logically OR'd combination of the following values (whose meanings
+	 * should be pretty obvious:) :
 	 * \code
 	 * SDL_HAT_CENTERED
 	 * SDL_HAT_UP
@@ -246,9 +290,15 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_JoyBallEvent
 	 *
-	 * SDL_JoyBallEvent is a member of the SDL_Event union and is used when an event of type SDL_JOYBALLMOTION is reported.
+	 * SDL_JoyBallEvent is a member of the SDL_Event union and is used when an
+	 * event of type SDL_JOYBALLMOTION is reported.
 	 *
-	 * A SDL_JOYBALLMOTION event occurs when a user moves a trackball on the joystick. The field which is the index of the joystick that reported the event and ball is the index of the trackball (for a more detailed explaination see the Joystick section). Trackballs only return relative motion, this is the change in position on the ball since it was last polled (last cycle of the event loop) and it is stored in xrel and yrel.
+	 * A SDL_JOYBALLMOTION event occurs when a user moves a trackball on the
+	 * joystick. The field which is the index of the joystick that reported the
+	 * event and ball is the index of the trackball (for a more detailed
+	 * explaination see the Joystick section). Trackballs only return relative
+	 * motion, this is the change in position on the ball since it was last
+	 * polled (last cycle of the event loop) and it is stored in xrel and yrel.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -274,9 +324,15 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_ResizeEvent
 	 *
-	 * SDL_ResizeEvent is a member of the SDL_Event union and is used when an event of type SDL_VIDEORESIZE is reported.
+	 * SDL_ResizeEvent is a member of the SDL_Event union and is used when an
+	 * event of type SDL_VIDEORESIZE is reported.
 	 *
-	 * When SDL_RESIZABLE is passed as a flag to Screen::SetVideoMode() the user is allowed to resize the applications window. When the window is resized an SDL_VIDEORESIZE is report, with the new window width and height values stored in w and h, respectively. When an SDL_VIDEORESIZE is recieved the window should be resized to the new dimensions using Screen::SetVideoMode().
+	 * When SDL_RESIZABLE is passed as a flag to Screen::SetVideoMode() the
+	 * user is allowed to resize the applications window. When the window is
+	 * resized an SDL_VIDEORESIZE is report, with the new window width and
+	 * height values stored in w and h, respectively. When an SDL_VIDEORESIZE
+	 * is recieved the window should be resized to the new dimensions using
+	 * Screen::SetVideoMode().
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -298,9 +354,12 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_ExposeEvent
 	 *
-	 * SDL_ExposeEvent is a member of the SDL_Event union and is used whan an event of type SDL_VIDEOEXPOSE is reported.
+	 * SDL_ExposeEvent is a member of the SDL_Event union and is used whan an
+	 * event of type SDL_VIDEOEXPOSE is reported.
 	 *
-	 * A VIDEOEXPOSE event is triggered when the screen has been modified outside of the application, usually by the window manager and needs to be redrawn.
+	 * A VIDEOEXPOSE event is triggered when the screen has been modified
+	 * outside of the application, usually by the window manager and needs to
+	 * be redrawn.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -320,7 +379,11 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_SysWMEvent
 	 *
-	 * The system window manager event contains a pointer to system-specific information about unknown window manager events. If you enable this event using EventState(), it will be generated whenever unhandled events are received from the window manager. This can be used, for example, to implement cut-and-paste in your application.
+	 * The system window manager event contains a pointer to system-specific
+	 * information about unknown window manager events. If you enable this
+	 * event using EventState(), it will be generated whenever unhandled events
+	 * are received from the window manager. This can be used, for example, to
+	 * implement cut-and-paste in your application.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -330,7 +393,10 @@ namespace SDL
 	 *	SDL_SysWMmsg *msg;
 	 * } SDL_SysWMEvent;
 	 * \endcode
-	 * If you want to obtain system-specific information about the window manager, you can fill the version member of a SDL_SysWMinfo structure (details can be found in SDL_syswm.h, which must be included) using the SDL_VERSION() macro found in SDL_version.h, and pass it to the function:
+	 * If you want to obtain system-specific information about the window
+	 * manager, you can fill the version member of a SDL_SysWMinfo structure
+	 * (details can be found in SDL_syswm.h, which must be included) using the
+	 * SDL_VERSION() macro found in SDL_version.h, and pass it to the function:
 	 * int SDL::WM::GetWMInfo(SDL_SysWMinfo *info);
 	 */
 	typedef SDL_SysWMEvent SysWMEvent;
@@ -343,7 +409,12 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_UserEvent
 	 *
-	 * SDL_UserEvent is in the user member of the structure SDL_Event. This event is unique, it is never created by SDL but only by the user. The event can be pushed onto the event queue using SDL_PushEvent. The contents of the structure members or completely up to the programmer, the only requirement is that type is a value from SDL_USEREVENT to SDL_NUMEVENTS-1 (inclusive).
+	 * SDL_UserEvent is in the user member of the structure SDL_Event. This
+	 * event is unique, it is never created by SDL but only by the user. The
+	 * event can be pushed onto the event queue using SDL_PushEvent. The
+	 * contents of the structure members or completely up to the programmer,
+	 * the only requirement is that type is a value from SDL_USEREVENT to
+	 * SDL_NUMEVENTS-1 (inclusive).
 	 * \b Examples
 	 * \code
 	 * SDL_Event event;
@@ -379,11 +450,18 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_QuitEvent
 	 *
-	 * SDL_QuitEvent is a member of the SDL_Event union and is used whan an event of type SDL_QUIT is reported.
+	 * SDL_QuitEvent is a member of the SDL_Event union and is used whan an
+	 * event of type SDL_QUIT is reported.
 	 *
-	 * As can be seen, the QuitEvent structure serves no useful purpose. The event itself, on the other hand, is very important. If you filter out or ignore a quit event then it is impossible for the user to close the window. On the other hand, if you do accept a quit event then the application window will be closed, and screen updates will still report success event though the application will no longer be visible.
+	 * As can be seen, the QuitEvent structure serves no useful purpose. The
+	 * event itself, on the other hand, is very important. If you filter out or
+	 * ignore a quit event then it is impossible for the user to close the
+	 * window. On the other hand, if you do accept a quit event then the
+	 * application window will be closed, and screen updates will still report
+	 * success event though the application will no longer be visible.
 	 *
-	 * \note The macro SDL_QuitRequested will return non-zero if a quit event is pending
+	 * \note The macro SDL_QuitRequested will return non-zero if a quit event
+	 * is pending
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -403,9 +481,14 @@ namespace SDL
 	/*!
 	 * \brief A shorter version of SDL_keysym KeySym
 	 *
-	 * The SDL_keysym structure is used by reporting key presses and releases since it is a part of the SDL_KeyboardEvent.
+	 * The SDL_keysym structure is used by reporting key presses and releases
+	 * since it is a part of the SDL_KeyboardEvent.
 	 *
-	 * The scancode field should generally be left alone, it is the hardware dependent scancode returned by the keyboard. The sym field is extremely useful. It is the SDL-defined value of the key (see SDL Key Syms. This field is very useful when you are checking for certain key presses, like so:
+	 * The scancode field should generally be left alone, it is the hardware
+	 * dependent scancode returned by the keyboard. The sym field is extremely
+	 * useful. It is the SDL-defined value of the key (see SDL Key Syms. This
+	 * field is very useful when you are checking for certain key presses, like
+	 * so:
 	 * \code
 	 * // From inside an inherited Event
 	 * .
@@ -426,7 +509,11 @@ namespace SDL
 	 * .
 	 * .
 	 * \endcode
-	 * mod stores the current state of the keyboard modifiers as explained in GetModState(). The unicode is only used when Unicode translation is enabled with EnableUnicode(). If unicode is non-zero then this a the Unicode character corresponding to the keypress. If the high 9 bits of the character are 0, then this maps to the equivalent ASCII character:
+	 * mod stores the current state of the keyboard modifiers as explained in
+	 * GetModState(). The unicode is only used when Unicode translation is
+	 * enabled with EnableUnicode(). If unicode is non-zero then this a the
+	 * Unicode character corresponding to the keypress. If the high 9 bits of
+	 * the character are 0, then this maps to the equivalent ASCII character:
 	 * \code
 	 * char ch;
 	 * if ( (keysym.unicode & 0xFF80) == 0 )
@@ -438,7 +525,8 @@ namespace SDL
 	 *	printf("An International Character.\n");
 	 * }
 	 * \endcode
-	 * Unicode translation does have a slight overhead so don't enable it unless its needed.
+	 * Unicode translation does have a slight overhead so don't enable it
+	 * unless its needed.
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -2086,24 +2174,38 @@ namespace SDL
 	/*!
 	 * \brief Sets up a filter to process all events before they are posted to the event queue.
 	 *
-	 * This function sets up a filter to process all events before they are posted to the event queue. This is a very powerful and flexible feature. The filter is prototyped as:
+	 * This function sets up a filter to process all events before they are
+	 * posted to the event queue. This is a very powerful and flexible feature.
+	 * The filter is prototyped as:
 	 *
 	 * typedef int (*EventFilter)(const SDL_Event *event);
 	 *
-	 * If the filter returns 1, then the event will be added to the internal queue. If it returns 0, then the event will be dropped from the queue. This allows selective filtering of dynamically.
+	 * If the filter returns 1, then the event will be added to the internal
+	 * queue. If it returns 0, then the event will be dropped from the queue.
+	 * This allows selective filtering of dynamically.
 	 *
-	 * There is one caveat when dealing with the SDL_QUITEVENT event type. The event filter is only called when the window manager desires to close the application window. If the event filter returns 1, then the window will be closed, otherwise the window will remain open if possible. If the quit event is generated by an interrupt signal, it will bypass the internal queue and be delivered to the application at the next event poll.
+	 * There is one caveat when dealing with the SDL_QUITEVENT event type. The
+	 * event filter is only called when the window manager desires to close the
+	 * application window. If the event filter returns 1, then the window will
+	 * be closed, otherwise the window will remain open if possible. If the
+	 * quit event is generated by an interrupt signal, it will bypass the
+	 * internal queue and be delivered to the application at the next event
+	 * poll.
 	 *
-	 * \note Events pushed onto the queue with Event::Push() or Event::Peep() do not get passed through the event filter.
+	 * \note Events pushed onto the queue with Event::Push() or Event::Peep()
+	 * do not get passed through the event filter.
 	 *
-	 * \note Be Careful! The event filter function may run in a different thread so be careful what you do within it.
+	 * \note Be Careful! The event filter function may run in a different
+	 * thread so be careful what you do within it.
 	 *
 	 */
 	void SetEventFilter(EventFilter &filter);
 	/*!
 	 * \brief Retrieves a pointer to he event filter
 	 *
-	 * This function retrieces a pointer to the event filter that was previously set using SetEventFilter(). An EventFilter function is defined as:
+	 * This function retrieces a pointer to the event filter that was
+	 * previously set using SetEventFilter(). An EventFilter function is
+	 * defined as:
 	 *
 	 * typedef int (*SDL_EventFilter)(const SDL_Event *event);
 	 * 
@@ -2113,11 +2215,15 @@ namespace SDL
 	/*!
 	 * \brief This function allows you to set the state of processing certain events.
 	 *
-	 * This function allows you to set the state of processing certain event type's.
+	 * This function allows you to set the state of processing certain event
+	 * type's.
 	 *
-	 * If state is set to SDL_IGNORE, that event type will be automatically dropped from the event queue and will not be filtered.
-	 * If state is set to SDL_ENABLE, that event type will be processed normally.
-	 * If state is set to SDL_QUERY, SDL_EventState will return the current processing state of the specified event type.
+	 * If state is set to SDL_IGNORE, that event type will be automatically
+	 * dropped from the event queue and will not be filtered.
+	 * If state is set to SDL_ENABLE, that event type will be processed
+	 * normally.
+	 * If state is set to SDL_QUERY, SDL_EventState will return the current
+	 * processing state of the specified event type.
 	 *
 	 * A list of event type's can be found in the Event section.
 	 * 
@@ -2127,13 +2233,18 @@ namespace SDL
 	/*!
 	 * \brief Get a snapshot of the current keyboard state
 	 *
-	 * Gets a snapshot of the current keyboard state. The current state is return as a pointer to an array, the size of this array is stored in numkeys. The array is indexed by the SDLK_* symbols. A value of 1 means the key is pressed and a value of 0 means its not. The pointer returned is a pointer to an internal SDL array and should not be freed by the caller.
+	 * Gets a snapshot of the current keyboard state. The current state is
+	 * return as a pointer to an array, the size of this array is stored in
+	 * numkeys. The array is indexed by the SDLK_* symbols. A value of 1 means
+	 * the key is pressed and a value of 0 means its not. The pointer returned
+	 * is a pointer to an internal SDL array and should not be freed by the
+	 * caller.
 	 *
 	 * \note Use Event::Pump() to update the state array.
 	 * 
 	 * \return
 	 */
-	Uint8* GetKeyState(int &numkeys);
+	Uint8* GetKeyState(int *numkeys);
 	/*!
 	 * \brief Get the state of modifier keys.
 	 *
@@ -2172,9 +2283,11 @@ namespace SDL
 	/*!
 	 * \brief Set the current key modifier state
 	 *
-	 * The inverse of GetModState(), SetModState() allows you to impose modifier key states on your application.
+	 * The inverse of GetModState(), SetModState() allows you to impose
+	 * modifier key states on your application.
 	 *
-	 * Simply pass your desired modifier states into modstate. This value my be a logical OR'd combination of the following:
+	 * Simply pass your desired modifier states into modstate. This value my be
+	 * a logical OR'd combination of the following:
 	 *
 	 * \b Structure \b Definition
 	 * \code
@@ -2207,9 +2320,17 @@ namespace SDL
 	 *
 	 * Enables/Disables Unicode keyboard translation.
 	 *
-	 * To obtain the character codes corresponding to received keyboard events, Unicode translation must first be turned on using this function. The translation incurs a slight overhead for each keyboard event and is therefore disabled by default. For each subsequently received key down event, the unicode member of the KeySym structure will then contain the corresponding character code, or zero for keysyms that do not correspond to any character code.
+	 * To obtain the character codes corresponding to received keyboard events,
+	 * Unicode translation must first be turned on using this function. The
+	 * translation incurs a slight overhead for each keyboard event and is
+	 * therefore disabled by default. For each subsequently received key down
+	 * event, the unicode member of the KeySym structure will then contain the
+	 * corresponding character code, or zero for keysyms that do not correspond
+	 * to any character code.
 	 *
-	 * A value of 1 for enable enables Unicode translation; 0 disables it, and -1 leaves it unchanged (useful for querying the current translation mode).
+	 * A value of 1 for enable enables Unicode translation; 0 disables it, and
+	 * -1 leaves it unchanged (useful for querying the current translation
+	 * mode).
 	 *
 	 * \note Only key press events will be translated, not release events.
 	 *
@@ -2219,9 +2340,13 @@ namespace SDL
 	/*!
 	 * \brief Set keyboard repeat rate.
 	 *
-	 * Enables or disables the keyboard repeat rate. delay specifies how long the key must be pressed before it begins repeating, it then repeats at the speed specified by interval. Both delay and interval are expressed in milliseconds.
+	 * Enables or disables the keyboard repeat rate. delay specifies how long
+	 * the key must be pressed before it begins repeating, it then repeats at
+	 * the speed specified by interval. Both delay and interval are expressed
+	 * in milliseconds.
 	 *
-	 * Setting delay to 0 disables key repeating completely. Good default values are SDL_DEFAULT_REPEAT_DELAY and SDL_DEFAULT_REPEAT_INTERVAL
+	 * Setting delay to 0 disables key repeating completely. Good default
+	 * values are SDL_DEFAULT_REPEAT_DELAY and SDL_DEFAULT_REPEAT_INTERVAL
 	 * 
 	 * \return True on success and False on failure.
 	 */
@@ -2229,7 +2354,9 @@ namespace SDL
 	/*!
 	 * \brief Retrieve the current state of the mouse
 	 *
-	 * The current button state is returned as a button bitmask, which can be tested using the SDL_BUTTON(X) macros, and x and y are set to the current mouse cursor position. You can pass NULL for either x or y.
+	 * The current button state is returned as a button bitmask, which can be
+	 * tested using the SDL_BUTTON(X) macros, and x and y are set to the
+	 * current mouse cursor position. You can pass NULL for either x or y.
 	 * 
 	 * \return 
 	 */
@@ -2237,7 +2364,10 @@ namespace SDL
 	/*!
 	 * \brief Retrieve the current state of the mouse
 	 *
-	 * The current button state is returned as a button bitmask, which can be tested using the SDL_BUTTON(X) macros, and x and y are set to the change in the mouse position since the last call to SDL_GetRelativeMouseState or since event initialization. You can pass NULL for either x or y.
+	 * The current button state is returned as a button bitmask, which can be
+	 * tested using the SDL_BUTTON(X) macros, and x and y are set to the change
+	 * in the mouse position since the last call to SDL_GetRelativeMouseState
+	 * or since event initialization. You can pass NULL for either x or y.
 	 *
 	 * \return 
 	 */
@@ -2245,7 +2375,8 @@ namespace SDL
 	/*!
 	 * \brief Get the state of the application.
 	 *
-	 * \return This function returns the current state of the application. The value returned is a bitwise combination of:
+	 * \return This function returns the current state of the application. The
+	 * value returned is a bitwise combination of:
 	 * \code
 	 * SDL_APPMOUSEFOCUS	The application has mouse focus.
 	 * SDL_APPINPUTFOCUS	The application has keyboard focus
@@ -2256,26 +2387,36 @@ namespace SDL
 	/*!
 	 * \brief Enable/disable joystick event polling
 	 *
-	 * This function is used to enable or disable joystick event processing. With joystick event processing disabled you will have to update joystick states with SDL_JoystickUpdate and read the joystick information manually. state is either SDL_QUERY, SDL_ENABLE or SDL_IGNORE.
+	 * This function is used to enable or disable joystick event processing.
+	 * With joystick event processing disabled you will have to update joystick
+	 * states with SDL_JoystickUpdate and read the joystick information
+	 * manually. state is either SDL_QUERY, SDL_ENABLE or SDL_IGNORE.
 	 *
 	 * \note Joystick event handling is prefered
 	 *
-	 * \return If state is SDL_QUERY then the current state is returned, otherwise the new processing state is returned.
+	 * \return If state is SDL_QUERY then the current state is returned,
+	 * otherwise the new processing state is returned.
 	 */
 	int JoystickState(int state);
 	
 	/*!
 	 * \brief The handler to handle all events.
 	 *
-	 * This is the handler class for event actions. You'll want to inherit this class and override any actions you want/need.
+	 * This is the handler class for event actions. You'll want to inherit this
+	 * class and override any actions you want/need.
 	 *
-	 * This was taken pretty much directly from SDLmm when I was looking through their headers getting an idea how it handled events.
-	 * So I'm going to say that this class is taken from SDLmm in accordance with the LGPL, liscened under the LGPL, and is copyrighted © 2001 David Hedbor.
+	 * This was taken pretty much directly from SDLmm when I was looking
+	 * through their headers getting an idea how it handled events.
+	 * So I'm going to say that this class is taken from SDLmm in accordance
+	 * with the LGPL, liscened under the LGPL, and is copyrighted 2001 David
+	 * Hedbor.
 	 *
 	 * \b Example
 	 * \code
-	 * // This will set up a 320x240x32bpp Window and then wait till Escape is pressed
-	 * // Note this isn't the only way to do this, but is one of the simpler code examples
+	 * // This will set up a 320x240x32bpp Window and then wait till Escape is
+	 * pressed
+	 * // Note this isn't the only way to do this, but is one of the simpler
+	 * code examples
 	 * #include <SDL4Cpp.h>
 	 *	
 	 * using namespace SDL;
@@ -2330,7 +2471,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool Active(Uint8 gain, Uint8 state);
 			/*!
@@ -2338,7 +2480,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool KeyPressed(KeySym &keysym);
 			/*!
@@ -2346,7 +2489,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool KeyReleased(KeySym &keysym);
 			/*!
@@ -2354,15 +2498,18 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
-			virtual bool MouseMotion(Uint8 state,	Uint16 x, Uint16 y, Sint16 xrel, Sint16 yrel);
+			virtual bool MouseMotion(Uint8 state,	Uint16 x, Uint16 y,
+									 Sint16 xrel, Sint16 yrel);
 			/*!
 			 * \brief 
 			 *
 			 * Documention not written yet.
 			 * 
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool MouseButtonPressed(Uint8 button, Uint16 x, Uint16 y);
 			/*!
@@ -2370,7 +2517,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool MouseButtonReleased(Uint8 button, Uint16 x, Uint16 y);
 			/*!
@@ -2378,7 +2526,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool JoyAxis(Uint8 which, Uint8 axis, Sint16 value);
 			/*!
@@ -2386,7 +2535,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool JoyButtonPressed(Uint8 which, Uint8 button);
 			/*!
@@ -2394,7 +2544,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool JoyButtonReleased(Uint8 which, Uint8 button);
 			/*!
@@ -2402,7 +2553,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool JoyHat(Uint8 which, Uint8 hat, Uint8 value);
 			/*!
@@ -2410,15 +2562,18 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
-			virtual bool JoyBall(Uint8 which, Uint8 ball, Sint16 xrel, Sint16 yrel);
+			virtual bool JoyBall(Uint8 which, Uint8 ball, Sint16 xrel,
+								 Sint16 yrel);
 			/*!
 			 * \brief 
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool VideoResize(int w, int h);
 			/*!
@@ -2426,7 +2581,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool VideoExpose();
 			/*!
@@ -2434,7 +2590,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool SysWM(SysWMmsg *msg);
 			/*!
@@ -2442,7 +2599,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool User(int code, void *data1, void *data2);
 			/*!
@@ -2450,7 +2608,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool Quit();
 			/*!
@@ -2458,7 +2617,8 @@ namespace SDL
 			 *
 			 * Documention not written yet.
 			 *
-			 * \return false by default, but when implemented, it should return true
+			 * \return false by default, but when implemented, it should return
+			 * true
 			 */
 			virtual bool All(SDL_Event &m_Event);
 	};
@@ -2466,7 +2626,8 @@ namespace SDL
 	/*!
 	 * \brief The main class to access SDL's events.
 	 * 
-	 * Use this to Push, Poll, Peek, Peep, and Wait on events. It also uses HandleEvent() to handle the events via Handle
+	 * Use this to Push, Poll, Peek, Peep, and Wait on events. It also uses
+	 * HandleEvent() to handle the events via Handle
 	 * \sa Handle for an example on how to use this event structure.
 	 */
 	class Event
@@ -2475,13 +2636,15 @@ namespace SDL
 			/*!
 			 * \brief Test all input devices, and updates the queue.
 			 *
-			 * This is used internally but kept so a user can use them if so wanted
+			 * This is used internally but kept so a user can use them if so
+			 * wanted
 			 */
 			void Pump(void);
 			/*!
 			 * \brief Peep an event in the event queue.
 			 *
-			 * This is used internally but kept so a user can use them if so wanted
+			 * This is used internally but kept so a user can use them if so
+			 * wanted
 			 */
 			int Peep(int numevents, SDL_eventaction action, Uint32 mask);
 
@@ -2492,10 +2655,6 @@ namespace SDL
 			 * define the functions you need/want
 			 */
 
-			/*!
-			 * See if an event is on the queue, remove it, and handle it
-			 */
-			void Poll(Handle &handler);
 			/*!
 			 * Automatically pumps then peeps an event of type mask and returns
 			 * true if there's that event
@@ -2726,6 +2885,10 @@ namespace SDL
 			 */
 			bool Push(QuitEvent &event);
 
+			/*!
+			 * See if an event is on the queue, remove it, and handle it
+			 */
+			void Poll(Handle &handler);
 		protected:
 			/*!
 			 * \brief The event structure used by SDL.
@@ -2755,7 +2918,7 @@ namespace SDL
 			/*!
 			 * Handles events
 			 */
-			bool HandleEvent(Handle &handler);
+			bool HandleEvents(Handle &handler);
 	};
 	//@}
 }
