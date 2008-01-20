@@ -41,7 +41,7 @@ namespace SDL
 			 * This function is now a no-op, and only provided for backwards compatibility.
 			 */
 			int InvertAlpha(int on);
-	
+
 			/* Functions to detect a file type, given a seekable source */
 			/*!
 			 * Documention not written yet.
@@ -83,7 +83,7 @@ namespace SDL
 			 * Documention not written yet.
 			 */
 			bool isLBM(SDL_RWops *src);
-	
+
 			/* Individual loading functions */
 			/*!
 			 * Documention not written yet.
@@ -129,7 +129,7 @@ namespace SDL
 			 * Documention not written yet.
 			 */
 			bool LoadLBM_RW(SDL_RWops *src);
-	
+
 			/*!
 			 * Documention not written yet.
 			 */

@@ -11,7 +11,7 @@ namespace SDL
 	Image::~Image()
 	{
 	}
-	
+
 	const SDL_version *Image::Linked_Version()
 	{
 		return IMG_Linked_Version();
@@ -244,7 +244,7 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	bool Image::ReadXPMFromArray(char **xpm)
 	{
 		SDL_Surface *temp = IMG_ReadXPMFromArray(xpm);

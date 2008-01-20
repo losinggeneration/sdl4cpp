@@ -11,7 +11,7 @@ class Computer : public Paddle
 		Computer();
 		Computer(int x, int y, int w, int h);
 		~Computer();
-		
+
 		void UpdateAI(Ball &ball);
 };
 

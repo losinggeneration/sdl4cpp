@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -28,7 +28,7 @@ namespace SDL
 	//@{
 	/*!
 	 * \brief A shorter name for the SDL_CDtrack structure
-	 * 
+	 *
 	 * CDtrack stores data on each track on a CD, its fields should be pretty
 	 * self explainatory. It is a member a the CD class, and can be accessed
 	 * via Gets.
@@ -90,7 +90,7 @@ namespace SDL
 			 * not.
 			 */
 			bool Open(int drive);
-			
+
 			/*!
 			 * \brief Get the current status of the given drive.
 			 *
@@ -98,7 +98,7 @@ namespace SDL
 			 * Status is described like so:
 			 *
 			 * \code
-			 * typedef enum 
+			 * typedef enum
 			 * {
 			 *	CD_TRAYEMPTY,
 			 *	CD_STOPPED,
@@ -117,7 +117,7 @@ namespace SDL
 			 * call
 			 */
 			CDstatus Status();
-			
+
 			/*!
 			 * \brief Returns a human-readable, system-dependent identifier for the CD-ROM.
 			 *
@@ -148,7 +148,7 @@ namespace SDL
 			 * this call
 			 */
 			bool Play(int start, int length);
-			
+
 			/*!
 			 * \brief Play the given CD track(s)
 			 *
@@ -157,7 +157,7 @@ namespace SDL
 			 *
 			 * \param start_track is the first track to play
 			 * \param start_frame is the frame offset, from the beginning of
-			 * the start_track, at which to start. 
+			 * the start_track, at which to start.
 			 * \param ntracks is how many tracks to play
 			 * \param nframes is the frame offset, from the beginning of the
 			 * last track (start_track+ntracks), at which to end playing.
@@ -166,7 +166,7 @@ namespace SDL
 			 * get track information about the CD.
 			 *
 			 * \note Data tracks are ignored.
-			 * 
+			 *
 			 * \return False on an error, otherwise True.
 			 *
 			 * \throws SDL::LogicError if this CD is not initialized before
@@ -174,7 +174,7 @@ namespace SDL
 			 */
 			bool PlayTracks(int start_track, int start_frame, int ntracks,
 							int nframes);
-			
+
 			/*!
 			 * \brief Get the current track information
 			 *
@@ -184,7 +184,7 @@ namespace SDL
 			 * this call
 			 */
 			CDtrack GetCurrentTrack();
-			
+
 			/*!
 			 * \brief Get all tracks information
 			 *
@@ -194,7 +194,7 @@ namespace SDL
 			 * this call
 			 */
 			CDtrack *GetTracks();
-			
+
 			/*!
 			 * \brief Pauses a CDROM
 			 *
@@ -206,7 +206,7 @@ namespace SDL
 			 * this call
 			 */
 			bool Pause();
-			
+
 			/*!
 			 * \brief Resumes a CDROM
 			 *
@@ -218,7 +218,7 @@ namespace SDL
 			 * this call
 			 */
 			bool Resume();
-			
+
 			/*!
 			 * \brief Stops a CDROM
 			 *
@@ -230,19 +230,19 @@ namespace SDL
 			 * this call
 			 */
 			bool Stop();
-			
+
 			/*!
 			 * \brief Ejects a CDROM
 			 *
 			 * Ejects the cdrom.
-			 * 
+			 *
 			 * \return False on an error, otherwise True.
 			 *
 			 * \throws SDL::LogicError if this CD is not initialized before
 			 * this call
 			 */
 			bool Eject();
-			
+
 			/*!
 			 * \brief Closes a CD
 			 *
@@ -252,7 +252,7 @@ namespace SDL
 		protected:
 			/*!
 			 * \brief A cdrom drive and information
-			 * 
+			 *
 			 * \b Structure \b Definition
 			 * \code
 			 * typedef struct

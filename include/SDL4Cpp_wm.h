@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -30,7 +30,7 @@ namespace SDL
 	/*!
 	 * \brief Window Managment.
 	 *
-	 *  These are in a sub-namespace because they all are functions 
+	 *  These are in a sub-namespace because they all are functions
 	 *  (not classes) that have to do with window management
 	 */
 	namespace WM
@@ -39,20 +39,20 @@ namespace SDL
 		 * \brief Mode of grabbing input
 		 *
 		 * \b Enum \b Definition
-		 * \code 
+		 * \code
 		 * typedef enum
 		 * {
-		 * 	SDL_GRAB_QUERY,
-		 * 	SDL_GRAB_OFF,
-		 * 	SDL_GRAB_ON
+		 *	SDL_GRAB_QUERY,
+		 *	SDL_GRAB_OFF,
+		 *	SDL_GRAB_ON
 		 * } SDL_GrabMode;
 		 * \endcode
 		 */
 		typedef SDL_GrabMode GrabMode;
-		
+
 		/*!
 		 * \brief Sets the window tile and icon name.
-		 * 
+		 *
 		 * Sets the title-bar and icon name of the display window.
 		 *
 		 * \param title is the name you want the window to have
@@ -71,7 +71,7 @@ namespace SDL
 		void GetCaption(std::string &title, std::string &icon);
 		/*!
 		 * \brief Get just the title of a window.
-		 * 
+		 *
 		 * \param windownumber the number of the returned string array to use.
 		 *
 		 * \return A std::string of the window's title.
@@ -79,13 +79,13 @@ namespace SDL
 		std::string GetTitle(void);
 		/*!
 		 * \brief Get just the icon of a window.
-		 * 
+		 *
 		 * \param windownumber the number of the returned string array to use.
 		 *
 		 * \return A std::string of the icon's filename.
 		 */
 		std::string GetIcon(void);
-		
+
 		/*!
 		 * \brief Iconify/Minimise the window
 		 *
@@ -116,7 +116,7 @@ namespace SDL
 		 *	SDL_GRAB_ON
 		 * } SDL_GrabMode;
 		 * \endcode
-		 *       
+		 *
 		 * \return The current/new GrabMode.
 		 */
 		GrabMode GrabInput(GrabMode mode);

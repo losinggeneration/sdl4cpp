@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -25,10 +25,10 @@ namespace SDL
 	{
 		return SDL_MapRGB(&fmt, r, g, b);
 	}
-	
+
 	Uint32 MapRGBA(PixelFormat &fmt, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 	{
-		return SDL_MapRGBA(&fmt, r, g, b, a);    
+		return SDL_MapRGBA(&fmt, r, g, b, a);
 	}
 
 	void GetRGB(Uint32 pixel, PixelFormat &fmt, Uint8 &r, Uint8 &g, Uint8 &b)
@@ -80,7 +80,7 @@ namespace SDL
 	{
 		(*this) = rect;
 	}
-	
+
 	Rect::Rect(int x, int y, int w, int h)
 	{
 		this->x = x;
@@ -111,7 +111,7 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	Rect &Rect::operator =(const SDL_Rect &rect)
 	{
 		x = rect.x;
@@ -121,7 +121,7 @@ namespace SDL
 
 		return *this;
 	}
-	
+
 	Rect &Rect::operator +(const SDL_Rect &rect)
 	{
 		x += rect.x;
@@ -131,7 +131,7 @@ namespace SDL
 
 		return *this;
 	}
-	
+
 	Rect &Rect::operator -(const SDL_Rect &rect)
 	{
 		x -= rect.x;
@@ -145,7 +145,7 @@ namespace SDL
 	// Compare two Rect's
 	bool Rect::operator ==(const Rect &rect)
 	{
-		return (x == rect.x) && (y == rect.y) && (w == rect.w) && 
+		return (x == rect.x) && (y == rect.y) && (w == rect.w) &&
 			(h == rect.h);
 	}
 
@@ -156,7 +156,7 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	Rect &Rect::operator =(const Rect &rect)
 	{
 		x = rect.x;
@@ -166,17 +166,17 @@ namespace SDL
 
 		return *this;
 	}
-	
+
 	Rect &Rect::operator ++()
 	{
 		x++;
 		y++;
 		h++;
 		w++;
-	
+
 		return *this;
 	}
-	
+
 	Rect &Rect::operator --()
 	{
 		x--;
@@ -186,7 +186,7 @@ namespace SDL
 
 		return *this;
 	}
-	
+
 	Rect &Rect::operator +(const Rect &rect)
 	{
 		x += rect.x;
@@ -196,7 +196,7 @@ namespace SDL
 
 		return *this;
 	}
-	
+
 	Rect &Rect::operator -(const Rect &rect)
 	{
 		x -= rect.x;
@@ -247,7 +247,7 @@ namespace SDL
 
 	Surface::Surface()
 	{
-		m_Surface = NULL;	
+		m_Surface = NULL;
 		m_DeleteSurface = true;
 	}
 
@@ -265,7 +265,7 @@ namespace SDL
 		else
 			throw SDL::LogicError("Surface's m_Surface passed to constructor was NULL");
 	}
-	
+
 	Surface::Surface(SDL_Surface *surface)
 	{
 		m_DeleteSurface = true;
@@ -295,7 +295,7 @@ namespace SDL
 			Bmask = 0x00ff0000;
 			Amask = 0xff000000;
 		#endif
-		
+
 		if(!CreateRGB(flags, w, h, bpp, Rmask, Gmask, Bmask, Amask))
 			throw SDL::RuntimeError("Error creating surface with CreateRGB: " + GetError());
 	}
@@ -305,7 +305,7 @@ namespace SDL
 		m_DeleteSurface = deletesurface;
 		m_Surface = NULL;
 	}
-	
+
 	Surface::~Surface()
 	{
 		if(m_DeleteSurface == true)
@@ -376,8 +376,8 @@ namespace SDL
 						m_Surface->pitch == compare.m_Surface->pitch &&
 						static_cast<Rect>(m_Surface->clip_rect) == static_cast<Rect>(compare.m_Surface->clip_rect))
 					{
-						// Check pixel by pixel			
-						Lock();	
+						// Check pixel by pixel
+						Lock();
 						compare.Lock();
 						for(int x = 0; x < m_Surface->w; x++)
 						{
@@ -409,7 +409,7 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	bool Surface::operator !=(Surface &compare)
 	{
 		if((*this) == compare)
@@ -431,7 +431,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	bool Surface::Blit(Rect &srcrect, const Surface &src)
 	{
 		if(m_Surface == NULL)
@@ -446,7 +446,7 @@ namespace SDL
 		return false;
 
 	}
-		
+
 	bool Surface::Blit(const Surface &src, Rect &destrect)
 	{
 		if(m_Surface == NULL)
@@ -460,7 +460,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	bool Surface::Blit(Rect &srcrect, const Surface &src, Rect &destrect)
 	{
 		if(m_Surface == NULL)
@@ -503,13 +503,13 @@ namespace SDL
 		// Surface doesn't need to  be locked
 		return true;
 	}
-	
+
 	void Surface::Unlock()
 	{
 		if(SDL_MUSTLOCK(m_Surface))
 			SDL_UnlockSurface(m_Surface);
 	}
-			
+
 	bool Surface::CreateRGB(Uint32 flags, int width, int height, int depth, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
 	{
 		if(m_Surface != NULL)
@@ -529,7 +529,7 @@ namespace SDL
 			Free();
 
 		m_Surface = SDL_CreateRGBSurfaceFrom(from.m_Surface, width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
-	
+
 		if(m_Surface == NULL)
 			return false;
 
@@ -545,10 +545,10 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	int Surface::SetColors(Color &colors, int firstcolor, int ncolors)
 	{
-		return SDL_SetColors(m_Surface, &colors, firstcolor, ncolors);	
+		return SDL_SetColors(m_Surface, &colors, firstcolor, ncolors);
 	}
 
 	int Surface::SetPalette(int flags, Color &colors, int firstcolor, int ncolors)
@@ -561,12 +561,12 @@ namespace SDL
 		if(SDL_SetColorKey(m_Surface, flag, key) == 0)
 			return true;
 
-		return false;	
+		return false;
 	}
 
 	bool Surface::SetAlpha(Uint32 flag, Uint8 alpha)
 	{
-		if(SDL_SetAlpha(m_Surface, flag, alpha) == 0)	
+		if(SDL_SetAlpha(m_Surface, flag, alpha) == 0)
 			return true;
 
 		return false;
@@ -576,7 +576,7 @@ namespace SDL
 	{
 		SDL_SetClipRect(m_Surface, rect);
 	}
-		
+
 	Rect Surface::GetClipRect()
 	{
 		Rect rect;
@@ -592,14 +592,14 @@ namespace SDL
 
 		return false;
 	}
-		
+
 	bool Surface::LoadBMP(std::string file)
 	{
 		if(m_Surface)
 			Free();
 
 		m_Surface = SDL_LoadBMP(file.c_str());
-		
+
 		if(!m_Surface)
 			return false;
 
@@ -613,7 +613,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	SDL_Surface *Surface::Get()
 	{
 		return m_Surface;
@@ -623,7 +623,7 @@ namespace SDL
 	{
 		return m_Surface->flags;
 	}
-	
+
 	Rect Surface::GetRect()
 	{
 		SDL_Rect rect = { 0, 0, m_Surface->w, m_Surface->h };
@@ -647,68 +647,68 @@ namespace SDL
 			Screen screen;
 			if(!GetVideoSurface(screen))
 				throw SDL::LogicError("You must not setup a Screen before calling GL::LibraryLoad");
-			
+
 			if(screen.m_Surface)
 				throw SDL::LogicError("You must not setup a Screen before calling GL::LibraryLoad");
-			
+
 			if(SDL_GL_LoadLibrary(path.c_str()) < 0)
 				return false;
 
 			return true;
 		}
-		
+
 		void *GetProcAddress(const std::string proc)
 		{
 			Screen screen;
 			if(!GetVideoSurface(screen))
 				throw SDL::LogicError("You must setup a Screen before calling GL::GetProcAddress");
-			
+
 			if(!screen.m_Surface)
 				throw SDL::LogicError("You must setup a Screen before calling GL::GetGetProcAddress");
-			
+
 			return SDL_GL_GetProcAddress(proc.c_str());
 		}
-		
+
 		bool GetAttribute(Attr attr, int &value)
 		{
 			Screen screen;
 			if(!GetVideoSurface(screen))
 				throw SDL::LogicError("You must setup a Screen before calling GL::GetAttribute");
-			
+
 			if(!screen.m_Surface)
 				throw SDL::LogicError("You must setup a Screen before calling GL::GetAttribute");
-			
+
 			if(SDL_GL_GetAttribute(attr, &value) < 0)
 				return false;
-			
+
 			return true;
 		}
-		
+
 		bool SetAttribute(Attr attr, int value)
 		{
 			Screen screen;
 			if(GetVideoSurface(screen))
 				throw SDL::LogicError("You must not setup a Screen before calling GL::SetAttribute");
-			
+
 			if(screen.m_Surface)
 				throw SDL::LogicError("You must not setup a Screen before calling GL::SetAttribute");
-			
+
 			if(SDL_GL_SetAttribute(attr, value) < 0)
 				return false;
-			
+
 			return true;
 		}
-		
+
 		void SwapBuffers(void)
 		{
 			SDL_GL_SwapBuffers();
 		}
 	}
-	
+
 	Screen::Screen() : Surface(false)
 	{
 	}
-	
+
 	Screen::Screen(int w, int h, int bpp, Uint32 flags) : Surface(false)
 	{
 		SetVideoMode(w, h, bpp, flags);
@@ -718,7 +718,7 @@ namespace SDL
 	{
 		SetIcon(icon, mask);
 	}
-		
+
 	Screen::~Screen()
 	{
 	}
@@ -731,14 +731,14 @@ namespace SDL
 		// now give the vid screen
 		// this works fine and safely because Screens don't try deleting the surface on deconstruction
 		vid.m_Surface = screen;
-		
+
 		// Now we check if the surface is NULL or not to tell the coder if the surface is initialized or not
 		if(vid.m_Surface == NULL)
 			return false;
 
 		return true;
 	}
-	
+
 	bool Screen::Flip()
 	{
 		if(SDL_Flip(m_Surface) == 0)
@@ -756,7 +756,7 @@ namespace SDL
 	{
 		SDL_UpdateRect(m_Surface, x, y, w, h);
 	}
-	
+
 	// Uses a pionter because rects will be an array
 	void Screen::UpdateRects(int numrects, Rect *rects)
 	{
@@ -771,7 +771,7 @@ namespace SDL
 
 		return true;
 	}
-	
+
 	bool Screen::GetGammaRamp(Uint16 &redtable, Uint16 &greentable, Uint16 &bluetable)
 	{
 		if(SDL_GetGammaRamp(&redtable, &greentable, &bluetable) == -1)
@@ -787,7 +787,7 @@ namespace SDL
 
 		return true;
 	}
-			
+
 	int Screen::VideoModeOK(int width, int height, int bpp, Uint32 flags)
 	{
 		return SDL_VideoModeOK(width, height, bpp, flags);
@@ -803,14 +803,14 @@ namespace SDL
 
 		return static_cast<std::string>(name);
 	}
-	
+
 	VideoInfo Screen::GetVideoInfo(void)
 	{
 		const VideoInfo *Vid = SDL_GetVideoInfo();
 
 		return *Vid;
 	}
-	
+
 	bool Screen::SetVideoMode(int width, int height, int bpp, Uint32 flags)
 	{
 		m_Surface = SDL_SetVideoMode(width, height, bpp, flags);
@@ -857,7 +857,7 @@ namespace SDL
 	{
 		m_Overlay = NULL;
 	}
-	
+
 	Overlay::Overlay(const Overlay &copy)
 	{
 	}
@@ -866,20 +866,20 @@ namespace SDL
 	{
 		m_Overlay = overlay;
 	}
-	
+
 	Overlay::~Overlay()
 	{
 		Free();
-	}		
+	}
 
 	void Overlay::Create(int width, int height, Uint32 format, SDL_Surface *display)
 	{
 		if(m_Overlay != NULL)
 			Free();
 
-		m_Overlay = SDL_CreateYUVOverlay(width, height, format, display);	
+		m_Overlay = SDL_CreateYUVOverlay(width, height, format, display);
 	}
-	
+
 	bool Overlay::Lock()
 	{
 		if(SDL_LockYUVOverlay(m_Overlay) == 0)
@@ -887,12 +887,12 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	void Overlay::Unlock()
 	{
 		SDL_UnlockYUVOverlay(m_Overlay);
 	}
-	
+
 	bool Overlay::Display(Rect &destrect)
 	{
 		if(SDL_DisplayYUVOverlay(m_Overlay, &destrect) == 0)
@@ -900,7 +900,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	void Overlay::Free()
 	{
 		if(m_Overlay != NULL)

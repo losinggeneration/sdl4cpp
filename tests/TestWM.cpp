@@ -1,5 +1,5 @@
 /*
- * This is a demo to show off Timers, some of the WM namespace, and some of the "Main" 
+ * This is a demo to show off Timers, some of the WM namespace, and some of the "Main"
  * function calls such as LinkedVersion. This also gives an idea of how Event handlers
  * are used, and also how to set the window icon.
  */
@@ -43,7 +43,7 @@ Uint32 MyTimedCallback(Uint32 interval, void *param)
 		lettercount--;
 
 	SDL::WM::SetCaption(title, title);
-	
+
 	if(*(bool *)param == 0)
 	{
 		if(lettercount == 7)
@@ -64,7 +64,7 @@ int main(int argv, char *args[])
 	atexit(SDL::Quit);
 	SDL::Screen screen;
 	SDL::Event events;
-	
+
 	class Handler : public SDL::Handle
 	{
 		private:
@@ -79,13 +79,13 @@ int main(int argv, char *args[])
 		{
 			if(keysym.sym != 0 && keysym.sym != SDLK_SPACE)
 				m_Stop = true;
-			
+
 			if(keysym.sym == SDLK_SPACE)
 				m_Direction = !m_Direction;
 
 			return true;
 		}
-		
+
 		operator bool()
 		{
 			return m_Stop;
@@ -99,7 +99,7 @@ int main(int argv, char *args[])
 	SDL::Timer timer;
 	int delay = (250 / 10) * 10;
 	bool direction = false;
-	
+
 	screen.SetIcon("icon.bmp", NULL);
 	int bpp = SDL::Screen::VideoModeOK(640, 480, 32);
 	std::cout << bpp << std::endl;
@@ -113,7 +113,7 @@ int main(int argv, char *args[])
 	std::cout << "Trying Again with individual functions:" << std::endl;
 	std::cout << "\tCaption: " << SDL::WM::GetTitle() << std::endl;
 	std::cout << "\tIcon: " << SDL::WM::GetIcon() << std::endl;
-	
+
 	const SDL::Version *version = SDL::LinkedVersion();
 	// We must cast the Uint8's as integers
 	if(version)
@@ -122,7 +122,7 @@ int main(int argv, char *args[])
 
 	timer.Add(delay, MyTimedCallback, &direction);
 	std::cout << "Press space to reverse direction" << std::endl
-		<< "Press any other key to exit" << std::endl;	
+		<< "Press any other key to exit" << std::endl;
 	while(!handler)
 	{
 		events.Poll(handler);
@@ -134,7 +134,7 @@ int main(int argv, char *args[])
 			timer.Add(delay, MyTimedCallback, &direction);
 		}
 	}
-	
+
 	return 0;
 }
 

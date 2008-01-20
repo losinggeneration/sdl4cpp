@@ -22,7 +22,7 @@ class Transform : public Surface
 	public:
 		Transform() {};
 		~Transform() {};
-		
+
 		// To do a Transform = Surface copy
 		Transform operator=(const Surface &copy)
 		{
@@ -33,22 +33,22 @@ class Transform : public Surface
 				// Free the current surface if needed
 				if(m_Surface != NULL)
 					Free();
-				 
+
 				// get the surface information from the copy
 				Convert(temp);
-				
+
 				// then copy the data here
 				if(!Blit(temp))
 					throw runtime_error(SDL::GetError());
 			}
-			
+
 			return *this;
 		}
 
 		/*
 		 * 1 rotation is 90 degrees clockwise 1-4 valid
 		 */
-		void Rotation(int rotations) 
+		void Rotation(int rotations)
 		{
 			// If rotations is 0, we don't wantto do anything
 			if(!rotations)
@@ -76,7 +76,7 @@ class Transform : public Surface
 
 			// Short handed versions
 			int bpp = m_Surface->format->BytesPerPixel, pitch = m_Surface->pitch;
-			
+
 			for(int x = 0; x < rotations; x++)
 			{
 				// Create a new surface the same that's the same as m_Surface
@@ -145,7 +145,7 @@ class Transform : public Surface
 		 * And more importantly how some of the lower level pixel maniplations
 		 * can be implimented.
 		 *
-		 * I don't completely trust this function. It does work, but I wont 
+		 * I don't completely trust this function. It does work, but I wont
 		 * be using it for anything other than this demonstration.
 		 */
 		void Copy(Surface &CopySurface)
@@ -153,7 +153,7 @@ class Transform : public Surface
 			// Check it the CopySurface has a surface before destroying the data in this one
 			if(CopySurface.Get() == NULL)
 				throw runtime_error("Error initializing a surface");
-			
+
 			// srcsurface is shorter to type than CopySurface.Get()
 			// I'm lazy alright?
 			SDL_Surface *srcsurface = CopySurface.Get();
@@ -184,7 +184,7 @@ class Transform : public Surface
 			// Lock the surfaces to work with the pixels
 			Lock();
 			CopySurface.Lock();
-			
+
 			// Do a row by row copy
 			for(int y = 0; y < maxY; y++)
 			{
@@ -198,14 +198,14 @@ class Transform : public Surface
 			CopySurface.Unlock();
 			Unlock();
 		}
-		
+
 		/*
 		 * Do a horizontal flip
 		 */
 		void FlipH()
 		{
 		}
-		
+
 		/*
 		 * Do a vertical flip
 		 */
@@ -268,7 +268,7 @@ int main(int argv, char *argc[])
 
 	// Make a copy of the first surface and blit the copy
 	Tests3.Copy(Tests);
-	square.x += Tests.GetRect().w + gap;	
+	square.x += Tests.GetRect().w + gap;
 	screen.Blit(Tests3, square);
 
 	// Blit the second image
@@ -277,7 +277,7 @@ int main(int argv, char *argc[])
 
 	// Make a copy of the second image and blit that
 	Tests4.Copy(Tests2);
-	square.x += Tests2.GetRect().w + gap;	
+	square.x += Tests2.GetRect().w + gap;
 	screen.Blit(Tests4, square);
 
 	// Test rotations here
@@ -285,14 +285,14 @@ int main(int argv, char *argc[])
 	// as above but with Rotation
 	square.y += Tests.GetRect().w + gap;
 	square.x = gap;
-	
+
 	// Rotate none Blit the first surface
 	Tests.Rotation(0);
 	screen.Blit(Tests, square);
 
 	// Rotate Tests3 90 degrees clockwise and blit it
 	Tests3.Rotation(1);
-	square.x += Tests.GetRect().w + gap;	
+	square.x += Tests.GetRect().w + gap;
 	screen.Blit(Tests3, square);
 
 	// Rotate Tests2 180 degrees clockwiso and blit it
@@ -309,13 +309,13 @@ int main(int argv, char *argc[])
 	// like this only once the code would be good enough, but for
 	// larger images or ones that need to be rotated multiple times
 	// it will get costly.
-	// 
+	//
 	// In the later case, you should consider precalculating the rotations
 	// and saving the precalculated rotations in an image (or multiple images.)
 	//
 	// I just felt this was worth noting.
 	Tests4.Rotation(3);
-	square.x += Tests2.GetRect().w + gap;	
+	square.x += Tests2.GetRect().w + gap;
 	screen.Blit(Tests4, square);
 
 	screen.Flip();

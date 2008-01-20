@@ -32,11 +32,11 @@ int main(int argv, char *args[])
 	class handler : public SDL::Handle
 	{
 		public:
-			handler() 
+			handler()
 			{
 				stop = false;
 			}
-			
+
 			bool KeyPressed(SDL::KeySym &keysym)
 			{
 				if(keysym.sym == SDLK_ESCAPE)
@@ -55,7 +55,7 @@ int main(int argv, char *args[])
 		private:
 			bool stop;
 	} handle;
-	
+
 	SDL::Init(SDL_INIT_VIDEO);
 	atexit(SDL::Quit);
 	// Check to show that the overloaded operators work first
@@ -80,7 +80,7 @@ int main(int argv, char *args[])
 
 	SDL::Surface icon;
 	icon.LoadBMP("icon.bmp");
-	
+
 	//  Should not be equal
 	if(icon == Four)
 	{
@@ -117,7 +117,7 @@ int main(int argv, char *args[])
 		std::cerr << "Bad: Two DOES equal One." << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	
+
 	// Now set setup screen with this icon to continue some basic tests.
 	SDL::Screen screen(icon, NULL);
 	screen.SetVideoMode(640, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
@@ -138,10 +138,10 @@ int main(int argv, char *args[])
 		// Move the position to draw the rect out of the just draw area
 		moveit.x += vx;
 		moveit.y += vy;
-		// Try to blit the image to the screen		
+		// Try to blit the image to the screen
 		if(!screen.Blit(icon, moveit))
 			std::cout << "Not blitted: " << SDL::GetError() << std::endl;
-	
+
 		// If the image is over the bounds of the screen, reverse the velocity of the object
 		if(moveit.x+width >= 640)
 			vx = -1;
@@ -151,7 +151,7 @@ int main(int argv, char *args[])
 		if(moveit.y+height >= 486)
 			vy = -1;
 		if(moveit.y <= 0)
-			vy = 1;	
+			vy = 1;
 
 		// Update the two rects in the array to update on the screen
 		rect[0] = moveit;
@@ -166,7 +166,7 @@ int main(int argv, char *args[])
 		// Delay the execution so it runs  more uniform everywhere
 		Delay();
 	}
-	
+
 	return 0;
 }
 

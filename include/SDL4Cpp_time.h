@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -40,7 +40,7 @@ namespace SDL
 	 * \defgroup Time Time.
 	 */
 	//@{
-	
+
 	/*!
 	 * \brief The ID of a timer
 	 *
@@ -49,21 +49,21 @@ namespace SDL
 	 * \code
 	 * struct SDL_TimerID
 	 * {
-	 * 	Uint32 interval;
-	 * 	SDL_NewTimerCallback cb;
-	 * 	void *param;
-	 * 	Uint32 last_alarm;
-	 * 	struct _SDL_TimerID *next;
+	 *	Uint32 interval;
+	 *	SDL_NewTimerCallback cb;
+	 *	void *param;
+	 *	Uint32 last_alarm;
+	 *	struct _SDL_TimerID *next;
 	 * };
 	 * \endcode
 	 */
 	typedef SDL_TimerID TimerID;
-	
+
 	/*!
 	 * \brief Get the number of milliseconds since the SDL library initialization.
 	 *
 	 * \return The number of milliseconds since the SDL library
-	 * initialization. 
+	 * initialization.
 	 * \note That this value wraps if the program runs for more than ~49 days.
 	 */
 	Uint32 GetTicks(void);
@@ -78,13 +78,13 @@ namespace SDL
 	 *
 	 */
 	void Delay(Uint32 ms);
-	
+
 	/*!
 	 * \brief Add a timer which will call a callback after the specified number of milliseconds has elapsed.
 	 *
 	 * \note Callback type definition for the "new" timer callback function is
 	 * \code typedef Uint32 (*SDL_NewTimerCallback)(Uint32 interval, void *param); \endcode
-	 * 
+	 *
 	 * Adds a callback function to be run after the specified number of
 	 * milliseconds has elapsed. The callback function is passed the current
 	 * timer interval and the user supplied parameter from the AddTimer() call
@@ -123,7 +123,7 @@ namespace SDL
 	 *
 	 * \note Callback Function prototype for the timer callback function is
 	 * \code typedef Uint32 (*SDL_TimerCallback)(Uint32 interval); \endcode
-	 * 
+	 *
 	 * Set a callback to run after the specified number of milliseconds has
 	 * elapsed. The callback function is passed the current timer interval and
 	 * returns the next timer interval. If the returned value is the same as
@@ -146,11 +146,11 @@ namespace SDL
 	 * \note This function is kept for compatibility but has been superseded
 	 * by the new timer functions AddTimer and RemoveTimer which support
 	 * multiple timers.
-	 * 
+	 *
 	 * \return not sure actually
 	 */
 	int SetTimer(Uint32 interval, SDL_TimerCallback callback);
-	
+
 	/*!
 	 * \brief A little bit less direct Timer handling
 	 *

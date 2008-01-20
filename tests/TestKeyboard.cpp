@@ -32,7 +32,7 @@ class EvHandler : public SDL::Handle
 
 			return true;
 		}
-		
+
 		operator bool()
 		{
 			return m_Quit;
@@ -46,10 +46,10 @@ int main(int argv, char *args[])
 	SDL::Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK);
 	SDL::Event events;
 	EvHandler eventhandler;
-	
+
 	SDL::Screen screen;
 	screen.SetVideoMode(640, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
-	
+
 	while(!eventhandler)
 		events.Poll(eventhandler);
 

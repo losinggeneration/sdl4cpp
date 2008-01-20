@@ -9,17 +9,17 @@ int main(int argv, char *args[])
 
 	// Stolen from the mailing list.
 	// Then stolen from SDL's documentation.
-	// Creates a new mouse cursor from an XPM 
-	// XPM 
+	// Creates a new mouse cursor from an XPM
+	// XPM
 	static const char *arrow[] =
 	{
-		// width height num_colors chars_per_pixel 
+		// width height num_colors chars_per_pixel
 		"    32    32        3            1",
-		// colors 
+		// colors
 		"X c #000000",
 		". c #ffffff",
 		"  c None",
-		// pixels 
+		// pixels
 		"X                               ",
 		"XX                              ",
 		"X.X                             ",
@@ -98,7 +98,7 @@ int main(int argv, char *args[])
 		"0,0"
 	};
 
-	
+
 	class handler : public SDL::Handle
 	{
 		public:
@@ -145,7 +145,7 @@ int main(int argv, char *args[])
 
 	SDL::Init(SDL_INIT_VIDEO);
 	atexit(SDL::Quit);
-	
+
 	SDL::Screen screen(640, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
 	// Set the initial cursor
 	SDL::Cursor cursor;

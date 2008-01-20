@@ -22,7 +22,7 @@ class HandleInput : public SDL::Handle
 
 			if(keysym.sym == SDLK_DOWN || keysym.sym == SDLK_a)
 				m_Paddle.Move(3);
-			
+
 			if(keysym.sym == SDLK_ESCAPE)
 				m_Quit = true;
 
@@ -130,14 +130,14 @@ void Game()
 		{
 			ball.SetVel(-ballvx, ballvy);
 		}
-	
+
 		// scoring if it goes past either paddle
 		if(ballrect.x+10 < 11)
 		{
 			ball.Set(309, 229, 11, 11, ((rand() % 4) + 2), ((rand() % 4) + 2));
 			score.m_Two++;
 		}
-		
+
 		if(ballrect.x+10 > 629)
 		{
 			ball.Set(309, 229, 11, 11, -((rand() % 4) + 2), -((rand() % 4) + 2));
@@ -146,7 +146,7 @@ void Game()
 
 		// somene's won
 		if(score.m_One > 9)
-		{	
+		{
 			std::cout << "Congrats, you won." << std::endl;
 			playerwon = true;
 			break;
@@ -178,7 +178,7 @@ void Game()
 		Delay();
 	}
 }
-	
+
 int main(int argv, char *argc[])
 {
 	Setup();

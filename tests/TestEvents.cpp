@@ -181,7 +181,7 @@ class TestHandler : public SDL::Handle
 
 			return true;
 		}
-		
+
 		bool Quit()
 		{
 			std::cout << "Quit" << std::endl;
@@ -259,7 +259,7 @@ class AllHandler : public SDL::Handle
 						else
 							SDL::EnableKeyRepeat(0, 0);
 					}
-			
+
 					if(event.key.keysym.sym == SDLK_s)
 						m_Switch = !m_Switch;
 
@@ -336,7 +336,7 @@ class AllHandler : public SDL::Handle
 					std::cout << "SDL_VIDEORESIZE" << std::endl
 						<< "\tevent.resize.w: " << event.resize.w << std::endl
 						<< "\tevent.resize.h: " << event.resize.h << std::endl;
-			
+
 					SDL::GetVideoSurface(screen);
 					screen.SetVideoMode(event.resize.w, event.resize.h, 8, SDL_SWSURFACE | SDL_RESIZABLE);
 					break;
@@ -403,7 +403,7 @@ int main(int argv, char *args[])
 
 	bool useallhandler = false;
 	std::vector<SDL::Joystick *> joysticks;
-	
+
 	// Joysticks must be opened before they're polled
 	if(SDL::NumJoysticks() < 1)
 		std::cout << "No joysticks to poll." << std::endl;

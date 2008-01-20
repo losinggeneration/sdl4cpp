@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -59,7 +59,7 @@ namespace SDL
 			 * \brief Load a joystick on construction.
 			 *
 			 * A constructor that is passed the number of the joystick to
-			 * open. 
+			 * open.
 			 * \param index is the number of the joystick to open, from
 			 * 0-[NumJoysticks-1]
 			 *
@@ -79,19 +79,19 @@ namespace SDL
 			 *
 			 * Opens a joystick for use within SDL. A joystick must be opened
 			 * before it game be used.
-			 * 
+			 *
 			 * \param index is the number of the joystick to open, from
 			 * 0-[NumJoysticks-1]
 			 *
 			 * \return False on error, True otherwise.
 			 */
 			bool Open(int index);
-			
+
 			/*!
 			 *
 			 */
 			bool Opened();
-		
+
 			/*!
 			 * \brief Determine if a joystick has been opened
 			 *
@@ -126,7 +126,7 @@ namespace SDL
 			/*!
 			 * \brief Get joystick name.
 			 *
-			 * Get the implementation dependent name of this Joystick. 
+			 * Get the implementation dependent name of this Joystick.
 			 *
 			 * \return Returns a std::string to this Joystick name.
 			 *
@@ -137,7 +137,7 @@ namespace SDL
 			 * \brief Updates the state of all joysticks
 			 *
 			 * Updates the state(position, buttons, etc.) of all open
-			 * joysticks. 
+			 * joysticks.
 			 * If joystick events have been enabled with
 			 * SDL_JoystickEventState then this is called automatically in the
 			 * event loop.
@@ -172,16 +172,16 @@ namespace SDL
 			 * \brief Get the current state of an axis
 			 *
 			 * On most modern joysticks the X axis is usually represented by
-			 * axis 0 and the Y axis by axis 1. 
+			 * axis 0 and the Y axis by axis 1.
 			 * The value returned by GetAxis is a signed integer (-32768 to
-			 * 32768) representing the current position of the axis, 
+			 * 32768) representing the current position of the axis,
 			 * it maybe necessary to impose certain tolerances on these values
-			 * to account for jitter. 
+			 * to account for jitter.
 			 * It is worth noting that some joysticks use axes 2 and 3 for
 			 * extra buttons.
-			 * 
+			 *
 			 * \param axis is the axis you want information for.
-			 * 
+			 *
 			 * \return A 16-bit signed integer representing the current
 			 * position of the axis.
 			 *
@@ -214,7 +214,7 @@ namespace SDL
 			 * \brief Get the current state of a given button on a given joystick
 			 *
 			 * \param button is the button you want information for.
-			 * 
+			 *
 			 * \return True if the button is pressed, False if not.
 			 *
 			 * \throws SDL::LogicError if the joystick isn't initialized
@@ -249,33 +249,33 @@ namespace SDL
 			 * \brief The structure SDL uses for joystick information.
 			 *
 			 * All funtions in this class work on this variable.
-			 * 
+			 *
 			 * \b Structure \b Definition
 			 * taken from src/joystick/SDL_sysjoystick.h
 			 * \code
 			 * struct _SDL_Joystick
 			 * {
-			 * 	Uint8 index;		// Device index
-			 * 	const char *name;	// Joystick name - system dependent
+			 *	Uint8 index;		// Device index
+			 *	const char *name;	// Joystick name - system dependent
 			 *
-			 * 	int naxes;		// Number of axis controls on the joystick
-			 * 	Sint16 *axes;		// Current axis states
-			 * 	
-			 * 	int nhats;		// Number of hats on the joystick
-			 * 	Uint8 *hats;		// Current hat states
-			 * 	
-			 * 	int nballs;		// Number of trackballs on the joystick 
-			 * 	struct balldelta
-			 * 	{
-			 * 		int dx;
-			 * 		int dy;
-			 * 	} *balls;		// Current ball motion deltas
-			 * 	
-			 * 	int nbuttons;		// Number of buttons on the joystick 
-			 * 	Uint8 *buttons;		// Current button states 
-			 * 	
-			 * 	struct joystick_hwdata *hwdata;	// Driver dependent information 
-			 * 	int ref_count;		// Reference count for multiple opens 
+			 *	int naxes;		// Number of axis controls on the joystick
+			 *	Sint16 *axes;		// Current axis states
+			 *
+			 *	int nhats;		// Number of hats on the joystick
+			 *	Uint8 *hats;		// Current hat states
+			 *
+			 *	int nballs;		// Number of trackballs on the joystick
+			 *	struct balldelta
+			 *	{
+			 *		int dx;
+			 *		int dy;
+			 *	} *balls;		// Current ball motion deltas
+			 *
+			 *	int nbuttons;		// Number of buttons on the joystick
+			 *	Uint8 *buttons;		// Current button states
+			 *
+			 *	struct joystick_hwdata *hwdata;	// Driver dependent information
+			 *	int ref_count;		// Reference count for multiple opens
 			 * };
 			 * \endcode
 			 */

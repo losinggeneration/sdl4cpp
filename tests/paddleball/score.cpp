@@ -7,7 +7,7 @@ Score::Score()
 
 	SDL::Rect empty;
 	for(int x = 0; x < 10; x++)
-		m_Images.push_back(empty);	
+		m_Images.push_back(empty);
 
 	m_ScoreOneLoc.y = 10;
 	m_ScoreOneLoc.x = 250;
@@ -111,7 +111,7 @@ void Score::Draw(SDL::Screen &screen, SDL::Rect &one, SDL::Rect &two)
 			two = m_ScoreTwoLoc;
 			break;
 	}
-}	
+}
 
 void Score::LoadNumbers()
 {

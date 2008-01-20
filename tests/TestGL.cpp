@@ -18,7 +18,7 @@ void Extensions()
 		std::cout << "No Extensions" << std::endl;
 		return;
 	}
-	
+
 	std::cout << "Extensions: " << std::endl;
 	while(*extensions)
 	{
@@ -35,9 +35,9 @@ void DisplayTriangle(GLfloat angle)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	
+
 	glRotatef(angle, 0.0f, 0.0f, 1.0f);
-	
+
 	glBegin(GL_TRIANGLES);
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glVertex3f(0.5f,  -0.5f, 0.0f);
@@ -68,10 +68,10 @@ int main(int argv, char *args[])
 			{
 				if(keysym.sym != 0)
 					m_Stop = true;
-	
+
 				return true;
 			}
-			
+
 			operator bool() { return m_Stop; }
 	} handler;
 
@@ -85,7 +85,7 @@ int main(int argv, char *args[])
 	catch(SDL::LogicError e) {
 		std::cout << "Caught a throw: " << e.what() << std::endl;
 	}
-	
+
 	try {
 		int x;
 		SDL::GL::GetAttribute(SDL_GL_DOUBLEBUFFER, x);
@@ -93,7 +93,7 @@ int main(int argv, char *args[])
 	catch(SDL::LogicError e) {
 		std::cout  << "I'm on a roll: " << e.what() << std::endl;
 	}
-	
+
 	// And that's (almost) it for the illegal GL function calls, cool huh?
 	// These aren't actually needed, but we'll set them anyways
 	// Just like SDL these have to be set before the SetVideoMode to have an effect
@@ -103,15 +103,15 @@ int main(int argv, char *args[])
 	SDL::GL::SetAttribute(SDL_GL_BLUE_SIZE,  1);
 	SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, true);
 	screen.SetVideoMode(640, 480, 32, SDL_OPENGL);
-	
-	// Query some OpenGL version info 
+
+	// Query some OpenGL version info
 	std::cout << "----------------------------------" << std::endl
 			<< "GL_VENDOR: " << glGetString(GL_VENDOR) << std::endl
 			<< "GL_RENDERER: " << glGetString(GL_RENDERER) << std::endl
 			<< "GL_VERSION: " << glGetString(GL_VERSION) << std::endl;
 	Extensions();
 	std::cout  << "---------------------------------" << std::endl;
-	
+
 	// Couple more
 	try {
 		SDL::GL::LoadLibrary("libglib.so");
@@ -130,7 +130,7 @@ int main(int argv, char *args[])
 		std::cout  << "Caught a throw using std::logic_error instead: "
 				<< e.what() << std::endl;
 	}
-	
+
 	// Ok, let's do a little bit of OpenGL fun
 	// How about a rotating triangle (ok, not as fun, but it'll
 	// give beginers an idea how to do it.
@@ -148,7 +148,7 @@ int main(int argv, char *args[])
 		DisplayTriangle(angle);
 		angle += 0.2f;
 	}
-	
+
 	return 0;
 }
 

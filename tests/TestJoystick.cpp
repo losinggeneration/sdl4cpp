@@ -8,14 +8,14 @@
  * I don't use Close because it's used by the destructor
  * I don't use Index because it's used by Name() internally so it works
  * Every other function (member or not) for joysticks is tested here
- * 
+ *
  * Note though I don't use any events. Joysticks can be handled seperately as shown here
  *
  * Also note, never assume that the values for hats, balls, buttons, etc are
  * true since some joysticks may not accurately report the maximum they truely
  * have, but rather the Maximum they might have. For example, a universal USB
  * console gamepad adapter may report the maximum one of the compatible pads
- * could have. (This was how I found it out. This particular unit also posts 
+ * could have. (This was how I found it out. This particular unit also posts
  * multiple inputs regardless of what's actually available. Thus the extra code
  * to allow for this type of behavior.)
  */
@@ -24,7 +24,7 @@ int main(int argv, char *args[])
 	// Init SDL but we only need Joystick to be initialized
 	SDL::Init(SDL_INIT_JOYSTICK);
 	atexit(SDL::Quit);
-	
+
 	std::vector<SDL::Joystick *> joysticks;
 
 	// first see if any Joysticks are there
@@ -54,7 +54,7 @@ int main(int argv, char *args[])
 		std::cerr << "Error opening a joystick that should be available: " << e.what() << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	
+
 	// have some more fun with Opened() and then Name()
 	for(int i = 0; i < SDL::NumJoysticks(); i++)
 	{
@@ -75,7 +75,7 @@ int main(int argv, char *args[])
 
 	// Ok, now print out some info about the joystick
 	std::vector<int> hats, buttons, axes, balls;
-	
+
 	for(int i = 0; i < SDL::NumJoysticks(); i++)
 	{
 		hats.push_back(joysticks.at(i)->NumHats());
@@ -89,7 +89,7 @@ int main(int argv, char *args[])
 			<< axes.at(i) << " axes, and" << std::endl
 			<< balls.at(i) << " balls." << std::endl;
 	}
-	
+
 	// to loop until it's true
 	bool something = false;
 	// to account for jitter it the joystick axes
@@ -108,7 +108,7 @@ int main(int argv, char *args[])
 			return 0;
 		}
 	}
-	
+
 	bool ret = false;
 	// Now loop till something is pressed or moved
 	while(something == false)
@@ -128,7 +128,7 @@ int main(int argv, char *args[])
 					ret = true;
 				}
 			}
-			
+
 			// Check if any buttons are pressed
 			for(int x = 0; x < buttons.at(i); x++)
 			{
@@ -138,7 +138,7 @@ int main(int argv, char *args[])
 					ret = true;
 				}
 			}
-			
+
 			// Check the Axes for any movement beyond -100 to 100, which are just numbers I chose
 			// to account for jittering. These may need to be higher or lower.
 			for(int x = 0; x < axes.at(i); x++)
@@ -172,7 +172,7 @@ int main(int argv, char *args[])
 
 	for(int i = 0; i < SDL::NumJoysticks(); i++)
 		delete joysticks.at(i);
-	
+
 	return 0;
 }
 

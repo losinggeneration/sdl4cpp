@@ -19,7 +19,7 @@ Paddle::Paddle(int x, int y, int w, int h)
 		std::cerr <<  "Encountered the following error: " << SDL::GetError() << std::endl;
 		exit(1);
 	}
-	
+
 	Set(x, y, w, h);
 	vy = 0;
 }
@@ -42,7 +42,7 @@ void Paddle::Set(int x, int y, int w, int h)
 // and positive moves it down
 void Paddle::Move(int vy)
 {
-	this->vy = vy;	
+	this->vy = vy;
 }
 
 void Paddle::Update()

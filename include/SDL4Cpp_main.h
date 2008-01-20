@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -60,9 +60,9 @@ namespace SDL
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
-	 * major 	Major version number
-	 * minor 	Minor version number
-	 * patch 	Patch version number
+	 * major	Major version number
+	 * minor	Minor version number
+	 * patch	Patch version number
 	 * </pre>
 	 * \endhtmlonly
 	 */
@@ -110,7 +110,7 @@ namespace SDL
 	 * \brief Shut down SDL
 	 *
 	 * Quit() shuts down all SDL subsystems and frees the resources allocated
-	 * to them. This should always be called before you exit. 
+	 * to them. This should always be called before you exit.
 	 * For the sake of simplicity you can set Quit() as your atexit call, like:
 	 * \code
 	 * using namespace SDL;
@@ -118,7 +118,7 @@ namespace SDL
 	 * atexit(Quit);
 	 * \endcode
 	 * \note While using atexit maybe be fine for small programs, more advanced
-	 * users should shut down SDL in their own cleanup code. 
+	 * users should shut down SDL in their own cleanup code.
 	 * Plus, using atexit in a library is a sure way to crash dynamically
 	 * loaded code
 	 */
@@ -126,7 +126,7 @@ namespace SDL
 	/*!
 	 * \brief Check which subsystems are initialized
 	 *
-	 * WasInit allows you to see which SDL subsytems have been initialized. 
+	 * WasInit allows you to see which SDL subsytems have been initialized.
 	 * \param flags is a bitwise OR'd combination of the subsystems you wish to
 	 * check (see Init() for a list of subsystem flags).
 	 *
@@ -139,7 +139,7 @@ namespace SDL
 	 * \return A string containing the last error.
 	 */
 	std::string GetError(void);
-	
+
 	/*!
 	 * \brief Clear the current SDL error
 	 *
@@ -202,7 +202,7 @@ namespace SDL
 	 * it is not defined whether or not it goes into the global symbol
 	 * namespace for the application. If it does and it conflicts with symbols
 	 * in your code or other shared libraries, you will not get the results you
-	 * expect. 
+	 * expect.
 	 *
 	 */
 	void UnloadObject(void *handle);
@@ -211,16 +211,16 @@ namespace SDL
 	 *
 	 * LinkedVersion gets the version of the current dynamically linked SDL
 	 * library and returns a pointer to a Version structure containing the
-	 * version information. 
+	 * version information.
 	 *
 	 * \return a constant pointer to an Version structure containing the
 	 * version information.
 	 */
 	const Version *LinkedVersion(void);
-	
+
 	/*!
 	 * \brief Runtime error handling class
-	 * 
+	 *
 	 * This inherits the standard runtime_error class
 	 */
 	class RuntimeError : public std::runtime_error
@@ -231,22 +231,22 @@ namespace SDL
 			 */
 			explicit RuntimeError(const std::string &message);
 			virtual ~RuntimeError() throw();
-			
+
 			/*!
 			 * \brief What the exception was
-			 * 
+			 *
 			 * \returns a C-style character string describing the general cause
 			 * of the current error.
 			 */
 			virtual const char* what() const throw();
-			
+
 		private:
 			std::string m_Message;
 	};
-	
+
 	/*!
 	 * \brief Logic error handling class
-	 * 
+	 *
 	 * This inherits the standard logic_error class for convienence so you
 	 * don't need to include stdexcept
 	 */
@@ -258,15 +258,15 @@ namespace SDL
 		 */
 			explicit LogicError(const std::string &message);
 			virtual ~LogicError() throw();
-			
+
 			/*!
 			 * \brief What the exception was
-			 * 
+			 *
 			 * \returns a C-style character string describing the general cause
 			 * of the current error.
 			 */
 			virtual const char* what() const throw();
-			
+
 		private:
 			std::string m_Message;
 	};

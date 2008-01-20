@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -39,11 +39,11 @@ namespace SDL
 	 * \code
 	 * typedef struct
 	 * {
-	 * 	Sint16 x, y;
-	 * 	Uint16 w, h;
+	 *	Sint16 x, y;
+	 *	Uint16 w, h;
 	 * } SDL_Rect;
 	 * \endcode
-	 * 
+	 *
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
@@ -90,10 +90,10 @@ namespace SDL
 			 * Does nothing.
 			 */
 			~Rect();
-			
+
 			/*!
 			 * \brief Comparison between a Rect and SDL_Rect.
-			 * 
+			 *
 			 * \return True if they have the same values.
 			 */
 			bool operator ==(const SDL_Rect &rect);
@@ -151,7 +151,7 @@ namespace SDL
 
 			/*!
 			 * \brief Adds one to all values in Rect.
-			 * 
+			 *
 			 * \return The Rect that is the addition of all values of the Rect
 			 * by one.
 			 */
@@ -208,7 +208,7 @@ namespace SDL
 	 *	 SDL_PixelFormat *vfmt;
 	 * }
 	 * \endcode
-	 * 
+	 *
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
@@ -232,7 +232,7 @@ namespace SDL
 	 * \brief A shorter named version of SDL_PixelFormat
 	 *
 	 * Stores surface format information
-	 * 
+	 *
 	 * A PixelFormat describes the format of the pixel data stored at the
 	 * pixels field of a Surface. Every surface stores a PixelFormat in the
 	 * format field.
@@ -243,7 +243,7 @@ namespace SDL
 	 * 8-bit pixel formats are the easiest to understand. Since its an 8-bit
 	 * format, we have 8 BitsPerPixel and 1 BytesPerPixel. Since BytesPerPixel
 	 * is 1, all pixels are represented by a Uint8 which contains an index into
-	 * palette->colors. 
+	 * palette->colors.
 	 * So, to determine the color of a pixel in a 8-bit surface: we read the
 	 * color index from surface->pixels and we use that index to read the Color
 	 * structure from surface->format->palette->colors. Like so:
@@ -262,8 +262,8 @@ namespace SDL
 	 * fmt=surface->format;
 	 * // Check the bitdepth of the surface
 	 * if(fmt->BitsPerPixel!=8){
-	 * 		  fprintf(stderr, "Not an 8-bit surface.\n");
-	 * 		   return(-1);
+	 *		  fprintf(stderr, "Not an 8-bit surface.\n");
+	 *		   return(-1);
 	 *	}
 	 *
 	 * // Lock the surface
@@ -274,21 +274,21 @@ namespace SDL
 	 * // Unlock the surface
 	 * SDL_UnlockSurface(surface);
 	 * printf("Pixel Color- *Red: %d, Green: %d, Blue: %d. Index: %d\n",
-	 * 			          color->r, color->g, color->b, index);
+	 *			          color->r, color->g, color->b, index);
 	 * .
 	 * .
 	 * \endcode
 	 *
-	 * Pixel formats above 8-bit are an entirely different experience. 
+	 * Pixel formats above 8-bit are an entirely different experience.
 	 * They are considered to be "TrueColor" formats and the color information
-	 * is stored in the pixels themselves, not in a palette. 
+	 * is stored in the pixels themselves, not in a palette.
 	 * The mask, shift and loss fields tell us how the color information is
 	 * encoded.
 	 * The mask fields allow us to isolate each color component, the shift
 	 * fields tell us the number of bits to the right of each component in the
 	 * pixel value and the loss fields tell us the number of bits lost from
 	 * each component when packing 8-bit color component in a pixel.
-	 * 
+	 *
 	 * \code
 	 * // Extracting color components from a 32-bit color value
 	 * SDL_PixelFormat *fmt;
@@ -312,7 +312,7 @@ namespace SDL
 	 * temp=temp>>fmt->Gshift; // Shift it down to 8-bit
 	 * temp=temp<<fmt->Gloss; // Expand to a full 8-bit number
 	 * green=(Uint8)temp;
-	 * 
+	 *
 	 * // Get Blue component
 	 * temp=pixel&fmt->Bmask; // Isolate blue component
 	 * temp=temp>>fmt->Bshift;// Shift it down to 8-bit
@@ -324,7 +324,7 @@ namespace SDL
 	 * temp=temp>>fmt->Ashift;// Shift it down to 8-bit
 	 * temp=temp<<fmt->Aloss; // Expand to a full 8-bit number
 	 * alpha=(Uint8)temp;
-	 * 
+	 *
 	 * printf("Pixel Color - *R: %d,  G: %d,  B: %d,  A: %d\n", red, green, blue, alpha);
 	 * .
 	 * .
@@ -335,17 +335,17 @@ namespace SDL
 	 * \code
 	 * typedef struct
 	 * {
-	 * 	SDL_Palette *palette;
-	 * 	Uint8  BitsPerPixel;
-	 * 	Uint8  BytesPerPixel;
-	 * 	Uint32 Rmask, Gmask, Bmask, Amask;
-	 * 	Uint8  Rshift, Gshift, Bshift, Ashift;
-	 * 	Uint8  Rloss, Gloss, Bloss, Aloss;
-	 * 	Uint32 colorkey;
-	 * 	Uint8  alpha;
+	 *	SDL_Palette *palette;
+	 *	Uint8  BitsPerPixel;
+	 *	Uint8  BytesPerPixel;
+	 *	Uint32 Rmask, Gmask, Bmask, Amask;
+	 *	Uint8  Rshift, Gshift, Bshift, Ashift;
+	 *	Uint8  Rloss, Gloss, Bloss, Aloss;
+	 *	Uint32 colorkey;
+	 *	Uint8  alpha;
 	 * }
 	 * \endcode
-	 * 
+	 *
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
@@ -371,7 +371,7 @@ namespace SDL
 	 * Color palette for 8-bit pixel formats
 	 *
 	 * Each pixel in an 8-bit surface is an index into the colors field of the
-	 * Palette structure store in PixelFormat. 
+	 * Palette structure store in PixelFormat.
 	 * A Palette should never need to be created manually. It is automatically
 	 * created when SDL allocates a PixelFormat for a Surface.
 	 * The colors values of a Surfaces palette can be set with the
@@ -381,11 +381,11 @@ namespace SDL
 	 * \code
 	 * typedef struct
 	 * {
-	 * 	int ncolors;
-	 * 	SDL_Color *colors;
+	 *	int ncolors;
+	 *	SDL_Color *colors;
 	 * }
 	 * \endcode
-	 * 
+	 *
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
@@ -403,18 +403,18 @@ namespace SDL
 	 *
 	 * Color describes a color in a format independent way. You can convert a
 	 * Color to a pixel value for a certain pixel format using MapRGB().
-	 * 
+	 *
 	 * \b Structure Definition
 	 * \code
 	 * typedef struct
 	 * {
-	 * 	Uint8 r;
-	 * 	Uint8 g;
-	 * 	Uint8 b;
-	 * 	Uint8 unused;
+	 *	Uint8 r;
+	 *	Uint8 g;
+	 *	Uint8 b;
+	 *	Uint8 unused;
 	 * }
 	 * \endcode
-	 * 
+	 *
 	 * \b Structure Data
 	 * \htmlonly
 	 * <pre>
@@ -447,12 +447,12 @@ namespace SDL
 	 */
 	void GetRGBA(Uint32 pixel, PixelFormat &fmt, Uint8 &r, Uint8 &g, Uint8 &b,
 				  Uint8 &a);
-	
+
 	/*!
 	 * \brief Graphical Surface Structure.
-	 * 
+	 *
 	 * This is the Surface class that is the equivilant to SDL_Surface, with
-	 * the functions that deal directly with an SDL_Surface. 
+	 * the functions that deal directly with an SDL_Surface.
 	 * So, the functions (for the most part) work on this surface.
 	 *
 	 * There are also some small enhancements like being able to compare two
@@ -463,7 +463,7 @@ namespace SDL
 		public:
 			/*!
 			 * \brief Default constructor.
-			 * 
+			 *
 			 * Creates an empty Surface, with m_Surface set to NULL.
 			 *
 			 * \note Since m_Surface is NULL, you have to make sure to assign
@@ -475,7 +475,7 @@ namespace SDL
 			/*!
 			 * \brief Copy constructor.
 			 *
-			 * Copies the data of one surface to another. 
+			 * Copies the data of one surface to another.
 			 *
 			 * \note This doesn't just copy the pointer location like the C SDL
 			 * libary would do. Every "public" variable in SDL_Surface is
@@ -493,7 +493,7 @@ namespace SDL
 			 *
 			 * \pre surface is non-NULL
 			 *
-			 * Use this for say a libary like SDL_Image that's unwrapped. 
+			 * Use this for say a libary like SDL_Image that's unwrapped.
 			 *
 			 * \code
 			 * SDL::Surface image(IMG_Load("image.png"));
@@ -503,25 +503,25 @@ namespace SDL
 			 * \code
 			 * try
 			 * {
-			 * 	SDL::Surface image(IMG_Load("image.png"));
+			 *	SDL::Surface image(IMG_Load("image.png"));
 			 *	// Do something with the surface.
 			 * }
 			 * catch(SDL::RuntimeError e)
 			 * {
-			 * 	cout << "Error loading image.png" << endl;
-			 * 	cout  << SDL::GetError() << endl;
+			 *	cout << "Error loading image.png" << endl;
+			 *	cout  << SDL::GetError() << endl;
 			 * }
-			 * \endcode 
+			 * \endcode
 			 *
 			 * This method to me, is somewhat annoying because more code has to
-			 * be in the try block to use the function. 
+			 * be in the try block to use the function.
 			 * \sa Surface::operator= (SDL_Surface *) for a different way to
 			 * get SDL_Surfaces
 			 * \note The pointer to surface is what m_Surface gets, not the
 			 * value. Use this with care.
 			 *
 			 * \throws SDL::LogicError if m_Surface is NULL after assigning
-			 * surface to it. 
+			 * surface to it.
 			 */
 			Surface(SDL_Surface *surface);
 
@@ -533,7 +533,7 @@ namespace SDL
 			 *
 			 * for flags \see CreateRGB()
 			 * \throws SDL::RuntimeError if m_Surface is NULL after assigning
-			 * screen to it. 
+			 * screen to it.
 			 */
 			Surface(int w, int h, int bpp, Uint32 flags = SDL_SWSURFACE);
 
@@ -541,7 +541,7 @@ namespace SDL
 			 * \brief Special constructor for Screen
 			 *
 			 * This constructor is used to tell Surface if it should delete the
-			 * SDL_Surface or not. 
+			 * SDL_Surface or not.
 			 *
 			 * Only Screen should used this function, and is only documented
 			 * for completeness.
@@ -560,7 +560,7 @@ namespace SDL
 			/*!
 			 * \brief Copies one surface to another
 			 *
-			 * Copies the data of one surface to another. 
+			 * Copies the data of one surface to another.
 			 *
 			 * \note This doesn't just copy the pointer location like the C SDL
 			 * libary would do. Every "public" variable in SDL_Surface is
@@ -576,7 +576,7 @@ namespace SDL
 			 * \brief Changes the surface pointer to this one.
 			 *
 			 * This is needed for such things as SDL_image for instance.
-			 * 
+			 *
 			 * \code
 			 * SDL::Surface image;
 			 * image = IMG_Load("image.png");
@@ -587,26 +587,26 @@ namespace SDL
 			 * SDL::Surface image:
 			 * try
 			 * {
-			 * 	image = IMG_Load("image.png");
+			 *	image = IMG_Load("image.png");
 			 * }
 			 * catch(SDL::RuntimeError e)
 			 * {
-			 * 	cout << "Error loading image.png" << endl;
-			 * 	cout << SDL::GetError();
+			 *	cout << "Error loading image.png" << endl;
+			 *	cout << SDL::GetError();
 			 * }
 			 * \endcode
 			 * This is because almost every SDL function (all I can think of)
-			 * return NULL if there's a problem 
-			 * creating a SDL_Surface. So image = 
+			 * return NULL if there's a problem
+			 * creating a SDL_Surface. So image =
 			 * static_cast<SDL_Surface *>(NULL); would throw an error.
-			 * 
+			 *
 			 * This is still legal, but not reccomended because in the future
 			 * Get() might be removed. Maybe not though.
 			 * \code
 			 * image = IMG_Load("image.png");
-			 * 
+			 *
 			 * if(image.Get() == NULL)
-			 * 	cout << "Error"  << endl;
+			 *	cout << "Error"  << endl;
 			 * \endcode
 			 *
 			 * \note This frees m_Surface and gets the new pointer address from
@@ -633,7 +633,7 @@ namespace SDL
 			 * of pixel data.
 			 *
 			 * \return True if they have at least one value that isn't the
-			 * same, otherwise they're the same and False is returned. 
+			 * same, otherwise they're the same and False is returned.
 			 */
 			bool operator !=(Surface &compare);
 
@@ -664,7 +664,7 @@ namespace SDL
 
 			/*!
 			 * \brief Blit one Surface to another.
-			 * 
+			 *
 			 * Blit the entire Surface (src) to this region of this surface.
 			 *
 			 * \return True if the blit was sucessfull. otherwise false.
@@ -760,12 +760,12 @@ namespace SDL
 			 * Documention not written yet.
 			 */
 			Rect GetClipRect();
-			
+
 			/*!
 			 * Documention not written yet.
 			 */
 			bool FillRect(Rect &dstrect, Uint32 color);
-			
+
 			/*!
 			 * Documention not written yet.
 			 */
@@ -904,29 +904,29 @@ namespace SDL
 		 *
 		 * \htmlonly
 		 * <pre>
-		 * SDL_GL_RED_SIZE 	Size of the framebuffer red component, in bits.
-		 * SDL_GL_GREEN_SIZE 	Size of the framebuffer green component, in bits.
-		 * SDL_GL_BLUE_SIZE 	Size of the framebuffer blue component, in bits.
-		 * SDL_GL_ALPHA_SIZE 	Size of the framebuffer alpha component, in bits.
-		 * SDL_GL_BUFFER_SIZE 	Size of the framebuffer, in bits.
-		 * SDL_GL_DOUBLEBUFFER 	Enable or disable double buffering (0 or 1).
-		 * SDL_GL_DEPTH_SIZE 	Size of the depth buffer, in bits.
-		 * SDL_GL_STENCIL_SIZE 	Size of the stencil buffer, in bits.
-		 * SDL_GL_ACCUM_RED_SIZE 	Size of the accumulation buffer red component, in bits.
-		 * SDL_GL_ACCUM_GREEN_SIZE 	Size of the accumulation buffer green component, in bits.
-		 * SDL_GL_ACCUM_BLUE_SIZE 	Size of the accumulation buffer blue component, in bits.
-		 * SDL_GL_ACCUM_ALPHA_SIZE 	Size of the accumulation buffer alpha component, in bits.
-		 * SDL_GL_STEREO 	Enable or disable stereo (left and right) buffers (0 or 1).
-		 * SDL_GL_MULTISAMPLEBUFFERS 	Number of multisample buffers (0 or 1). *
-		 * SDL_GL_MULTISAMPLESAMPLES 	Number of samples per pixel when multisampling is enabled. *
-		 * SDL_GL_SWAP_CONTROL 	Vsync: Swap buffers every n'th retrace (0 to disable, which is the default). **
+		 * SDL_GL_RED_SIZE	Size of the framebuffer red component, in bits.
+		 * SDL_GL_GREEN_SIZE	Size of the framebuffer green component, in bits.
+		 * SDL_GL_BLUE_SIZE	Size of the framebuffer blue component, in bits.
+		 * SDL_GL_ALPHA_SIZE	Size of the framebuffer alpha component, in bits.
+		 * SDL_GL_BUFFER_SIZE	Size of the framebuffer, in bits.
+		 * SDL_GL_DOUBLEBUFFER	Enable or disable double buffering (0 or 1).
+		 * SDL_GL_DEPTH_SIZE	Size of the depth buffer, in bits.
+		 * SDL_GL_STENCIL_SIZE	Size of the stencil buffer, in bits.
+		 * SDL_GL_ACCUM_RED_SIZE	Size of the accumulation buffer red component, in bits.
+		 * SDL_GL_ACCUM_GREEN_SIZE	Size of the accumulation buffer green component, in bits.
+		 * SDL_GL_ACCUM_BLUE_SIZE	Size of the accumulation buffer blue component, in bits.
+		 * SDL_GL_ACCUM_ALPHA_SIZE	Size of the accumulation buffer alpha component, in bits.
+		 * SDL_GL_STEREO	Enable or disable stereo (left and right) buffers (0 or 1).
+		 * SDL_GL_MULTISAMPLEBUFFERS	Number of multisample buffers (0 or 1). *
+		 * SDL_GL_MULTISAMPLESAMPLES	Number of samples per pixel when multisampling is enabled. *
+		 * SDL_GL_SWAP_CONTROL	Vsync: Swap buffers every n'th retrace (0 to disable, which is the default). **
 		 *
 		 * * Requires the GL_ARB_multisample extension.
 		 * ** Available since SDL 1.2.10
 		 * </pre>
 		 * \endhtmlonly
 		 * \sa SetAttribute
-		 * \sa GetAttribute 
+		 * \sa GetAttribute
 		 */
 		typedef SDL_GLattr Attr;
 
@@ -959,7 +959,7 @@ namespace SDL
 		 * code. This will ensure the proper calling convention is followed on
 		 * platforms where this matters (Win32) thereby avoiding stack
 		 * corruption. In a Win32 build environment, APIENTRY should be defined
-		 * as __stdcall. 
+		 * as __stdcall.
 		 *
 		 * \return the address of the GL function proc, or NULL if the function
 		 * is not found.
@@ -990,7 +990,7 @@ namespace SDL
 		 *
 		 * \note The SDL_DOUBLEBUF flag is not required to enable double
 		 * buffering when setting an OpenGL video mode. Double buffering is
-		 * enabled or disabled using the SDL_GL_DOUBLEBUFFER attribute. 
+		 * enabled or disabled using the SDL_GL_DOUBLEBUFFER attribute.
 		 * \return true an sucess and false on an error.
 		 * \throws SDL::LogicError if the Screen has been initialized.
 		 */
@@ -1025,7 +1025,7 @@ namespace SDL
 	 * \note Sceen uses the special Surface constructor so Surface doesn't free
 	 * m_Surface on destruction. This is because Quit() does frees the video
 	 * surface.
-	 */ 
+	 */
 	class Screen : public Surface
 	{
 		public:
@@ -1045,8 +1045,8 @@ namespace SDL
 			 * \param w is the width of the window/resolution
 			 * \param h is the height of the window/resolution
 			 * \param bpp is the bits per pixel for the window/resolution
-			 * \param flags is the SDL_Surface flags 
-			 * 
+			 * \param flags is the SDL_Surface flags
+			 *
 			 * \sa Surface::m_Surface for list of flags passable as flags.
 			 *
 			 */
@@ -1082,7 +1082,7 @@ namespace SDL
 			 * The SDL_DOUBLEBUF flag must have been passed to SetVideoMode,
 			 * when setting the video mode for this function to perform
 			 * hardware flipping.
-			 * 
+			 *
 			 * \return True if successful, or False otherwise.
 			 */
 			bool Flip();
@@ -1121,7 +1121,7 @@ namespace SDL
 			 * (no clipping is done).
 			 *
 			 * The rectangles are not automatically merged or checked for
-			 * overlap. 
+			 * overlap.
 			 * In general, the programmer can use his knowledge about his
 			 * particular rectangles to merge them in an efficient way, to
 			 * avoid overdraw.
@@ -1148,7 +1148,7 @@ namespace SDL
 			 * adjustment with SetGammaRamp().
 			 *
 			 * Not all display hardware is able to change gamma.
-			 * 
+			 *
 			 * \return False on error (or if gamma adjustment is not
 			 * supported), True otherwise.
 			 */
@@ -1162,7 +1162,7 @@ namespace SDL
 			 * display. Each table is an array of 256 Uint16 values.
 			 *
 			 * Not all display hardware is able to change gamma.
-			 * 
+			 *
 			 * \return  False on error, True otherwise.
 			 */
 			static bool GetGammaRamp(Uint16 &redtable, Uint16 &greentable,
@@ -1190,7 +1190,7 @@ namespace SDL
 			 */
 			static bool SetGammaRamp(Uint16 &redtable, Uint16 &greentable,
 									 Uint16 &bluetable);
-			
+
 			/*!
 			 * \brief Check to see if a particular video mode is supported.
 			 *
@@ -1225,7 +1225,7 @@ namespace SDL
 			 * \brief Get information about the video hardware.
 			 *
 			 * \return VideoInof containing the information about the video
-			 * hardware. 
+			 * hardware.
 			 * \note If this is called before SetVideoMode(), the vfmt member
 			 * of the returned structure will contain the pixel format of the
 			 * "best" video mode.
@@ -1239,7 +1239,7 @@ namespace SDL
 			 * \param h is the height of the window/resolution.
 			 * \param bpp is the bits per pixel for the window/resolution.
 			 * \param flags are the flags below.
-			 * 
+			 *
 			 * \htmlonly
 			 *
 			 * <TABLE BORDER="1" CLASS="CALSTABLE">
@@ -1255,7 +1255,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_HWSURFACE
 			 *		</TD>
@@ -1265,7 +1265,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_ASYNCBLIT
 			 *		</TD>
@@ -1275,7 +1275,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_ANYFORMAT
 			 *		</TD>
@@ -1285,7 +1285,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_HWPALETTE
 			 *		</TD>
@@ -1295,7 +1295,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *			
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_DOUBLEBUF
 			 *		</TD>
@@ -1305,7 +1305,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_FULLSCREEN
 			 *		</TD>
@@ -1315,7 +1315,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_OPENGL
 			 *		</TD>
@@ -1325,7 +1325,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_OPENGLBLIT
 			 *		</TD>
@@ -1335,7 +1335,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_RESIZABLE
 			 *		</TD>
@@ -1345,7 +1345,7 @@ namespace SDL
 			 *	</TR>
 			 *	<TR>
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
-			 *		
+			 *
 			 *		<TD ALIGN="LEFT" VALIGN="TOP">
 			 *			SDL_NOFRAME
 			 *		</TD>
@@ -1378,7 +1378,7 @@ namespace SDL
 			 * order. Each scanline consists of (width / 8) bytes, rounded up.
 			 * The most significant bit of each byte represents the leftmost
 			 * pixel.
-			 * 
+			 *
 			 * \note This function must be called before the first call to
 			 * SDL_SetVideoMode.
 			 */
@@ -1413,27 +1413,27 @@ namespace SDL
 			 * \code
 			 * void SetScreen()
 			 * {
-			 * 	Screen screen1(320, 200, 8);
+			 *	Screen screen1(320, 200, 8);
 			 * }
 			 *
 			 * void SomeOtherFunction()
 			 * {
-			 * 	Screen screen;
+			 *	Screen screen;
 			 *
-			 * 	if(!GetVideoSurface(screen))
-			 * 		cout << "Error getting screen" << endl;
-			 * } 
+			 *	if(!GetVideoSurface(screen))
+			 *		cout << "Error getting screen" << endl;
+			 * }
 			 * \endcode
 			 * \return True if m_Surface is non-NULL, or False otherwise.
 			 */
 			friend bool GetVideoSurface(Screen &vid);
-		
+
 			friend bool GL::LoadLibrary(const std::string path);
 			friend void *GL::GetProcAddress(const std::string proc);
 			friend bool GL::GetAttribute(Attr attr, int &value);
 			friend bool GL:: SetAttribute(Attr attr, int value);
 	};
-	
+
 	bool GetVideoSurface(Screen &vid);
 
 	/*!
@@ -1450,8 +1450,8 @@ namespace SDL
 			/*!
 			 * \brief Default constructor.
 			 *
-			 * Creates an empty Overlay. 
-			 * 
+			 * Creates an empty Overlay.
+			 *
 			 * \note Until created (m_Overlay), Display will throw an
 			 * execption. So make sure to initialize it before then.
 			 */
@@ -1490,7 +1490,7 @@ namespace SDL
 			 * \brief Lock the Overlay.
 			 *
 			 * Documentation not written yet.
-			 * 
+			 *
 			 * \return True if Overlay was locked, False on error.
 			 */
 			bool Lock();
@@ -1506,7 +1506,7 @@ namespace SDL
 			 * \brief Display the Overlay on the Screen.
 			 *
 			 * Documentation not written yet.
-			 * 
+			 *
 			 * \return True if it was able to be displayed, False otherwise.
 			 */
 			bool Display(Rect &destrect);
@@ -1525,7 +1525,7 @@ namespace SDL
 			 */
 			SDL_Overlay *m_Overlay;
 	};
-	//@}	
+	//@}
 }
 
 #endif

@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -22,42 +22,42 @@ namespace SDL
 	{
 		SDL_SetEventFilter(filter);
 	}
-	
+
 	EventFilter GetEventFilter(void)
 	{
 		return SDL_GetEventFilter();
 	}
-	
+
 	Uint8 EventState(Uint8 type, int state)
 	{
 		return SDL_EventState(type, state);
 	}
-	
+
 	Uint8 *GetKeyState(int *numkeys)
 	{
 		return SDL_GetKeyState(numkeys);
 	}
-	
+
 	Mod GetModState(void)
 	{
 		return SDL_GetModState();
 	}
-	
+
 	void SetModState(Mod modstate)
 	{
 		SDL_SetModState(modstate);
 	}
-	
+
 	std::string GetKeyName(Key key)
 	{
 		return static_cast<std::string>(SDL_GetKeyName(key));
 	}
-	
+
 	bool EnableUnicode(int enable)
 	{
 		return SDL_EnableUNICODE(enable);
 	}
-	
+
 	bool EnableKeyRepeat(int delay, int interval)
 	{
 		if(SDL_EnableKeyRepeat(delay, interval) == 0)
@@ -70,22 +70,22 @@ namespace SDL
 	{
 		return SDL_GetMouseState(&x, &y);
 	}
-	
+
 	Uint8 GetRelativeMouseState(int &x, int &y)
 	{
 		return SDL_GetRelativeMouseState(&x, &y);
 	}
-	
+
 	Uint8 GetAppState(void)
 	{
 		return SDL_GetAppState();
 	}
-	
+
 	int JoystickState(int state)
 	{
 		return SDL_JoystickEventState(state);
 	}
-	
+
 
 	bool Handle::Active(Uint8 gain, Uint8 state)
 	{
@@ -96,72 +96,72 @@ namespace SDL
 	{
 		return false;
 	}
-	
+
 	bool Handle::KeyReleased(KeySym &keysym)
 	{
 		return false;
 	}
-	
+
 	bool Handle::MouseMotion(Uint8 state, Uint16 x, Uint16 y, Sint16 xrel, Sint16 yrel)
 	{
 		return false;
 	}
-	
+
 	bool Handle::MouseButtonPressed(Uint8 button, Uint16 x, Uint16 y)
 	{
 		return false;
 	}
-	
+
 	bool Handle::MouseButtonReleased(Uint8 button, Uint16 x, Uint16 y)
 	{
 		return false;
 	}
-	
+
 	bool Handle::JoyAxis(Uint8 which, Uint8 axis, Sint16 value)
 	{
 		return false;
 	}
-	
+
 	bool Handle::JoyButtonPressed(Uint8 which, Uint8 button)
 	{
 		return false;
 	}
-	
+
 	bool Handle::JoyButtonReleased(Uint8 which, Uint8 button)
 	{
 		return false;
 	}
-	
+
 	bool Handle::JoyHat(Uint8 which, Uint8 hat, Uint8 value)
 	{
 		return false;
 	}
-	
+
 	bool Handle::JoyBall(Uint8 which, Uint8 ball, Sint16 xrel, Sint16 yrel)
 	{
 		return false;
 	}
-	
+
 	bool Handle::VideoResize(int w, int h)
 	{
 		return false;
 	}
-	
+
 	bool Handle::VideoExpose()
 	{
 		return false;
 	}
-	
+
 	bool Handle::SysWM(SysWMmsg *msg)
 	{
 		return false;
 	}
-	
+
 	bool Handle::User(int code, void *data1, void *data2)
 	{
 		return false;
 	}
-	
+
 	bool Handle::Quit()
 	{
 		return false;
@@ -176,12 +176,12 @@ namespace SDL
 	{
 		SDL_PumpEvents();
 	}
-	
+
 	int Event::Peep(int numevents, SDL_eventaction action, Uint32 mask)
 	{
 		return SDL_PeepEvents(&m_Event, numevents, action, mask);
 	}
-	
+
 	int Event::Pop(Handle &handler, Uint32 mask)
 	{
 		int isEvent;
@@ -195,7 +195,7 @@ namespace SDL
 		return isEvent;
 
 	}
-	
+
 	bool Event::PopActive(Handle &handler)
 	{
 		return Pop(handler, SDL_ACTIVEEVENTMASK);
@@ -265,12 +265,12 @@ namespace SDL
 	{
 		return Pop(handler, SDL_VIDEORESIZEMASK);
 	}
-	
+
 	bool Event::PopVideoExpose(Handle &handler)
 	{
 		return Pop(handler, SDL_VIDEOEXPOSEMASK);
 	}
-	
+
 	bool Event::PopQuit(Handle &handler)
 	{
 		return Pop(handler, SDL_QUITMASK);
@@ -280,12 +280,12 @@ namespace SDL
 	{
 		return Pop(handler, SDL_SYSWMEVENTMASK);
 	}
-	
+
 	bool Event::Wait()
 	{
 		return SDL_WaitEvent(&m_Event);
 	}
-	
+
 	bool Event::Peek(Handle &handler, Uint32 mask)
 	{
 		int isEvent;
@@ -368,12 +368,12 @@ namespace SDL
 	{
 		return Peek(handler, SDL_VIDEORESIZEMASK);
 	}
-	
+
 	bool Event::PeekVideoExpose(Handle &handler)
 	{
 		return Peek(handler, SDL_VIDEOEXPOSEMASK);
 	}
-	
+
 	bool Event::PeekQuit(Handle &handler)
 	{
 		return Peek(handler, SDL_QUITMASK);
@@ -383,7 +383,7 @@ namespace SDL
 	{
 		return Peek(handler, SDL_SYSWMEVENTMASK);
 	}
-	
+
 	bool Event::Push(ActiveEvent &event)
 	{
 		m_Event.active = event;
@@ -393,17 +393,17 @@ namespace SDL
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(KeyboardEvent &event)
 	{
 		m_Event.key = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(MouseMotionEvent &event)
 	{
 		m_Event.motion = event;
@@ -413,7 +413,7 @@ namespace SDL
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(MouseButtonEvent &event)
 	{
 		m_Event.button = event;
@@ -423,97 +423,97 @@ namespace SDL
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(JoyAxisEvent &event)
 	{
 		m_Event.jaxis = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(JoyButtonEvent &event)
 	{
 		m_Event.jbutton = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(JoyHatEvent &event)
 	{
 		m_Event.jhat = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(JoyBallEvent &event)
 	{
 		m_Event.jball = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(ResizeEvent &event)
 	{
 		m_Event.resize = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(ExposeEvent &event)
 	{
 		m_Event.expose = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(SysWMEvent &event)
 	{
 		m_Event.syswm = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(UserEvent &event)
 	{
 		m_Event.user = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	bool Event::Push(QuitEvent &event)
 	{
 		m_Event.quit = event;
-		
+
 		if(SDL_PushEvent(&m_Event) == 0)
 			return true;
 		else
 			return false;
 	}
-	
+
 	void Event::Poll(Handle &handler)
 	{
 		while(SDL_PollEvent(&m_Event))
@@ -522,7 +522,7 @@ namespace SDL
 				handler.All(m_Event);
 		}
 	}
-	
+
 	bool Event::HandleEvents(Handle &handler)
 	{
 		bool handled = false;

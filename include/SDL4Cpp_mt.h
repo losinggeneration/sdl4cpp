@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -39,12 +39,12 @@ namespace SDL
 	 * In general, you must be very aware of concurrency and data integrity
 	 * issues when writing multi-threaded programs. Some good guidelines
 	 * include:
-	 * 	Don't call SDL video/event functions from separate threads
-	 * 	Don't use any library functions in separate threads
-	 * 	Don't perform any memory management in separate threads
-	 * 	Lock global variables which may be accessed by multiple threads
-	 * 	Never terminate threads, always set a flag and wait for them to quit
-	 * 	Think very carefully about all possible ways your code may interact
+	 *	Don't call SDL video/event functions from separate threads
+	 *	Don't use any library functions in separate threads
+	 *	Don't perform any memory management in separate threads
+	 *	Lock global variables which may be accessed by multiple threads
+	 *	Never terminate threads, always set a flag and wait for them to quit
+	 *	Think very carefully about all possible ways your code may interact
 	 * \note SDL's threading is not implemented on MacOS, due to that lack of
 	 * preemptive thread support (MacOS X dosn't suffer from this problem)
 	*/
@@ -57,11 +57,11 @@ namespace SDL
 		 * \code
 		 * struct Thread
 		 * {
-		 * 	Uint32 threadid;
-		 * 	SYS_ThreadHandle handle;
-		 * 	int status;
-		 * 	error errbuf;
-		 * 	void *data;
+		 *	Uint32 threadid;
+		 *	SYS_ThreadHandle handle;
+		 *	int status;
+		 *	error errbuf;
+		 *	void *data;
 		 * };
 		 * \endcode
 		 */
@@ -69,15 +69,15 @@ namespace SDL
 
 		/*!
 		 * Used to shorten SDL_mutex
-		 * 
+		 *
 		 * \b Structure \b Definition
 		 * Taken from SDL-1.2.9/src/thread/generic/SDL_sysmutex.c
 		 * \code
 		 * struct SDL_mutex
 		 * {
-		 * 	int recursive;
-		 * 	Uint32 owner;
-		 * 	SDL_sem *sem;
+		 *	int recursive;
+		 *	Uint32 owner;
+		 *	SDL_sem *sem;
 		 * };
 		 * \endcode
 		 */
@@ -91,7 +91,7 @@ namespace SDL
 		 * \code
 		 * struct SDL_semaphore
 		 * {
-		 * 	Uint32 count;
+		 *	Uint32 count;
 		 *	Uint32 waiters_count;
 		 *	SDL_mutex *count_lock;
 		 *	SDL_cond *count_nonzero;
@@ -99,7 +99,7 @@ namespace SDL
 		 * \endcode
 		 */
 		typedef SDL_sem Sem;
-		
+
 		/*!
 		 * Used to shorten SDL_cond
 		 *
@@ -108,10 +108,10 @@ namespace SDL
 		 * \code
 		 * struct SDL_cond
 		 * {
-		 * 	SDL_mutex *lock;
-		 * 	int waiting;
-		 * 	int signals;
-		 * 	SDL_sem *wait_sem;
+		 *	SDL_mutex *lock;
+		 *	int waiting;
+		 *	int signals;
+		 *	SDL_sem *wait_sem;
 		 *	SDL_sem *wait_done;
 		 * };
 		 * \endcode
@@ -161,8 +161,8 @@ namespace SDL
 		 * ..
 		 * if(MutexP(mut)==-1)
 		 * {
-		 * 	fprintf(stderr, "Couldn't lock mutex\n");
-		 * 	exit(-1);
+		 *	fprintf(stderr, "Couldn't lock mutex\n");
+		 *	exit(-1);
 		 * }
 		 * ..
 		 * // Do stuff while mutex is locked
@@ -170,10 +170,10 @@ namespace SDL
 		 * ..
 		 * if(MutexV(mut)==-1)
 		 * {
-		 * 	fprintf(stderr, "Couldn't unlock mutex\n");
-		 * 	exit(-1);
+		 *	fprintf(stderr, "Couldn't unlock mutex\n");
+		 *	exit(-1);
 		 * }
-		 * 
+		 *
 		 * DestroyMutex(mut);
 		 * \endcode
 		 * \sa MutexP, MutexV, DestroyMutex
@@ -187,7 +187,7 @@ namespace SDL
 		/*!
 		 * Locks the mutex, which was previously created with CreateMutex. If
 		 * the mutex is already locked then MutexP will not return until it is
-		 * unlocked. 
+		 * unlocked.
 		 *
 		 * SDL also defines a macro
 		 * \code
@@ -211,7 +211,7 @@ namespace SDL
 		int MutexV(Mutex *mutex);
 		/*!
 		 * \short Creates a new semaphore and assigns an initial value to it.
-		 * 
+		 *
 		 * CreateSemaphore() creates a new semaphore and initializes it with
 		 * the value initial_value. Each locking operation on the semaphore by
 		 * SemWait, SemTryWait or SemWaitTimeout will atomically decrement the
@@ -225,7 +225,7 @@ namespace SDL
 		 * my_sem = CreateSemaphore(INITIAL_SEM_VALUE);
 		 * if (my_sem == NULL)
 		 * {
-		 * 	return CREATE_SEM_FAILED;
+		 *	return CREATE_SEM_FAILED;
 		 * }
 		 * \endcode
 		 *
@@ -244,8 +244,8 @@ namespace SDL
 		 * \code
 		 * if (my_sem != NULL)
 		 * {
-		 * 	DestroySemaphore(my_sem);
-		 * 	my_sem = NULL;
+		 *	DestroySemaphore(my_sem);
+		 *	my_sem = NULL;
 		 * }
 		 * \endcode
 		 * \sa CreateSemaphore, SemWait, SemTryWait, SemWaitTimeout, SemPost,
@@ -257,7 +257,7 @@ namespace SDL
 		 * pointed to by sem has a positive value, the call is interrupted by
 		 * a signal or error. If the call is successful it will atomically
 		 * decrement the semaphore value.
-		 * 
+		 *
 		 * After SemWait() is successful, the semaphore can be released and
 		 * its count atomically incremented by a successful call to SemPost.
 		 *
@@ -268,7 +268,7 @@ namespace SDL
 		 * \code
 		 * if (SemWait(my_sem) == -1)
 		 * {
-		 * 	return WAIT_FAILED;
+		 *	return WAIT_FAILED;
 		 * }
 		 *
 		 * ...
@@ -349,12 +349,12 @@ namespace SDL
 		 * \sa CreateSemaphore, DestroySemaphore, SemWait, SemTryWait,
 		 * SemPost, SemValue
 		 */
-		int SemWaitTimeout(Sem *sem, Uint32 timeout);	
+		int SemWaitTimeout(Sem *sem, Uint32 timeout);
 		/*!
 		 * SemPost unlocks the semaphore pointed to by sem and atomically
 		 * increments the semaphores value. Threads that were blocking on the
 		 * semaphore may be scheduled after this call succeeds.
-		 * 
+		 *
 		 * SemPost should be called after a semaphore is locked by a
 		 * successful call to SemWait, SemTryWait or SemWaitTimeout.
 		 *
@@ -389,17 +389,17 @@ namespace SDL
 		 * Examples
 		 * \code
 		 * cond *cond;
-		 * 
+		 *
 		 * cond=CreateCond();
 		 * .
 		 * .
 		 * // Do stuff
-		 * 
+		 *
 		 * .
 		 * .
 		 * DestroyCond(cond);
 		 * \endcode
-		 * \sa DestroyCond, CondWait, 
+		 * \sa DestroyCond, CondWait,
 		 */
 		Cond *CreateCond(void);
 		/*!
@@ -415,7 +415,7 @@ namespace SDL
 		/*!
 		 * Restarts all threads that are waiting on the condition variable,
 		 * cond. Returns 0 on success, or -1 on an error.
-		 * \sa CondSignal, CondWait 
+		 * \sa CondSignal, CondWait
 		 */
 		int CondBroadcast(Cond *cond);
 		/*!

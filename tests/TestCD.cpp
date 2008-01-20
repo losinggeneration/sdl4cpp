@@ -6,7 +6,7 @@ int main(int argv, char *args[])
 {
 	SDL::Init(SDL_INIT_CDROM|SDL_INIT_AUDIO);
 	atexit(SDL::Quit);
-	
+
 	if(SDL::CDNumDrives() < 1)
 	{
 		std::cout << "No CD drives to test." << std::endl;
@@ -24,7 +24,7 @@ int main(int argv, char *args[])
 	catch(std::logic_error e)
 	{
 		std::cout << "SDL::CD cd;\ncd.Status();\ncd.Play(0,0);\n";
-						
+
 		std::cout << "Errors with above code. Check it out." << std::endl << std::endl;
 	}
 

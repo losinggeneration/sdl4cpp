@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -24,13 +24,13 @@ namespace SDL
 	{
 		return SDL_CDNumDrives();
 	}
-	
+
 	CD::CD()
 	{
 		m_CD = NULL;
 		m_Drive = -1;
 	}
-	
+
 	CD::CD(int drive)
 	{
 		if(!Open(drive))
@@ -38,7 +38,7 @@ namespace SDL
 
 		m_Drive = drive;
 	}
-	
+
 	CD::~CD()
 	{
 		Close();
@@ -52,7 +52,7 @@ namespace SDL
 			return false;
 
 		m_Drive = drive;
-		
+
 		return true;
 	}
 
@@ -71,7 +71,7 @@ namespace SDL
 
 		return SDL_CDStatus(m_CD);
 	}
-	
+
 	bool CD::Play(int start, int length)
 	{
 		if(!m_CD)
@@ -82,7 +82,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	bool CD::PlayTracks(int start_track, int start_frame, int ntracks, int nframes)
 	{
 		if(!m_CD)
@@ -90,19 +90,19 @@ namespace SDL
 
 		if(SDL_CDPlayTracks(m_CD, start_track, start_frame, ntracks, nframes) == 0)
 			return true;
-		
+
 		return false;
 	}
 	CDtrack CD::GetCurrentTrack()
 	{
 		return m_CD->track[m_CD->cur_track];
 	}
-	
+
 	CDtrack *CD::GetTracks()
 	{
 		return m_CD->track;
 	}
-	
+
 	bool CD::Pause()
 	{
 		if(!m_CD)
@@ -113,7 +113,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	bool CD::Resume()
 	{
 		if(!m_CD)
@@ -121,10 +121,10 @@ namespace SDL
 
 		if(SDL_CDResume(m_CD))
 			return true;
-		
+
 		return false;
 	}
-	
+
 	bool CD::Stop()
 	{
 		if(!m_CD)
@@ -135,7 +135,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	bool CD::Eject()
 	{
 		if(!m_CD)
@@ -146,7 +146,7 @@ namespace SDL
 
 		return false;
 	}
-	
+
 	void CD::Close()
 	{
 		if(m_CD)

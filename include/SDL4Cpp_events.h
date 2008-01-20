@@ -3,12 +3,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2.1 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with main.c; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
@@ -26,7 +26,7 @@ namespace SDL
 	 * \defgroup Events Event handling
 	 */
 	//@{
-	
+
 	/*!
 	 * \brief A shorter version of SDL_ActiveEvent
 	 *
@@ -58,9 +58,9 @@ namespace SDL
 	 * <pre>
 	 * type	SDL_ACTIVEEVENT.
 	 * gain	0 if the event is a loss or 1 if it is a gain.
-	 * state	SDL_APPMOUSEFOCUS if mouse focus was gained or lost, 
-	 * 	SDL_APPINPUTFOCUS if input focus was gained or lost, 
-	 * 	or SDL_APPACTIVE if the application was iconified (gain=0) or restored(gain=1).
+	 * state	SDL_APPMOUSEFOCUS if mouse focus was gained or lost,
+	 *	SDL_APPINPUTFOCUS if input focus was gained or lost,
+	 *	or SDL_APPACTIVE if the application was iconified (gain=0) or restored(gain=1).
 	 * </pre>
 	 * \endhtmlonly
 	 */
@@ -140,7 +140,7 @@ namespace SDL
 	typedef SDL_MouseMotionEvent MouseMotionEvent;
 	/*!
 	 * \brief A shorter version of SDL_MouseButtonEvent
-	 * 
+	 *
 	 * SDL_MouseButtonEvent is a member of the SDL_Event union and is used when
 	 * an event of type SDL_MOUSEBUTTONDOWN or SDL_MOUSEBUTTONUP is reported.
 	 *
@@ -400,7 +400,7 @@ namespace SDL
 	 * int SDL::WM::GetWMInfo(SDL_SysWMinfo *info);
 	 */
 	typedef SDL_SysWMEvent SysWMEvent;
-	
+
 	/*!
 	 * \brief A shorter version of SDL_SysWMmsg
 	 *
@@ -2044,7 +2044,7 @@ namespace SDL
 	 *
 	 * Defined as:
 	 * \code
-	 * typedef int (SDLCALL *SDL_EventFilter)(const SDL_Event *event); 
+	 * typedef int (SDLCALL *SDL_EventFilter)(const SDL_Event *event);
 	 * \endcode
 	 */
 	typedef SDL_EventFilter EventFilter;
@@ -2166,7 +2166,7 @@ namespace SDL
 	 * \endhtmlonly
 	 */
 	typedef SDLMod Mod;
-	
+
 
 	/*!
 	 * \typedef ActiveEvent
@@ -2208,7 +2208,7 @@ namespace SDL
 	 * defined as:
 	 *
 	 * typedef int (*SDL_EventFilter)(const SDL_Event *event);
-	 * 
+	 *
 	 * \return
 	 */
 	EventFilter GetEventFilter(void);
@@ -2226,7 +2226,7 @@ namespace SDL
 	 * processing state of the specified event type.
 	 *
 	 * A list of event type's can be found in the Event section.
-	 * 
+	 *
 	 * \return
 	 */
 	Uint8 EventState(Uint8 type, int state);
@@ -2241,7 +2241,7 @@ namespace SDL
 	 * caller.
 	 *
 	 * \note Use Event::Pump() to update the state array.
-	 * 
+	 *
 	 * \return
 	 */
 	Uint8* GetKeyState(int *numkeys);
@@ -2249,25 +2249,25 @@ namespace SDL
 	 * \brief Get the state of modifier keys.
 	 *
 	 * Returns the current state of the modifier keys (CTRL, ALT, etc.).
-	 * 
+	 *
 	 * \return The return value can be an OR'd combination of the Mod enum.
-	 * 
+	 *
 	 * \b Enum \b Definition
-	 * \code 
+	 * \code
 	 * typedef enum
 	 * {
-	 * 	KMOD_NONE	= 0x0000,
-	 * 	KMOD_LSHIFT= 0x0001,
-	 * 	KMOD_RSHIFT= 0x0002,
-	 * 	KMOD_LCTRL = 0x0040,
-	 * 	KMOD_RCTRL = 0x0080,
-	 * 	KMOD_LALT	= 0x0100,
-	 * 	KMOD_RALT	= 0x0200,
-	 * 	KMOD_LMETA = 0x0400,
-	 * 	KMOD_RMETA = 0x0800,
-	 * 	KMOD_NUM	= 0x1000,
-	 * 	KMOD_CAPS	= 0x2000,
-	 * 	KMOD_MODE	= 0x4000,
+	 *	KMOD_NONE	= 0x0000,
+	 *	KMOD_LSHIFT= 0x0001,
+	 *	KMOD_RSHIFT= 0x0002,
+	 *	KMOD_LCTRL = 0x0040,
+	 *	KMOD_RCTRL = 0x0080,
+	 *	KMOD_LALT	= 0x0100,
+	 *	KMOD_RALT	= 0x0200,
+	 *	KMOD_LMETA = 0x0400,
+	 *	KMOD_RMETA = 0x0800,
+	 *	KMOD_NUM	= 0x1000,
+	 *	KMOD_CAPS	= 0x2000,
+	 *	KMOD_MODE	= 0x4000,
 	 * } Mod;
 	 * \endcode
 	 *
@@ -2293,18 +2293,18 @@ namespace SDL
 	 * \code
 	 * typedef enum
 	 * {
-	 * 	KMOD_NONE	= 0x0000,
-	 * 	KMOD_LSHIFT= 0x0001,
-	 * 	KMOD_RSHIFT= 0x0002,
-	 * 	KMOD_LCTRL = 0x0040,
-	 * 	KMOD_RCTRL = 0x0080,
-	 * 	KMOD_LALT	= 0x0100,
-	 * 	KMOD_RALT	= 0x0200,
-	 * 	KMOD_LMETA = 0x0400,
-	 * 	KMOD_RMETA = 0x0800,
-	 * 	KMOD_NUM	= 0x1000,
-	 * 	KMOD_CAPS	= 0x2000,
-	 * 	KMOD_MODE	= 0x4000,
+	 *	KMOD_NONE	= 0x0000,
+	 *	KMOD_LSHIFT= 0x0001,
+	 *	KMOD_RSHIFT= 0x0002,
+	 *	KMOD_LCTRL = 0x0040,
+	 *	KMOD_RCTRL = 0x0080,
+	 *	KMOD_LALT	= 0x0100,
+	 *	KMOD_RALT	= 0x0200,
+	 *	KMOD_LMETA = 0x0400,
+	 *	KMOD_RMETA = 0x0800,
+	 *	KMOD_NUM	= 0x1000,
+	 *	KMOD_CAPS	= 0x2000,
+	 *	KMOD_MODE	= 0x4000,
 	 * } Mod;
 	 * \endcode
 	 */
@@ -2347,7 +2347,7 @@ namespace SDL
 	 *
 	 * Setting delay to 0 disables key repeating completely. Good default
 	 * values are SDL_DEFAULT_REPEAT_DELAY and SDL_DEFAULT_REPEAT_INTERVAL
-	 * 
+	 *
 	 * \return True on success and False on failure.
 	 */
 	bool EnableKeyRepeat(int delay, int interval);
@@ -2357,8 +2357,8 @@ namespace SDL
 	 * The current button state is returned as a button bitmask, which can be
 	 * tested using the SDL_BUTTON(X) macros, and x and y are set to the
 	 * current mouse cursor position. You can pass NULL for either x or y.
-	 * 
-	 * \return 
+	 *
+	 * \return
 	 */
 	Uint8 GetMouseState(int &x, int &y);
 	/*!
@@ -2369,7 +2369,7 @@ namespace SDL
 	 * in the mouse position since the last call to SDL_GetRelativeMouseState
 	 * or since event initialization. You can pass NULL for either x or y.
 	 *
-	 * \return 
+	 * \return
 	 */
 	Uint8 GetRelativeMouseState(int &x, int &y);
 	/*!
@@ -2398,7 +2398,7 @@ namespace SDL
 	 * otherwise the new processing state is returned.
 	 */
 	int JoystickState(int state);
-	
+
 	/*!
 	 * \brief The handler to handle all events.
 	 *
@@ -2418,42 +2418,42 @@ namespace SDL
 	 * // Note this isn't the only way to do this, but is one of the simpler
 	 * code examples
 	 * #include <SDL4Cpp.h>
-	 *	
+	 *
 	 * using namespace SDL;
 	 *
 	 * class MyHandle : public Handle
 	 * {
-	 * 	public:
-	 * 		MyHandle() : m_Quit(false) {}
-	 * 		bool KeyPressed(KeySym &keysym)
-	 * 		{
-	 * 			if(keysym.sym == SDLK_ESCAPE)
-	 * 				m_Quit = true;
+	 *	public:
+	 *		MyHandle() : m_Quit(false) {}
+	 *		bool KeyPressed(KeySym &keysym)
+	 *		{
+	 *			if(keysym.sym == SDLK_ESCAPE)
+	 *				m_Quit = true;
 	 *
-	 * 			return true;
-	 * 		}
+	 *			return true;
+	 *		}
 	 *
-	 * 		operator bool()
-	 * 		{
-	 * 			return m_Quit;
-	 * 		}
-	 * 	private:
-	 * 		bool m_Quit;
+	 *		operator bool()
+	 *		{
+	 *			return m_Quit;
+	 *		}
+	 *	private:
+	 *		bool m_Quit;
 	 * } myhandler;
 	 *
 	 * int main()
 	 * {
-	 * 	Event myevents;
-	 * 	Screen screen;
+	 *	Event myevents;
+	 *	Screen screen;
 	 *
-	 * 	Init(SDL_INIT_VIDEO);
+	 *	Init(SDL_INIT_VIDEO);
 	 *
-	 * 	screen.SetVideoMode(320, 240, 8, SDL_SWSURFACE);
-	 * 	
-	 * 	while(!myhandler)
-	 * 		myevents.Poll(myhandler);
-	 * 
-	 * 	return 0;
+	 *	screen.SetVideoMode(320, 240, 8, SDL_SWSURFACE);
+	 *
+	 *	while(!myhandler)
+	 *		myevents.Poll(myhandler);
+	 *
+	 *	return 0;
 	 * }
 	 * \endcode
 	 */
@@ -2462,12 +2462,12 @@ namespace SDL
 		public:
 			/*!
 			 * \brief Default destructor
-			 * 
+			 *
 			 * Overrides default destructor to be virtual.
 			 */
 			virtual ~Handle() {}
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2476,7 +2476,7 @@ namespace SDL
 			 */
 			virtual bool Active(Uint8 gain, Uint8 state);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2485,7 +2485,7 @@ namespace SDL
 			 */
 			virtual bool KeyPressed(KeySym &keysym);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2494,7 +2494,7 @@ namespace SDL
 			 */
 			virtual bool KeyReleased(KeySym &keysym);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2504,16 +2504,16 @@ namespace SDL
 			virtual bool MouseMotion(Uint8 state,	Uint16 x, Uint16 y,
 									 Sint16 xrel, Sint16 yrel);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
-			 * 
+			 *
 			 * \return false by default, but when implemented, it should return
 			 * true
 			 */
 			virtual bool MouseButtonPressed(Uint8 button, Uint16 x, Uint16 y);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2522,7 +2522,7 @@ namespace SDL
 			 */
 			virtual bool MouseButtonReleased(Uint8 button, Uint16 x, Uint16 y);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2531,7 +2531,7 @@ namespace SDL
 			 */
 			virtual bool JoyAxis(Uint8 which, Uint8 axis, Sint16 value);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2540,7 +2540,7 @@ namespace SDL
 			 */
 			virtual bool JoyButtonPressed(Uint8 which, Uint8 button);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2549,7 +2549,7 @@ namespace SDL
 			 */
 			virtual bool JoyButtonReleased(Uint8 which, Uint8 button);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2558,7 +2558,7 @@ namespace SDL
 			 */
 			virtual bool JoyHat(Uint8 which, Uint8 hat, Uint8 value);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2568,7 +2568,7 @@ namespace SDL
 			virtual bool JoyBall(Uint8 which, Uint8 ball, Sint16 xrel,
 								 Sint16 yrel);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2577,7 +2577,7 @@ namespace SDL
 			 */
 			virtual bool VideoResize(int w, int h);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2586,7 +2586,7 @@ namespace SDL
 			 */
 			virtual bool VideoExpose();
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2595,7 +2595,7 @@ namespace SDL
 			 */
 			virtual bool SysWM(SysWMmsg *msg);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2604,7 +2604,7 @@ namespace SDL
 			 */
 			virtual bool User(int code, void *data1, void *data2);
 			/*!
-			 * \brief 
+			 * \brief
 			 *
 			 * Documention not written yet.
 			 *
@@ -2625,7 +2625,7 @@ namespace SDL
 
 	/*!
 	 * \brief The main class to access SDL's events.
-	 * 
+	 *
 	 * Use this to Push, Poll, Peek, Peep, and Wait on events. It also uses
 	 * HandleEvent() to handle the events via Handle
 	 * \sa Handle for an example on how to use this event structure.
@@ -2666,18 +2666,18 @@ namespace SDL
 			 * SDL_MOUSEBUTTONDOWNMASK	=	SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)
 			 * SDL_MOUSEBUTTONUPMASK		=	SDL_EVENTMASK(SDL_MOUSEBUTTONUP)
 			 * SDL_MOUSEEVENTMASK		=	SDL_EVENTMASK(SDL_MOUSEMOTION)
-			 * 				|	SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)
-			 * 				|	SDL_EVENTMASK(SDL_MOUSEBUTTONUP)
+			 *				|	SDL_EVENTMASK(SDL_MOUSEBUTTONDOWN)
+			 *				|	SDL_EVENTMASK(SDL_MOUSEBUTTONUP)
 			 * SDL_JOYAXISMOTIONMASK		=	SDL_EVENTMASK(SDL_JOYAXISMOTION)
 			 * SDL_JOYBALLMOTIONMASK		=	SDL_EVENTMASK(SDL_JOYBALLMOTION)
 			 * SDL_JOYHATMOTIONMASK		=	SDL_EVENTMASK(SDL_JOYHATMOTION)
 			 * SDL_JOYBUTTONDOWNMASK		=	SDL_EVENTMASK(SDL_JOYBUTTONDOWN)
 			 * SDL_JOYBUTTONUPMASK		=	SDL_EVENTMASK(SDL_JOYBUTTONUP)
 			 * SDL_JOYEVENTMASK		=	SDL_EVENTMASK(SDL_JOYAXISMOTION)
-			 * 				|	SDL_EVENTMASK(SDL_JOYBALLMOTION)
-			 * 				|	SDL_EVENTMASK(SDL_JOYHATMOTION)
-			 * 				|	SDL_EVENTMASK(SDL_JOYBUTTONDOWN)
-			 * 				|	SDL_EVENTMASK(SDL_JOYBUTTONUP)
+			 *				|	SDL_EVENTMASK(SDL_JOYBALLMOTION)
+			 *				|	SDL_EVENTMASK(SDL_JOYHATMOTION)
+			 *				|	SDL_EVENTMASK(SDL_JOYBUTTONDOWN)
+			 *				|	SDL_EVENTMASK(SDL_JOYBUTTONUP)
 			 * SDL_VIDEORESIZEMASK		=	SDL_EVENTMASK(SDL_VIDEORESIZE)
 			 * SDL_VIDEOEXPOSEMASK		=	SDL_EVENTMASK(SDL_VIDEOEXPOSE)
 			 * SDL_QUITMASK			=	SDL_EVENTMASK(SDL_QUIT)
@@ -2753,7 +2753,7 @@ namespace SDL
 			 * Documention not written yet.
 			 */
 			bool PeekSysWM(Handle &handler);
-			
+
 			/*!
 			 * Wait indefinatly for an event
 			 */
@@ -2897,20 +2897,20 @@ namespace SDL
 			 * \code
 			 * typedef union
 			 * {
-			 * 	Uint8 type;
-			 * 	SDL_ActiveEvent active;
-			 * 	SDL_KeyboardEvent key;
-			 * 	SDL_MouseMotionEvent motion;
-			 * 	SDL_MouseButtonEvent button;
-			 * 	SDL_JoyAxisEvent jaxis;
-			 * 	SDL_JoyBallEvent jball;
-			 * 	SDL_JoyHatEvent jhat;
-			 * 	SDL_JoyButtonEvent jbutton;
-			 * 	SDL_ResizeEvent resize;
-			 * 	SDL_ExposeEvent expose;
-			 * 	SDL_QuitEvent quit;
-			 * 	SDL_UserEvent user;
-			 * 	SDL_SywWMEvent syswm;
+			 *	Uint8 type;
+			 *	SDL_ActiveEvent active;
+			 *	SDL_KeyboardEvent key;
+			 *	SDL_MouseMotionEvent motion;
+			 *	SDL_MouseButtonEvent button;
+			 *	SDL_JoyAxisEvent jaxis;
+			 *	SDL_JoyBallEvent jball;
+			 *	SDL_JoyHatEvent jhat;
+			 *	SDL_JoyButtonEvent jbutton;
+			 *	SDL_ResizeEvent resize;
+			 *	SDL_ExposeEvent expose;
+			 *	SDL_QuitEvent quit;
+			 *	SDL_UserEvent user;
+			 *	SDL_SywWMEvent syswm;
 			 * } SDL_Event;
 			 * \endcode
 			 */

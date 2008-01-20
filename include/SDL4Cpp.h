@@ -22,7 +22,7 @@
  * \b Q: Why another SDL->C++ Wrapper?/Why not just use/improve upon SDLmm? \n
  * \b A: I wanted to make my own, and because choice is a good thing. Don't
  * like how I wrapped SDL, use SDLmm instead. Don't like how SDLmm does
- * something, make your own or change what's out there. 
+ * something, make your own or change what's out there.
  *
  * \b Q: Why not just use SDL the way it is? \n
  * \b A: First, I think C++ allows code to be written cleaner in many cases.
