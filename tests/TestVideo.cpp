@@ -71,10 +71,10 @@ int main(int argv, char *args[])
 
 	// Should be equal
 	if(Four == Two)
-		std::cout << "Good: Four and Two are equal"  << std::endl;
+		std::cout << "Passed: Four and Two are equal"  << std::endl;
 	else
 	{
-		std::cerr << "Bad: Four and Two are not equal"  << std::endl;
+		std::cerr << "Failed: Four and Two are not equal"  << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
@@ -84,18 +84,18 @@ int main(int argv, char *args[])
 	//  Should not be equal
 	if(icon == Four)
 	{
-		std::cerr << "Bad: icon and Four are equal" << std::endl;
+		std::cerr << "Failed: icon and Four are equal" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	else
-		std::cout << "Good: icon and Four not equal" << std::endl;
+		std::cout << "Passed: icon and Four not equal" << std::endl;
 
 	// Should be equal
 	if(temp == icon)
-		std::cout << "Good: temp now has a copy of icon and they're equal" << std::endl;
+		std::cout << "Passed: temp now has a copy of icon and they're equal" << std::endl;
 	else
 	{
-		std::cerr << "Bad: temp and icon aren't equal" << std::endl;
+		std::cerr << "Failed: temp and icon aren't equal" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
@@ -103,18 +103,18 @@ int main(int argv, char *args[])
 
 	// Should be equal
 	if(icon == One)
-		std::cout << "Good: One now has a copy of icon and they're equal" << std::endl;
+		std::cout << "Passed: One now has a copy of icon and they're equal" << std::endl;
 	else
 	{
-		std::cerr << "Bad: One and icon aren't equal" << std::endl;
+		std::cerr << "Failed: One and icon aren't equal" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
 	if(Two != One)
-		std::cout << "Good: Two does NOT equal One." << std::endl;
+		std::cout << "Passed: Two does NOT equal One." << std::endl;
 	else
 	{
-		std::cerr << "Bad: Two DOES equal One." << std::endl;
+		std::cerr << "Failed: Two DOES equal One." << std::endl;
 		exit(EXIT_FAILURE);
 	}
 
