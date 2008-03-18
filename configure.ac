@@ -1,5 +1,5 @@
 AC_INIT([SDL4Cpp], 1.2.0, [losinggeneration@yahoo.com])
-AM_CONFIG_HEADER(include/SDL4Cpp-config.h)
+AM_CONFIG_HEADER(include/SDL4Cpp/SDL4Cpp-config.h)
 
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
