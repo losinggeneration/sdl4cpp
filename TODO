@@ -1,4 +1,2 @@
 check Surface ==, =, and != for correctness.
 finish documentation
-fix removal of include/SDL4Cpp on uninstall
-implement pkg-config file

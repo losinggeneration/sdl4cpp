@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: SDL4Cpp
+Description: C++ bindings to SDL loosely based on SDLmm
+Version: 1.2.0
+URL: http://newduel.sourceforge.net/
+Requires: sdl >= 1.2.5
+Conflicts: 
+Libs: -L${libdir} -lSDL4Cpp
+Cflags: -I${includedir}/SDL4Cpp

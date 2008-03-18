@@ -74,6 +74,7 @@ AC_OUTPUT([	Makefile
 		docs/Makefile
 		docs/SDL4Cpp.doxy
 		include/Makefile
+		sdl4cpp.pc
 	])
 
 echo
