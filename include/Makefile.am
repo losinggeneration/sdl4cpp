@@ -10,3 +10,12 @@ nobase_include_HEADERS = \
 	SDL4Cpp/SDL4Cpp_video.h \
 	SDL4Cpp/SDL4Cpp_wm.h \
 	SDL4Cpp/SDL4Cpp_mouse.h 
+
+if HAVE_SDLIMAGE
+nobase_include_HEADERS += SDL4Cpp/image/SDL4Cpp_image.h
+endif
+
+if HAVE_SDLMIXER
+nobase_include_HEADERS += SDL4Cpp/mixer/SDL4Cpp_mixer.h
+endif
+
