@@ -1,2 +1,3 @@
 check Surface ==, =, and != for correctness.
 finish documentation
+Check image/mixer to see if they're complete
