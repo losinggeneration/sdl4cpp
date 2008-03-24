@@ -14,7 +14,6 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
  */
 
-#include <stdexcept>
 #include "SDL4Cpp_main.h"
 #include "SDL4Cpp_time.h"
 
