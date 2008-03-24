@@ -260,10 +260,10 @@ namespace SDL
 			m_Surface = SDL_ConvertSurface(copy.m_Surface, copy.m_Surface->format, copy.m_Surface->flags);
 			// then copy the data here
 			if(!Blit(copy))
-				throw SDL::RuntimeError("Error copying surface in constructor: " + GetError());
+				throw RuntimeError("Error copying surface in constructor: " + GetError());
 		}
 		else
-			throw SDL::LogicError("Surface's m_Surface passed to constructor was NULL");
+			throw LogicError("Surface's m_Surface passed to constructor was NULL");
 	}
 
 	Surface::Surface(SDL_Surface *surface)
@@ -272,7 +272,7 @@ namespace SDL
 		m_Surface = surface;
 
 		if(m_Surface == NULL)
-			throw SDL::LogicError("SDL_Surface passed to constructor was NULL");
+			throw LogicError("SDL_Surface passed to constructor was NULL");
 	}
 
 	Surface::Surface(int w, int h, int bpp, Uint32 flags)
@@ -297,7 +297,7 @@ namespace SDL
 		#endif
 
 		if(!CreateRGB(flags, w, h, bpp, Rmask, Gmask, Bmask, Amask))
-			throw SDL::RuntimeError("Error creating surface with CreateRGB: " + GetError());
+			throw RuntimeError("Error creating surface with CreateRGB: " + GetError());
 	}
 
 	Surface::Surface(bool deletesurface)
@@ -337,7 +337,7 @@ namespace SDL
 				m_Surface = SDL_ConvertSurface(copy.m_Surface, copy.m_Surface->format, copy.m_Surface->flags);
 				// then copy the data here
 				if(!Blit(copy))
-					throw SDL::RuntimeError("Error copying a surface" + GetError());
+					throw RuntimeError("Error copying a surface" + GetError());
 			}
 		}
 
@@ -352,7 +352,7 @@ namespace SDL
 		m_Surface = surface;
 
 		if(m_Surface == NULL)
-			throw SDL::RuntimeError(GetError());
+			throw RuntimeError(GetError());
 
 		return *this;
 	}
@@ -421,10 +421,10 @@ namespace SDL
 	bool Surface::Blit(const Surface &src)
 	{
 		if(m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to Blit(const Surface)");
+			throw LogicError("m_Surface not intialized before call to Blit(const Surface)");
 
 		if(src.m_Surface == NULL)
-			throw SDL::LogicError("src.m_Surface not initialized before call to Blit(const Surface)");
+			throw LogicError("src.m_Surface not initialized before call to Blit(const Surface)");
 
 		if(SDL_BlitSurface(src.m_Surface, NULL, m_Surface, NULL) == 0)
 			return true;
@@ -435,10 +435,10 @@ namespace SDL
 	bool Surface::Blit(Rect &srcrect, const Surface &src)
 	{
 		if(m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to Blit(const Surface, Rect)");
+			throw LogicError("m_Surface not intialized before call to Blit(const Surface, Rect)");
 
 		if(src.m_Surface == NULL)
-			throw SDL::LogicError("src.m_Surface not initialized before call to Blit(Rect, const Surface, Rect)");
+			throw LogicError("src.m_Surface not initialized before call to Blit(Rect, const Surface, Rect)");
 
 		if(SDL_BlitSurface(src.m_Surface, &srcrect, m_Surface, NULL) == 0)
 			return true;
@@ -450,10 +450,10 @@ namespace SDL
 	bool Surface::Blit(const Surface &src, Rect &destrect)
 	{
 		if(m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to Blit(const Surface, Rect)");
+			throw LogicError("m_Surface not intialized before call to Blit(const Surface, Rect)");
 
 		if(src.m_Surface == NULL)
-			throw SDL::LogicError("src.m_Surface not initialized before call to Blit(const Surface, Rect)");
+			throw LogicError("src.m_Surface not initialized before call to Blit(const Surface, Rect)");
 
 		if(SDL_BlitSurface(src.m_Surface, NULL, m_Surface, &destrect) == 0)
 			return true;
@@ -464,10 +464,10 @@ namespace SDL
 	bool Surface::Blit(Rect &srcrect, const Surface &src, Rect &destrect)
 	{
 		if(m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to Blit(const Surface, Rect, Rect)");
+			throw LogicError("m_Surface not intialized before call to Blit(const Surface, Rect, Rect)");
 
 		if(src.m_Surface == NULL)
-			throw SDL::LogicError("src.m_Surface not initialized before call to Blit(const Surface, Rect, Rect)");
+			throw LogicError("src.m_Surface not initialized before call to Blit(const Surface, Rect, Rect)");
 
 		if(SDL_BlitSurface(src.m_Surface, &srcrect, m_Surface, &destrect) == 0)
 			return true;
@@ -478,10 +478,10 @@ namespace SDL
 	bool Blit(Rect &srcrect, const Surface &src, Rect &destrect, Surface &dest)
 	{
 		if(src.m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to Blit(const Surface, Rect, Surface, Rect)");
+			throw LogicError("m_Surface not intialized before call to Blit(const Surface, Rect, Surface, Rect)");
 
 		if(dest.m_Surface == NULL)
-			throw SDL::LogicError("dest.m_Surface not initialized before call to Blit(const Surface, Rect, Surface, Rect)");
+			throw LogicError("dest.m_Surface not initialized before call to Blit(const Surface, Rect, Surface, Rect)");
 
 		if(SDL_BlitSurface(src.m_Surface, &srcrect, dest.m_Surface, &destrect) == 0)
 			return true;
@@ -646,10 +646,10 @@ namespace SDL
 		{
 			Screen screen;
 			if(!GetVideoSurface(screen))
-				throw SDL::LogicError("You must not setup a Screen before calling GL::LibraryLoad");
+				throw LogicError("You must not setup a Screen before calling GL::LibraryLoad");
 
 			if(screen.m_Surface)
-				throw SDL::LogicError("You must not setup a Screen before calling GL::LibraryLoad");
+				throw LogicError("You must not setup a Screen before calling GL::LibraryLoad");
 
 			if(SDL_GL_LoadLibrary(path.c_str()) < 0)
 				return false;
@@ -661,10 +661,10 @@ namespace SDL
 		{
 			Screen screen;
 			if(!GetVideoSurface(screen))
-				throw SDL::LogicError("You must setup a Screen before calling GL::GetProcAddress");
+				throw LogicError("You must setup a Screen before calling GL::GetProcAddress");
 
 			if(!screen.m_Surface)
-				throw SDL::LogicError("You must setup a Screen before calling GL::GetGetProcAddress");
+				throw LogicError("You must setup a Screen before calling GL::GetGetProcAddress");
 
 			return SDL_GL_GetProcAddress(proc.c_str());
 		}
@@ -673,10 +673,10 @@ namespace SDL
 		{
 			Screen screen;
 			if(!GetVideoSurface(screen))
-				throw SDL::LogicError("You must setup a Screen before calling GL::GetAttribute");
+				throw LogicError("You must setup a Screen before calling GL::GetAttribute");
 
 			if(!screen.m_Surface)
-				throw SDL::LogicError("You must setup a Screen before calling GL::GetAttribute");
+				throw LogicError("You must setup a Screen before calling GL::GetAttribute");
 
 			if(SDL_GL_GetAttribute(attr, &value) < 0)
 				return false;
@@ -688,10 +688,10 @@ namespace SDL
 		{
 			Screen screen;
 			if(GetVideoSurface(screen))
-				throw SDL::LogicError("You must not setup a Screen before calling GL::SetAttribute");
+				throw LogicError("You must not setup a Screen before calling GL::SetAttribute");
 
 			if(screen.m_Surface)
-				throw SDL::LogicError("You must not setup a Screen before calling GL::SetAttribute");
+				throw LogicError("You must not setup a Screen before calling GL::SetAttribute");
 
 			if(SDL_GL_SetAttribute(attr, value) < 0)
 				return false;
@@ -824,11 +824,11 @@ namespace SDL
 	{
 		// Make sure icon has something in it
 		if(icon.Get() == NULL)
-			throw SDL::LogicError("icon not intialized before call to SetIcon()");
+			throw LogicError("icon not intialized before call to SetIcon()");
 		// and if the video surface in non-null
 		// this function isn't going to work
 		if(m_Surface != NULL)
-			throw SDL::LogicError("Screen.m_Surface already initialized, so this call to SetIcon() would have no purpose");
+			throw LogicError("Screen.m_Surface already initialized, so this call to SetIcon() would have no purpose");
 
 		SDL_WM_SetIcon(icon.Get(), mask);
 	}
@@ -843,7 +843,7 @@ namespace SDL
 	bool Screen::ToggleFullScreen()
 	{
 		if(m_Surface == NULL)
-			throw SDL::LogicError("m_Surface not intialized before call to ToggleFullScreen()");
+			throw LogicError("m_Surface not intialized before call to ToggleFullScreen()");
 		// done only to make sure the correct
 		// value is returned
 		int x = SDL_WM_ToggleFullScreen(m_Surface);
