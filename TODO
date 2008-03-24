@@ -2,3 +2,5 @@ check Surface ==, =, and != for correctness.
 finish documentation
 Check image/mixer to see if they're complete
 Make documentation installable
+Write tests for RWops class
+Write documentation for RWops class
