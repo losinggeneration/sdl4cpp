@@ -1,0 +1,10 @@
+SDL4Cpp:
+	Harley Laue <losinggeneration@aim.com>
+
+Event/Handle based off of SDLmm:
+	David Hedbor <david@hedbor.org>
+	Adam Gates <radad@xoasis.com> (general coding, Win32)
+
+SDL:
+	Sam Lantinga <slouken@libsdl.org>
+	and the many others who have done some great work making a solid API
