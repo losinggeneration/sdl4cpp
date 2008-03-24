@@ -13,6 +13,8 @@
 #include "SDL4Cpp_cdrom.h"
 #include "SDL4Cpp_mt.h"
 #include "SDL4Cpp_time.h"
+#include "SDL4Cpp_rwops.h"
+
 /*!
  *  \mainpage SDL4Cpp documentation
  *

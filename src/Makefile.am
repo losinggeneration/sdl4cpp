@@ -11,9 +11,10 @@ libSDL4Cpp_la_SOURCES = SDL4Cpp_audio.cpp \
 	SDL4Cpp_main.cpp \
 	SDL4Cpp_mt.cpp \
 	SDL4Cpp_time.cpp \
+	SDL4Cpp_rwops.cpp \
 	SDL4Cpp_video.cpp \
 	SDL4Cpp_wm.cpp \
-	SDL4Cpp_mouse.cpp	       
+	SDL4Cpp_mouse.cpp
 
 libSDL4Cppincludedir = $(includedir)/SDL4Cpp
 
