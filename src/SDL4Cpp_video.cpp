@@ -317,7 +317,7 @@ namespace SDL
 		if(m_Surface)
 		{
 			SDL_FreeSurface(m_Surface);
-			m_Surface = 0;
+			m_Surface = NULL;
 		}
 	}
 
@@ -327,10 +327,10 @@ namespace SDL
 		if(this != &copy)
 		{
 			// don't try blitting if the surface from copy is NULL
-			if(copy.m_Surface != NULL)
+			if(copy.m_Surface)
 			{
 				// Free the current surface if needed
-				if(m_Surface != NULL)
+				if(m_Surface)
 					Free();
 
 				// get the surface information from the copy
@@ -346,7 +346,7 @@ namespace SDL
 
 	Surface &Surface::operator =(SDL_Surface *surface)
 	{
-		if(m_Surface != NULL)
+		if(m_Surface)
 			Free();
 
 		m_Surface = surface;
@@ -512,7 +512,7 @@ namespace SDL
 
 	bool Surface::CreateRGB(Uint32 flags, int width, int height, int depth, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
 	{
-		if(m_Surface != NULL)
+		if(m_Surface)
 			Free();
 
 		m_Surface = SDL_CreateRGBSurface(flags, width, height, depth, Rmask, Gmask, Bmask, Amask);
@@ -525,7 +525,7 @@ namespace SDL
 
 	bool Surface::CreateRGBFrom(Surface &from, int width, int height, int depth, int pitch, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
 	{
-		if(m_Surface != NULL)
+		if(m_Surface)
 			Free();
 
 		m_Surface = SDL_CreateRGBSurfaceFrom(from.m_Surface, width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
@@ -874,7 +874,7 @@ namespace SDL
 
 	void Overlay::Create(int width, int height, Uint32 format, SDL_Surface *display)
 	{
-		if(m_Overlay != NULL)
+		if(m_Overlay)
 			Free();
 
 		m_Overlay = SDL_CreateYUVOverlay(width, height, format, display);
@@ -903,8 +903,11 @@ namespace SDL
 
 	void Overlay::Free()
 	{
-		if(m_Overlay != NULL)
+		if(m_Overlay)
+		{
 			SDL_FreeYUVOverlay(m_Overlay);
+			m_Overlay = NULL;
+		}
 	}
 }
 
