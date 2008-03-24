@@ -1,7 +1,7 @@
 SDL4Cpp:
 	Harley Laue <losinggeneration@aim.com>
 
-Event/Handle based off of SDLmm:
+Event/Handle based off documentation of SDLmm:
 	David Hedbor <david@hedbor.org>
 	Adam Gates <radad@xoasis.com> (general coding, Win32)
 
