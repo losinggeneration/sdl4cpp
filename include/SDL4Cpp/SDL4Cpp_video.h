@@ -1510,14 +1510,14 @@ namespace SDL
 			 * \return True if it was able to be displayed, False otherwise.
 			 */
 			bool Display(Rect &destrect);
-		protected:
+
 			/*!
 			 * \brief Free the Overlay.
 			 *
 			 * Documentation not written yet.
 			 */
 			void Free();
-
+		protected:
 			/*!
 			 * \brief The main data for this class.
 			 *
