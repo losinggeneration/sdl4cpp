@@ -5,7 +5,6 @@
 
 #include "SDL4Cpp_main.h"
 #include "SDL4Cpp_video.h"
-#include "SDL4Cpp_wm.h"
 #include "SDL4Cpp_events.h"
 #include "SDL4Cpp_joystick.h"
 #include "SDL4Cpp_mouse.h"
@@ -14,6 +13,7 @@
 #include "SDL4Cpp_mt.h"
 #include "SDL4Cpp_time.h"
 #include "SDL4Cpp_rwops.h"
+#include "SDL4Cpp_wm.h"
 
 /*!
  *  \mainpage SDL4Cpp documentation

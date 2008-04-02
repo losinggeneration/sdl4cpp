@@ -76,8 +76,14 @@ namespace SDL
 		GrabMode GrabInput(GrabMode mode)
 		{
 			return
-					static_cast<GrabMode>(SDL_WM_GrabInput(
-										  static_cast<SDL_GrabMode>(mode)));
+				static_cast<GrabMode>(SDL_WM_GrabInput(
+						  static_cast<SDL_GrabMode>(mode)));
+		}
+
+
+		bool GetWMInfo(SysWMinfo &info)
+		{
+			return static_cast<bool>(SDL_GetWMInfo(&info));
 		}
 	}
 }

@@ -18,8 +18,8 @@
 #define SDL4CPP_WM_H
 
 #include "SDL.h"
+#include "SDL_syswm.h"
 #include <string>
-
 
 namespace SDL
 {
@@ -49,6 +49,77 @@ namespace SDL
 		 * \endcode
 		 */
 		typedef SDL_GrabMode GrabMode;
+
+		/*!
+		 * \brief System-specific window-manager info
+		 *
+		 * This structure is filled in by SDL_GetWMInfo.
+		 *
+		 * \sa SDL_GetWMInfo
+		 *
+		 * \b Structure \b Definition
+		 * Generic
+		 * \code
+		 * typedef struct
+		 * {
+		 * 	SDL_version version;
+		 * 	int data;
+		 * } SDL_SysWMinfo;
+		 * \endcode
+		 * X11
+		 * \code
+		 * typedef enum
+		 * {
+		 * 	SDL_SYSWM_X11
+		 * } SDL_SYSWM_TYPE;
+		 *
+		 * typedef struct
+		 * {
+		 * 	SDL_version version;
+		 * 	SDL_SYSWM_TYPE subsystem;
+		 * 	union
+		 * 	{
+		 * 		struct
+		 * 		{
+		 * 			Display *display;       // The X11 display
+		 * 			Window window;          // The X11 display window
+		 * 			// These locking functions should be called around
+		 * 			// any X11 functions using the display variable.
+		 *			// They lock the event thread, so should not be
+		 *			// called around event functions or from event filters.
+		 *
+		 *			void (*lock_func)(void);
+		 *			void (*unlock_func)(void);
+		 *			// Introduced in SDL 1.0.2
+		 *			Window fswindow;        // The X11 fullscreen window
+		 *			Window wmwindow;        // The X11 managed input window
+		 *		} x11;
+		 *	} info;
+		 * } SDL_SysWMinfo;
+		 * \endcode
+		 * 
+		 * Windows
+		 * \code
+		 * typedef struct
+		 * {
+		 * 	SDL_version version;
+		 * 	HWND window;                    // The Win32 display window
+		 * 	HGLRC hglrc;                    // The OpenGL context, if any
+		 * } SDL_SysWMinfo;
+		 * \endcode
+		 * 
+		 * RISCOS
+		 * \code
+		 * typedef struct
+		 * {
+		 * 	SDL_version version;
+		 * 	int wimpVersion;    // Wimp version running under
+		 * 	int taskHandle;     // The RISCOS task handle
+		 * 	int window;         // The RISCOS display window
+		 * } SDL_SysWMinfo;
+		 * \endcode
+		 */
+		typedef SDL_SysWMinfo SysWMinfo;
 
 		/*!
 		 * \brief Sets the window tile and icon name.
@@ -120,6 +191,26 @@ namespace SDL
 		 * \return The current/new GrabMode.
 		 */
 		GrabMode GrabInput(GrabMode mode);
+
+		/*!
+		 * \brief Gets window-manager specific information, if available.
+		 *
+		 * This function fills in the structure pointed to by info with window-manager
+		 * specific information. The info.version field has to be set to the used SDL
+		 * version. Perhaps Windows specific: -1 on failure
+		 *
+		 * \return true if the function is implemented, false otherwise.
+		 * \sa SDL_SysWMInfo
+		 *
+		 * \code
+		 * // ... some code here ...
+		 * SDL_VERSION(&info.version); // this is important!
+		 * if (SDL_GetWMInfo(&info))
+		 * 	// ... structure manipulating code ...
+		 * // ... some code here ...
+		 * \endcode
+		 */
+		bool GetWMInfo(SysWMinfo &info);
 	}
 	//@}
 }
