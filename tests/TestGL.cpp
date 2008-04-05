@@ -78,19 +78,23 @@ int main(int argv, char *args[])
 	SDL::WM::SetCaption("OpenGL Test");
 
 	// Lets do some illegal things first and catch the errors
-	try {
+	try
+	{
 		void *test;
 		test = SDL::GL::GetProcAddress("glNormalPointer");
 	}
-	catch(SDL::LogicError e) {
+	catch(SDL::LogicError e)
+	{
 		std::cout << "Caught a throw: " << e.what() << std::endl;
 	}
 
-	try {
+	try
+	{
 		int x;
 		SDL::GL::GetAttribute(SDL_GL_DOUBLEBUFFER, x);
 	}
-	catch(SDL::LogicError e) {
+	catch(SDL::LogicError e)
+	{
 		std::cout  << "I'm on a roll: " << e.what() << std::endl;
 	}
 
@@ -113,20 +117,24 @@ int main(int argv, char *args[])
 	std::cout  << "---------------------------------" << std::endl;
 
 	// Couple more
-	try {
+	try
+	{
 		SDL::GL::LoadLibrary("libglib.so");
 	}
-	catch(SDL::LogicError e) {
+	catch(SDL::LogicError e)
+	{
 		std::cout << "Not loading an external GL Library: " << e.what()
 				<< std::endl;
 	}
 
 	// SetAttribute throws if the video mode is already setup
-	try {
+	try
+	{
 		SDL::GL::SetAttribute(SDL_GL_DOUBLEBUFFER, true);
 	}
 	// Here we'll use the standard logic_error
-	catch(std::logic_error e) {
+	catch(std::logic_error e)
+	{
 		std::cout  << "Caught a throw using std::logic_error instead: "
 				<< e.what() << std::endl;
 	}
@@ -134,7 +142,7 @@ int main(int argv, char *args[])
 	// Ok, let's do a little bit of OpenGL fun
 	// How about a rotating triangle (ok, not as fun, but it'll
 	// give beginers an idea how to do it.
-	int now, ticks;
+	int now, ticks = 0;
 	GLfloat angle = 0;
 	while(!handler)
 	{

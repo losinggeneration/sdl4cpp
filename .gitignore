@@ -28,3 +28,12 @@ sdl4cpp.pc
 src/libSDL4Cpp.la
 src/libSDL4Cpp_image.la
 src/libSDL4Cpp_mixer.la
+tests/TestEvents
+tests/TestGL
+tests/TestJoystick
+tests/TestKeyboard
+tests/TestMouse
+tests/TestVideo
+tests/TestWM
+tests/paddleball/paddleball
+
