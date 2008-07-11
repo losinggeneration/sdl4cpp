@@ -18,7 +18,7 @@
 #define SDL4CPP_JOYSTICK_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_joystick.h"
 
 
 namespace SDL

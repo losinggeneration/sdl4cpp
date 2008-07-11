@@ -18,7 +18,7 @@
 #define SDL4CPP_EVENTS_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_events.h"
 
 namespace SDL
 {

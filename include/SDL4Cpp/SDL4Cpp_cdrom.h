@@ -18,7 +18,7 @@
 #define SDL4CPP_CDROM_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_cdrom.h"
 
 namespace SDL
 {

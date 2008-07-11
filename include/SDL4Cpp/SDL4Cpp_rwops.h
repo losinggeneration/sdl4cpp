@@ -18,7 +18,7 @@
 #define SDL4CPP_RWOPS_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_rwops.h"
 
 namespace SDL
 {

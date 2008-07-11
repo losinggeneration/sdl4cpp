@@ -17,7 +17,6 @@
 #ifndef SDL4CPP_WM_H
 #define SDL4CPP_WM_H
 
-#include "SDL.h"
 #include "SDL_syswm.h"
 #include <string>
 

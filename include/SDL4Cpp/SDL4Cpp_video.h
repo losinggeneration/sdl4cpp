@@ -18,7 +18,7 @@
 #define SDL4CPP_VIDEO_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_video.h"
 
 
 namespace SDL

@@ -17,7 +17,7 @@
 #ifndef SDL4CPP_AUDIO_H
 #define SDL4CPP_AUDIO_H
 
-#include "SDL.h"
+#include "SDL_audio.h"
 #include <string>
 
 namespace SDL

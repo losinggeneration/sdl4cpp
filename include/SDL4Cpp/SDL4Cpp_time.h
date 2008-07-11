@@ -17,7 +17,7 @@
 #ifndef SDL4CPP_TIME_H
 #define SDL4CPP_TIME_H
 
-#include "SDL.h"
+#include "SDL_timer.h"
 #include <vector>
 
 

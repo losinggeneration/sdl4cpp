@@ -17,7 +17,6 @@
 #ifndef SDL4CPP_MT_H
 #define SDL4CPP_MT_H
 
-#include "SDL.h"
 #include "SDL_thread.h"
 
 

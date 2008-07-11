@@ -18,7 +18,7 @@
 #define SDL4CPP_MOUSE_H
 
 #include <string>
-#include "SDL.h"
+#include "SDL_mouse.h"
 
 
 namespace SDL
