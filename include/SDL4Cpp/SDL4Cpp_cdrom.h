@@ -19,6 +19,7 @@
 
 #include <string>
 #include "SDL_cdrom.h"
+#include "SDL.h"
 
 namespace SDL
 {
@@ -116,7 +117,7 @@ namespace SDL
 			 * \throws SDL::LogicError if the CD is not initialized before this
 			 * call
 			 */
-			CDstatus Status();
+			CDstatus DriveStatus();
 
 			/*!
 			 * \brief Returns a human-readable, system-dependent identifier for the CD-ROM.
@@ -183,7 +184,7 @@ namespace SDL
 			 * \throws SDL::LogicError if this CD is not initialized before
 			 * this call
 			 */
-			CDtrack GetCurrentTrack();
+			CDtrack CurrentTrack();
 
 			/*!
 			 * \brief Get all tracks information
@@ -193,7 +194,7 @@ namespace SDL
 			 * \throws SDL::LogicError if this CD is not initialized before
 			 * this call
 			 */
-			CDtrack *GetTracks();
+			CDtrack *Tracks();
 
 			/*!
 			 * \brief Pauses a CDROM

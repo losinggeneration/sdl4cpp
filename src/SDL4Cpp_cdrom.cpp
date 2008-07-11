@@ -63,7 +63,7 @@ namespace SDL
 		return static_cast<std::string>(SDL_CDName(m_Drive));
 	}
 
-	CDstatus CD::Status()
+	CDstatus CD::DriveStatus()
 	{
 		if(!m_CD)
 			throw SDL::LogicError("m_CD not initialized before call to CD::Status()");
@@ -92,12 +92,12 @@ namespace SDL
 
 		return false;
 	}
-	CDtrack CD::GetCurrentTrack()
+	CDtrack CD::CurrentTrack()
 	{
 		return m_CD->track[m_CD->cur_track];
 	}
 
-	CDtrack *CD::GetTracks()
+	CDtrack *CD::Tracks()
 	{
 		return m_CD->track;
 	}
