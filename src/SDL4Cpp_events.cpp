@@ -53,12 +53,12 @@ namespace SDL
 		return static_cast<std::string>(SDL_GetKeyName(key));
 	}
 
-	bool EnableUnicode(int enable)
+	bool Unicode(int enable)
 	{
 		return SDL_EnableUNICODE(enable);
 	}
 
-	bool EnableKeyRepeat(int delay, int interval)
+	bool KeyRepeat(int delay, int interval)
 	{
 		if(SDL_EnableKeyRepeat(delay, interval) == 0)
 			return true;

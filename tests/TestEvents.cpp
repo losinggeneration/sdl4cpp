@@ -32,7 +32,7 @@ class TestHandler : public SDL::Handle
 			if(keysym.sym == SDLK_u)
 			{
 				m_Unicode = !m_Unicode;
-				SDL::EnableUnicode(m_Unicode);
+				SDL::Unicode(m_Unicode);
 			}
 
 			if(keysym.sym == SDLK_r)
@@ -40,9 +40,9 @@ class TestHandler : public SDL::Handle
 				m_Repeat = !m_Repeat;
 
 				if(m_Repeat)
-					SDL::EnableKeyRepeat(25, 5);
+					SDL::KeyRepeat(25, 5);
 				else
-					SDL::EnableKeyRepeat(0, 0);
+					SDL::KeyRepeat(0, 0);
 			}
 
 			if(keysym.sym == SDLK_s)
@@ -247,7 +247,7 @@ class AllHandler : public SDL::Handle
 					if(event.key.keysym.sym == SDLK_u)
 					{
 						m_Unicode = !m_Unicode;
-						SDL::EnableUnicode(m_Unicode);
+						SDL::Unicode(m_Unicode);
 					}
 
 					if(event.key.keysym.sym == SDLK_r)
@@ -255,9 +255,9 @@ class AllHandler : public SDL::Handle
 						m_Repeat = !m_Repeat;
 
 						if(m_Repeat)
-							SDL::EnableKeyRepeat(25, 5);
+							SDL::KeyRepeat(25, 5);
 						else
-							SDL::EnableKeyRepeat(0, 0);
+							SDL::KeyRepeat(0, 0);
 					}
 
 					if(event.key.keysym.sym == SDLK_s)

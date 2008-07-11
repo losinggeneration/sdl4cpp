@@ -2336,7 +2336,7 @@ namespace SDL
 	 *
 	 * \return The previous translation mode False for off, True for on.
 	 */
-	bool EnableUnicode(int enable);
+	bool Unicode(int enable);
 	/*!
 	 * \brief Set keyboard repeat rate.
 	 *
@@ -2350,7 +2350,7 @@ namespace SDL
 	 *
 	 * \return True on success and False on failure.
 	 */
-	bool EnableKeyRepeat(int delay, int interval);
+	bool KeyRepeat(int delay, int interval);
 	/*!
 	 * \brief Retrieve the current state of the mouse
 	 *
