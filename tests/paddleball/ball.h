@@ -14,7 +14,7 @@ class Ball
 		void SetVel(int vx, int vy);
 		void Update();
 		SDL::Rect &Draw(SDL::Screen &screen);
-		SDL::Rect Get(int &vy, int &vy);
+		SDL::Rect Get(int &vx, int &vy);
 	private:
 		SDL::Surface m_Ball;
 		SDL::Rect m_Rect;
