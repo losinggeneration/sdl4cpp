@@ -82,7 +82,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  =  @srcdir@/ @srcdir@/../include/SDL4Cpp
+INPUT                  =  @SOURCE_DIR@/src @SOURCE_DIR@/include/SDL4Cpp
 FILE_PATTERNS          = *.cpp \
                          *.h 
 RECURSIVE              = NO
