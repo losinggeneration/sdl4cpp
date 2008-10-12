@@ -6,6 +6,10 @@ add_executable(paddleball
 	computer.cpp
 	main.cpp
 	paddle.cpp
-	score.cpp)
+	score.cpp
+	ball.h
+	computer.h
+	paddle.h
+	score.h)
 
 set_property(TARGET paddleball APPEND PROPERTY COMPILE_FLAGS "-I${INC} -I${SDL_INCLUDE_DIR} ${MIXER_FLAGS} ${IMAGE_FLAGS}")
