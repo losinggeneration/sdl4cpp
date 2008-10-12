@@ -5,6 +5,7 @@
 #include "paddle.h"
 #include "ball.h"
 
+// yes, a computer is a paddle
 class Computer : public Paddle
 {
 	public:
@@ -12,6 +13,7 @@ class Computer : public Paddle
 		Computer(int x, int y, int w, int h);
 		~Computer();
 
+		// See where the ball is and follow
 		void UpdateAI(Ball &ball);
 };
 

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include "paddle.h"
 
+// sets the default paddle
 Paddle::Paddle()
 {
 	if(!m_Paddle.LoadBMP("paddle.bmp"))
@@ -12,6 +13,7 @@ Paddle::Paddle()
 	vy = 0;
 }
 
+// set the default paddle with a movement
 Paddle::Paddle(int x, int y, int w, int h)
 {
 	if(!m_Paddle.LoadBMP("paddle.bmp"))
@@ -45,6 +47,7 @@ void Paddle::Move(int vy)
 	this->vy = vy;
 }
 
+// update the paddle position
 void Paddle::Update()
 {
 	// bad practice using a constant for the screen....
@@ -56,6 +59,7 @@ void Paddle::Update()
 
 }
 
+// draw the paddle and return the rect
 SDL::Rect &Paddle::Draw(SDL::Screen &screen)
 {
 	if(!screen.Blit(m_Paddle, m_Rect))

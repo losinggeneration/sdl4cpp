@@ -5,6 +5,7 @@ Score::Score()
 {
 	m_One = m_Two = 0;
 
+	// Sets up 10 blank Rects in the vector which are filled in via LoadNumbers
 	SDL::Rect empty;
 	for(int x = 0; x < 10; x++)
 		m_Images.push_back(empty);
@@ -24,6 +25,10 @@ Score::~Score()
 
 void Score::Draw(SDL::Screen &screen, SDL::Rect &one, SDL::Rect &two)
 {
+	/*
+	 * Basically the idea here is that we blit the protion of the m_Numbers
+	 * bitmap to the screen and set tho location of one/two to ScoreOneLocation
+	 */
 	switch(m_One)
 	{
 		case 0:
@@ -115,17 +120,23 @@ void Score::Draw(SDL::Screen &screen, SDL::Rect &one, SDL::Rect &two)
 
 void Score::LoadNumbers()
 {
+	// load the bitmap or exit on error
 	if(!m_Numbers.LoadBMP("numbers.bmp"))
 	{
 		std::cerr << "Encountered the following error: " << SDL::GetError() << std::endl;
 		exit(1);
 	}
 
+	// initial possition of the tile
 	int posx = 0;
 	int posy = 1;
 	int sizex = 8;
 	int sizey = 11;
 
+	// Perhaps this should be
+	// if(m_Images.empty())
+	// 		exit(1);
+	// since an empty m_Images idicates an allocation error
 	if(!m_Images.empty())
 	{
 		for(int x = 0; x < 10; x++)

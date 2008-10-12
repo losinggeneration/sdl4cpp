@@ -7,14 +7,17 @@
 
 #include <SDL4Cpp.h>
 
+// Input handler
 class HandleInput : public SDL::Handle
 {
 	public:
+		// takes a paddle to update on key presses
 		HandleInput(Paddle &paddle) : m_Paddle(paddle)
 		{
 			m_Quit = false;
 		}
 
+		// move while a key is pressed
 		bool KeyPressed(SDL::KeySym &keysym)
 		{
 			if(keysym.sym == SDLK_UP ||  keysym.sym == SDLK_q)
@@ -29,18 +32,21 @@ class HandleInput : public SDL::Handle
 			return true;
 		}
 
+		// stop movement on release
 		bool KeyReleased(SDL::KeySym &keysym)
 		{
 			m_Paddle.Move(0);
 			return true;
 		}
 
+		// so we can do things like if(HandleInput)
 		operator bool()
 		{
 			return m_Quit;
 		}
 	private:
 		Paddle &m_Paddle;
+		// true if we should quit
 		bool m_Quit;
 };
 
@@ -48,14 +54,17 @@ void Setup()
 {
 	SDL::Screen screen;
 
+	// Initialize SDL
 	if(!SDL::Init(SDL_INIT_VIDEO))
 	{
 		std::cerr <<  "Encountered the following error: " << SDL::GetError() << std::endl;
 		exit(1);
 	}
 
+	// Set the caption if we can
 	SDL::WM::SetCaption("Paddle Ball SDL4Cpp example", "");
 
+	// Set the video mode
 	if(!screen.SetVideoMode(640, 480, 32, SDL_DOUBLEBUF|SDL_HWSURFACE))
 	{
 		std::cerr <<  "Encountered the following error: " << SDL::GetError() << std::endl;
@@ -165,6 +174,7 @@ void Game()
 		updaterects[2] = playerone.Draw(screen);
 		score.Draw(screen, updaterects[3], updaterects[4]);
 
+		// see if we're double buffering, if so, do a screen Flip
 		if((screen.Get()->flags & SDL_DOUBLEBUF) == SDL_DOUBLEBUF)
 			screen.Flip();
 		else
@@ -181,6 +191,7 @@ void Game()
 
 int main(int argv, char *argc[])
 {
+	// Does this really need any explaination?
 	Setup();
 
 	Game();

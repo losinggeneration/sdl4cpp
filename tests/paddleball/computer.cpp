@@ -12,6 +12,7 @@ Computer::~Computer()
 {
 }
 
+// pretty simple stuff, check out the ball and move the paddle accordingly
 void Computer::UpdateAI(Ball &ball)
 {
 	int x, y;

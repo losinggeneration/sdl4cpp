@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ball.h"
 
+// load the paddle image and setup the ball if called
 Ball::Ball()
 {
 	if(!m_Ball.LoadBMP("ball.bmp"))
@@ -35,12 +36,14 @@ void Ball::Set(int x, int y, int w, int h, int vx, int vy)
 	this->vy = vy;
 }
 
+// velocity of the ball
 void Ball::SetVel(int vx, int vy)
 {
 	this->vx = vx;
 	this->vy = vy;
 }
 
+// update ball logic (bounds and velocity inversing if needed)
 void Ball::Update()
 {
 	// check bounds
@@ -56,12 +59,14 @@ void Ball::Update()
 		vy *= -1;
 }
 
+// simply draw the ball and return the rect
 SDL::Rect &Ball::Draw(SDL::Screen &screen)
 {
 	screen.Blit(m_Ball, m_Rect);
 	return m_Rect;
 }
 
+// get's the ball's velocity and returns the rect of the ball
 SDL::Rect Ball::Get(int &vx, int &vy)
 {
 	vx = this->vx;
