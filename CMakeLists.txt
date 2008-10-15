@@ -55,6 +55,15 @@ configure_file(
   "${CMAKE_CURRENT_BINARY_DIR}/sdl4cpp.pc"
   IMMEDIATE @ONLY)
 
+install(FILES
+	${CMAKE_CURRENT_BINARY_DIR}/sdl4cpp.pc
+
+	DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pkgconfig)
+
+set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include)
+set(LIB_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
+
 add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(docs)
+add_subdirectory(include)
