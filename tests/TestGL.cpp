@@ -6,8 +6,7 @@
 #include <string>
 
 #include "SDL4Cpp.h"
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include "SDL_opengl.h"
 
 void Extensions()
 {
