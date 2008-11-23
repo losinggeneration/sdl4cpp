@@ -4,3 +4,6 @@ Check image/mixer to see if they're complete
 Make documentation installable
 Write tests for RWops class
 Write documentation for RWops class
+Make CMake -Wall or perhaps just -Weffc++ optional
+Make it optional for -pedantic-errors and -Werror to be turned on easily
+Fix/implement XXX/TODO's
