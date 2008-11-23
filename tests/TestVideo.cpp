@@ -32,9 +32,8 @@ int main(int argv, char *args[])
 	class handler : public SDL::Handle
 	{
 		public:
-			handler()
+			handler() : stop(false)
 			{
-				stop = false;
 			}
 
 			bool KeyPressed(SDL::KeySym &keysym)

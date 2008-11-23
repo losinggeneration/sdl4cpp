@@ -24,22 +24,30 @@ namespace SDL
 		return SDL_NumJoysticks();
 	}
 
-	Joystick::Joystick(void)
+	Joystick::Joystick(void) : m_Joystick(NULL), m_Index(-1)
 	{
-		m_Joystick = NULL;
-		m_Index = -1;
 	}
 
-	Joystick::Joystick(int index)
+	Joystick::Joystick(int index) : m_Joystick(NULL), m_Index(-1)
 	{
 		if(!Open(index))
 			throw SDL::RuntimeError(GetError());
+	}
+
+	Joystick::Joystick(const Joystick &copy) : m_Joystick(NULL), m_Index(-1)
+	{
+		// XXX TODO
 	}
 
 	Joystick::~Joystick(void)
 	{
 		if(!Close())
 			throw SDL::RuntimeError(GetError());
+	}
+
+	Joystick &Joystick::operator =(const Joystick &copy)
+	{
+		// XXX TODO
 	}
 
 	bool Joystick::Open(int index)

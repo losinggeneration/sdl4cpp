@@ -68,6 +68,10 @@ namespace SDL
 			 *
 			 */
 			~Cursor();
+			/*!
+			 * Copy Cursor
+			 */
+			Cursor &operator =(const Cursor &copy);
 
 			/*!
 			 * \brief Creates a new mouse cursor.

@@ -71,7 +71,6 @@ namespace SDL
 
 	Rect::Rect()
 	{
-		x = y = h = w = 0;
 	}
 
 	Rect::Rect(const Rect &rect)
@@ -81,10 +80,10 @@ namespace SDL
 
 	Rect::Rect(int x, int y, int w, int h)
 	{
-		this->x = x;
-		this->y = y;
-		this->w = w;
-		this->h = h;
+		x = x;
+		y = y;
+		w = w;
+		h = h;
 	}
 
 	Rect::Rect(const SDL_Rect &rect)
@@ -98,8 +97,8 @@ namespace SDL
 
 	bool Rect::operator ==(const SDL_Rect &rect)
 	{
-		 return (x == rect.x) && (y == rect.y) && (w == rect.w) &&
-			                         (h == rect.h);
+		 return (x == rect.x) && (y == rect.y) &&
+			(w == rect.w) && (h == rect.h);
 	}
 
 	bool Rect::operator !=(const SDL_Rect &rect)
@@ -120,7 +119,7 @@ namespace SDL
 		return *this;
 	}
 
-	Rect &Rect::operator +(const SDL_Rect &rect)
+	Rect Rect::operator +(const SDL_Rect &rect)
 	{
 		x += rect.x;
 		y += rect.y;
@@ -130,7 +129,7 @@ namespace SDL
 		return *this;
 	}
 
-	Rect &Rect::operator -(const SDL_Rect &rect)
+	Rect Rect::operator -(const SDL_Rect &rect)
 	{
 		x -= rect.x;
 		y -= rect.y;
@@ -143,8 +142,8 @@ namespace SDL
 	// Compare two Rect's
 	bool Rect::operator ==(const Rect &rect)
 	{
-		return (x == rect.x) && (y == rect.y) && (w == rect.w) &&
-			(h == rect.h);
+		return (x == rect.x) && (y == rect.y) &&
+			(w == rect.w) && (h == rect.h);
 	}
 
 	bool Rect::operator !=(const Rect &rect)
@@ -185,7 +184,7 @@ namespace SDL
 		return *this;
 	}
 
-	Rect &Rect::operator +(const Rect &rect)
+	Rect Rect::operator +(const Rect &rect)
 	{
 		x += rect.x;
 		y += rect.y;
@@ -195,7 +194,7 @@ namespace SDL
 		return *this;
 	}
 
-	Rect &Rect::operator -(const Rect &rect)
+	Rect Rect::operator -(const Rect &rect)
 	{
 		x -= rect.x;
 		y -= rect.y;
@@ -243,15 +242,12 @@ namespace SDL
 		return false;
 	}
 
-	Surface::Surface()
+	Surface::Surface() : m_Surface(NULL), m_DeleteSurface(true)
 	{
-		m_Surface = NULL;
-		m_DeleteSurface = true;
 	}
 
-	Surface::Surface(const Surface &copy)
+	Surface::Surface(const Surface &copy) : m_Surface(NULL), m_DeleteSurface(true)
 	{
-		m_DeleteSurface = true;
 		if(copy.m_Surface != NULL)
 		{
 			// get the surface information from this
@@ -264,20 +260,14 @@ namespace SDL
 			throw LogicError("Surface's m_Surface passed to constructor was NULL");
 	}
 
-	Surface::Surface(SDL_Surface *surface)
+	Surface::Surface(SDL_Surface *surface) : m_Surface(surface), m_DeleteSurface(true)
 	{
-		m_DeleteSurface = true;
-		m_Surface = surface;
-
 		if(m_Surface == NULL)
 			throw LogicError("SDL_Surface passed to constructor was NULL");
 	}
 
-	Surface::Surface(int w, int h, int bpp, Uint32 flags)
+	Surface::Surface(int w, int h, int bpp, Uint32 flags) : m_Surface(NULL), m_DeleteSurface(true)
 	{
-		m_DeleteSurface = true;
-		m_Surface = NULL;
-
 		Uint32 Rmask, Gmask, Bmask, Amask;
 
 		/* SDL interprets each pixel as a 32-bit number, so our masks must depend
@@ -298,10 +288,8 @@ namespace SDL
 			throw RuntimeError("Error creating surface with CreateRGB: " + GetError());
 	}
 
-	Surface::Surface(bool deletesurface)
+	Surface::Surface(bool deletesurface) : m_Surface(NULL), m_DeleteSurface(deletesurface)
 	{
-		m_DeleteSurface = deletesurface;
-		m_Surface = NULL;
 	}
 
 	Surface::~Surface()
@@ -851,18 +839,17 @@ namespace SDL
 
 		return true;
 	}
-	Overlay::Overlay()
-	{
-		m_Overlay = NULL;
-	}
-
-	Overlay::Overlay(const Overlay &copy)
+	Overlay::Overlay() : m_Overlay(NULL)
 	{
 	}
 
-	Overlay::Overlay(SDL_Overlay *overlay)
+	Overlay::Overlay(const Overlay &copy) : m_Overlay(NULL)
 	{
-		m_Overlay = overlay;
+		// XXX TODO
+	}
+
+	Overlay::Overlay(SDL_Overlay *overlay) : m_Overlay(overlay)
+	{
 	}
 
 	Overlay::~Overlay()

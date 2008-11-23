@@ -70,10 +70,8 @@ int main(int argv, char *args[])
 		private:
 			bool m_Stop, m_Direction;
 		public:
-		Handler()
+		Handler() : m_Stop(false), m_Direction(false)
 		{
-			m_Stop = false;
-			m_Direction = false;
 		}
 		bool KeyPressed(SDL::KeySym &keysym)
 		{

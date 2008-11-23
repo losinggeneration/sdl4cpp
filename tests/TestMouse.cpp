@@ -102,7 +102,7 @@ int main(int argv, char *args[])
 	class handler : public SDL::Handle
 	{
 		public:
-			handler() : quit(false), isarrow(false)
+			handler() : quit(false), isarrow(false), cursor(0)
 			{
 			}
 

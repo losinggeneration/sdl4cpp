@@ -67,12 +67,22 @@ namespace SDL
 			 */
 			Joystick(int index);
 			/*!
+			 * Copy constructor
+			 */
+			Joystick(const Joystick &copy);
+
+			/*!
 			 * \brief Deconstructor
 			 *
 			 * Frees the current joystick
 			 * \throws SDL::RuntimeError if that joystick isn't freed
 			 */
 			~Joystick(void);
+
+			/*!
+			 * Copy
+			 */
+			Joystick &operator =(const Joystick &copy);
 
 			/*!
 			 * \brief Opens a joystick for use.

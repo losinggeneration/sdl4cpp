@@ -30,12 +30,11 @@ namespace SDL
 		return SDL_ShowCursor(toggle);
 	}
 
-	Cursor::Cursor()
+	Cursor::Cursor() : m_Cursor(NULL)
 	{
-		m_Cursor = NULL;
 	}
 
-	Cursor::Cursor(const Cursor &cursor)
+	Cursor::Cursor(const Cursor &cursor) : m_Cursor(NULL)
 	{
 		memcpy(&m_Cursor->area, &cursor.m_Cursor->area, sizeof(SDL_Rect));
 
@@ -48,13 +47,18 @@ namespace SDL
 
 	}
 
-	Cursor::Cursor(const char *image[])
+	Cursor::Cursor(const char *image[]) : m_Cursor(NULL)
 	{
 		Set(image);
 	}
 
 	Cursor::~Cursor()
 	{
+	}
+
+	Cursor &Cursor::operator =(const Cursor &cursor)
+	{
+		// XXX TODO: could probably copy the copy constructor and use = in there
 	}
 
 	bool Cursor::Create(Uint8 &data, Uint8 &mask, int w, int h, int hot_x, int hot_y)

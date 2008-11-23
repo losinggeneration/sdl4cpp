@@ -62,7 +62,7 @@ int main(int argv, char *args[])
 		private:
 			bool m_Stop;
 		public:
-			Handler() { m_Stop = false; }
+			Handler() : m_Stop(false) {}
 			bool KeyPressed(SDL::KeySym &keysym)
 			{
 				if(keysym.sym != 0)

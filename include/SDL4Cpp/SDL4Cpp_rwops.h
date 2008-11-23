@@ -35,7 +35,10 @@ namespace SDL
 		public:
 			RWops();
 			RWops(const std::string file, const std::string mode);
+			RWops(const RWops &copy);
 			~RWops();
+
+			RWops &operator =(const RWops &copy);
 
 			bool FromFile(const std::string file, const std::string mode);
 

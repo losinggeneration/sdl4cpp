@@ -52,6 +52,8 @@ namespace SDL
 	 * </pre>
 	 * \endhtmlonly
 	 */
+	// XXX
+	// TODO redo this so it doesn't inherit a struct
 	class Rect : public SDL_Rect
 	{
 		public:
@@ -118,7 +120,7 @@ namespace SDL
 			 * \return The Rect that is the addition of all values of the Rect
 			 * and the SDL_Rect.
 			 */
-			Rect &operator +(const SDL_Rect &rect);
+			Rect operator +(const SDL_Rect &rect);
 
 			/*!
 			 * \brief Subtracts an SDL_Rect and Rect.
@@ -126,7 +128,7 @@ namespace SDL
 			 * \return The Rect that is the subtraction of all values of Rect
 			 * from Rect.
 			 */
-			Rect &operator -(const SDL_Rect &rect);
+			Rect operator -(const SDL_Rect &rect);
 
 			/*!
 			 * \brief Comparison between twe Rects.
@@ -171,7 +173,7 @@ namespace SDL
 			 * \return The Rect that is the addition of all values of the Rect
 			 * and rect.
 			 */
-			Rect &operator +(const Rect &rect);
+			Rect operator +(const Rect &rect);
 
 			/*!
 			 * \brief Subtracts a rect from Rect.
@@ -179,7 +181,7 @@ namespace SDL
 			 * \return The Rect that is the subtraction of all values of rect
 			 * from Rect.
 			 */
-			Rect &operator -(const Rect &rect);
+			Rect operator -(const Rect &rect);
 	};
 
 	/*!
@@ -1477,6 +1479,11 @@ namespace SDL
 			 * Documentation not written yet.
 			 */
 			~Overlay();
+
+			/*!
+			 * \brief Create a copy of an Overlay
+			 */
+			Overlay &operator =(const Overlay &copy);
 
 			/*!
 			 * \brief Create an Overlay.

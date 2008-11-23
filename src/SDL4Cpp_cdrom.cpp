@@ -24,13 +24,11 @@ namespace SDL
 		return SDL_CDNumDrives();
 	}
 
-	CD::CD()
+	CD::CD() : m_CD(NULL), m_Drive(-1)
 	{
-		m_CD = NULL;
-		m_Drive = -1;
 	}
 
-	CD::CD(int drive)
+	CD::CD(int drive) : m_CD(NULL), m_Drive(-1)
 	{
 		if(!Open(drive))
 			throw SDL::RuntimeError(GetError());

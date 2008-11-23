@@ -75,9 +75,19 @@ namespace SDL
 			 */
 			CD(int drive);
 			/*!
+			 * Copy constructor
+			 */
+			CD(const CD &copy);
+
+			/*!
 			 * Destructor that deals with freeing m_CD
 			 */
 			~CD();
+
+			/*!
+			 * Overloaded equals for copying
+			 */
+			CD &operator =(const CD &copy);
 
 			/*!
 			 * \brief Opens a CD-ROM drive for access.

@@ -19,20 +19,29 @@
 
 namespace SDL
 {
-	RWops::RWops()
+	RWops::RWops() : m_RWops(NULL)
 	{
-		m_RWops = NULL;
 	}
 
-	RWops::RWops(const std::string file, const std::string mode)
+	RWops::RWops(const std::string file, const std::string mode) : m_RWops(NULL)
 	{
 		if(!FromFile(file, mode))
 			throw RuntimeError("RWOps(const std::string file, const std::string mode) failed to load file");
 	}
 
+	RWops::RWops(const RWops &copy) : m_RWops(NULL)
+	{
+		// XXX TODO
+	}
+
 	RWops::~RWops()
 	{
 		Free();
+	}
+
+	RWops &RWops::operator =(const RWops &copy)
+	{
+		// XXX TODO
 	}
 
 	bool RWops::FromFile(const std::string file, const std::string mode)
