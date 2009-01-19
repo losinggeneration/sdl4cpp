@@ -36,11 +36,13 @@ namespace SDL
 
 	Cursor::Cursor(const Cursor &cursor) : m_Cursor(NULL)
 	{
+		// XXX TODO no error checking here to make sure area is valid
 		memcpy(&m_Cursor->area, &cursor.m_Cursor->area, sizeof(SDL_Rect));
 
 		m_Cursor->hot_x = cursor.m_Cursor->hot_x;
 		m_Cursor->hot_y = cursor.m_Cursor->hot_y;
 
+		// XXX TODO should there be some sanity checks here too?
 		memcpy(m_Cursor->data, cursor.m_Cursor->data, sizeof(cursor.m_Cursor->data));
 		memcpy(m_Cursor->mask, cursor.m_Cursor->mask, sizeof(cursor.m_Cursor->mask));
 		memcpy(m_Cursor->save, cursor.m_Cursor->save, sizeof(cursor.m_Cursor->save));
@@ -58,7 +60,7 @@ namespace SDL
 
 	Cursor &Cursor::operator =(const Cursor &cursor)
 	{
-		// XXX TODO: could probably copy the copy constructor and use = in there
+		// XXX TODO could probably copy the copy constructor and use = in there
 	}
 
 	bool Cursor::Create(Uint8 &data, Uint8 &mask, int w, int h, int hot_x, int hot_y)

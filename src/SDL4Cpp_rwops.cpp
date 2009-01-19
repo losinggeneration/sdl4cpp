@@ -31,7 +31,7 @@ namespace SDL
 
 	RWops::RWops(const RWops &copy) : m_RWops(NULL)
 	{
-		// XXX TODO
+		// XXX TODO RWops Copy constructor
 	}
 
 	RWops::~RWops()
@@ -41,7 +41,7 @@ namespace SDL
 
 	RWops &RWops::operator =(const RWops &copy)
 	{
-		// XXX TODO
+		// XXX TODO RWops equals operator
 	}
 
 	bool RWops::FromFile(const std::string file, const std::string mode)

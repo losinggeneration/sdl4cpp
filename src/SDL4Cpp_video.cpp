@@ -845,7 +845,7 @@ namespace SDL
 
 	Overlay::Overlay(const Overlay &copy) : m_Overlay(NULL)
 	{
-		// XXX TODO
+		// XXX TODO Overlay copy constructor... Should there be an equal operator too?
 	}
 
 	Overlay::Overlay(SDL_Overlay *overlay) : m_Overlay(overlay)

@@ -52,8 +52,7 @@ namespace SDL
 	 * </pre>
 	 * \endhtmlonly
 	 */
-	// XXX
-	// TODO redo this so it doesn't inherit a struct
+	// XXX TODO redo this so it doesn't inherit a struct
 	class Rect : public SDL_Rect
 	{
 		public:

@@ -36,7 +36,7 @@ namespace SDL
 
 	Joystick::Joystick(const Joystick &copy) : m_Joystick(NULL), m_Index(-1)
 	{
-		// XXX TODO
+		// XXX TODO Joystick copy constructor
 	}
 
 	Joystick::~Joystick(void)
@@ -47,7 +47,7 @@ namespace SDL
 
 	Joystick &Joystick::operator =(const Joystick &copy)
 	{
-		// XXX TODO
+		// XXX TODO Joystick equals operator
 	}
 
 	bool Joystick::Open(int index)
