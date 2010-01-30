@@ -50,6 +50,7 @@ int main(int argv, char *args[])
 	SDL::Screen screen;
 	screen.SetVideoMode(640, 480, 32, SDL_HWSURFACE|SDL_DOUBLEBUF);
 
+	std::cout << "Press the left Control + c to exit" << std::endl;
 	while(!eventhandler)
 		events.Poll(eventhandler);
 
