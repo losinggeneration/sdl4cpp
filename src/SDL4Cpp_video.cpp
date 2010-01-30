@@ -80,10 +80,10 @@ namespace SDL
 
 	Rect::Rect(int x, int y, int w, int h)
 	{
-		x = x;
-		y = y;
-		w = w;
-		h = h;
+		this->x = x;
+		this->y = y;
+		this->w = w;
+		this->h = h;
 	}
 
 	Rect::Rect(const SDL_Rect &rect)
