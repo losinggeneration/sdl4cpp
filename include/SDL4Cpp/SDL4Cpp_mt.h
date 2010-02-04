@@ -140,7 +140,7 @@ namespace SDL
 		 *  \return The return code for the thread function is placed in the
 		 * area pointed to by status, if status is not NULL.
 		 */
-		void WaitThread(Thread *thread, int &status);
+		void WaitThread(Thread *thread, int *status);
 		/*!
 		 * Gracelessly terminates the thread.
 		 *
