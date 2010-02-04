@@ -509,7 +509,9 @@ namespace SDL
 	{
 		SDL_Event e;
 		e.type = SDL_USEREVENT;
-		e.user = event;
+		e.user.code = event.code;
+		e.user.data1 = event.data1;
+		e.user.data2 = event.data2;
 
 		if(SDL_PushEvent(&e) == 0)
 			return true;
