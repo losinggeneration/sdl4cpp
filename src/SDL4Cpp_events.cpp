@@ -386,9 +386,10 @@ namespace SDL
 
 	bool Event::Push(ActiveEvent &event)
 	{
-		m_Event.active = event;
+		SDL_Event e;
+		e.active = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -396,9 +397,10 @@ namespace SDL
 
 	bool Event::Push(KeyboardEvent &event)
 	{
-		m_Event.key = event;
+		SDL_Event e;
+		e.key = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -406,9 +408,10 @@ namespace SDL
 
 	bool Event::Push(MouseMotionEvent &event)
 	{
-		m_Event.motion = event;
+		SDL_Event e;
+		e.motion = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -416,9 +419,10 @@ namespace SDL
 
 	bool Event::Push(MouseButtonEvent &event)
 	{
-		m_Event.button = event;
+		SDL_Event e;
+		e.button = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -426,9 +430,10 @@ namespace SDL
 
 	bool Event::Push(JoyAxisEvent &event)
 	{
-		m_Event.jaxis = event;
+		SDL_Event e;
+		e.jaxis = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -436,9 +441,10 @@ namespace SDL
 
 	bool Event::Push(JoyButtonEvent &event)
 	{
-		m_Event.jbutton = event;
+		SDL_Event e;
+		e.jbutton = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -446,9 +452,10 @@ namespace SDL
 
 	bool Event::Push(JoyHatEvent &event)
 	{
-		m_Event.jhat = event;
+		SDL_Event e;
+		e.jhat = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -456,9 +463,10 @@ namespace SDL
 
 	bool Event::Push(JoyBallEvent &event)
 	{
-		m_Event.jball = event;
+		SDL_Event e;
+		e.jball = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -466,9 +474,10 @@ namespace SDL
 
 	bool Event::Push(ResizeEvent &event)
 	{
-		m_Event.resize = event;
+		SDL_Event e;
+		e.resize = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -476,9 +485,10 @@ namespace SDL
 
 	bool Event::Push(ExposeEvent &event)
 	{
-		m_Event.expose = event;
+		SDL_Event e;
+		e.expose = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -486,9 +496,10 @@ namespace SDL
 
 	bool Event::Push(SysWMEvent &event)
 	{
-		m_Event.syswm = event;
+		SDL_Event e;
+		e.syswm = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
@@ -496,9 +507,11 @@ namespace SDL
 
 	bool Event::Push(UserEvent &event)
 	{
-		m_Event.user = event;
+		SDL_Event e;
+		e.type = SDL_USEREVENT;
+		e.user = event;
 
-		if(SDL_PushEvent(&m_Event) == 0)
+		if(SDL_PushEvent(&e) == 0)
 			return true;
 		else
 			return false;
