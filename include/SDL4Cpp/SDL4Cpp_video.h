@@ -717,6 +717,11 @@ namespace SDL
 			bool CreateRGB(Uint32 flags, int width, int height, int depth,
 						   Uint32 Rmask, Uint32 Gmask, Uint32 Bmask,
 						   Uint32 Amask);
+			/*!
+			 * Just like CreateRGB except all parameters come from from
+			 * \see CreateRGB
+			 */
+			bool CreateRGB(Surface &from);
 
 			/*!
 			 * Documention not written yet.
@@ -724,6 +729,12 @@ namespace SDL
 			bool CreateRGBFrom(const Surface &from, int width, int height, int depth,
 							   int pitch, Uint32 Rmask, Uint32 Gmask,
 							   Uint32 Bmask, Uint32 Amask);
+			/*!
+			 * Just like CreateRGBFrom except all parameters come from from
+			 * \see CreateRGBFrom
+			 */
+			bool CreateRGBFrom(Surface &from);
+
 			/*!
 			 * Documention not written yet.
 			 */

@@ -514,12 +514,42 @@ namespace SDL
 		return true;
 	}
 
+	bool Surface::CreateRGB(Surface &from)
+	{
+		SDL_Surface *s = *from;
+		SDL_PixelFormat *p = s->format;
+		if(m_Surface)
+			Free();
+
+		m_Surface = SDL_CreateRGBSurface(s->flags, s->w, s->h, p->BitsPerPixel, p->Rmask, p->Gmask, p->Bmask, p->Amask);
+
+		if(m_Surface == NULL)
+			return false;
+
+		return true;
+	}
+
 	bool Surface::CreateRGBFrom(const Surface &from, int width, int height, int depth, int pitch, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
 	{
 		if(m_Surface)
 			Free();
 
 		m_Surface = SDL_CreateRGBSurfaceFrom(from.m_Surface, width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
+
+		if(m_Surface == NULL)
+			return false;
+
+		return true;
+	}
+
+	bool Surface::CreateRGBFrom(Surface &from)
+	{
+		SDL_Surface *s = *from;
+		SDL_PixelFormat *p = s->format;
+		if(m_Surface)
+			Free();
+
+		m_Surface = SDL_CreateRGBSurfaceFrom(s, s->w, s->h, p->BitsPerPixel, s->pitch, p->Rmask, p->Gmask, p->Bmask, p->Amask);
 
 		if(m_Surface == NULL)
 			return false;
