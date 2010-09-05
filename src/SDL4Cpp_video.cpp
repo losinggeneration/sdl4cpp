@@ -320,7 +320,7 @@ namespace SDL
 					Free();
 
 				// get the surface information from the copy
-				m_Surface = SDL_ConvertSurface(copy.m_Surface, copy.m_Surface->format, copy.m_Surface->flags);
+				Convert((SDL::Surface &)copy);
 				// then copy the data here
 				if(!Blit(copy))
 					throw RuntimeError("Error copying a surface" + GetError());
@@ -402,6 +402,11 @@ namespace SDL
 			return false;
 
 		return true;
+	}
+
+	SDL_Surface *Surface::operator *()
+	{
+		return Get();
 	}
 
 	bool Surface::Blit(const Surface &src)
@@ -509,7 +514,7 @@ namespace SDL
 		return true;
 	}
 
-	bool Surface::CreateRGBFrom(Surface &from, int width, int height, int depth, int pitch, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
+	bool Surface::CreateRGBFrom(const Surface &from, int width, int height, int depth, int pitch, Uint32 Rmask, Uint32 Gmask, Uint32 Bmask, Uint32 Amask)
 	{
 		if(m_Surface)
 			Free();
@@ -524,7 +529,7 @@ namespace SDL
 
 	bool Surface::Convert(Surface &surface)
 	{
-		m_Surface = SDL_ConvertSurface(surface.Get(), surface.Get()->format, surface.Get()->flags);
+		m_Surface = SDL_ConvertSurface(*surface, (*surface)->format, (*surface)->flags);
 
 		if(m_Surface == NULL)
 			return false;
@@ -809,14 +814,14 @@ namespace SDL
 	void Screen::SetIcon(Surface &icon, Uint8 *mask)
 	{
 		// Make sure icon has something in it
-		if(icon.Get() == NULL)
+		if(*icon == NULL)
 			throw LogicError("icon not intialized before call to SetIcon()");
 		// and if the video surface in non-null
 		// this function isn't going to work
 		if(m_Surface != NULL)
 			throw LogicError("Screen.m_Surface already initialized, so this call to SetIcon() would have no purpose");
 
-		SDL_WM_SetIcon(icon.Get(), mask);
+		SDL_WM_SetIcon(*icon, mask);
 	}
 
 	void Screen::SetIcon(std::string iconname, Uint8 *mask)

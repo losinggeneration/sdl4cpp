@@ -639,6 +639,14 @@ namespace SDL
 			bool operator !=(Surface &compare);
 
 			/*!
+			 * \brief Gets the SDL_Surface
+			 *
+			 * \return the SDL_Surface that's associated with this object
+			 * \see Get
+			 */
+			SDL_Surface *operator *();
+
+			/*!
 			 * \brief Blit one Surface to another.
 			 *
 			 * Blit an entire Surface to upper left corner of this one.
@@ -713,7 +721,7 @@ namespace SDL
 			/*!
 			 * Documention not written yet.
 			 */
-			bool CreateRGBFrom(Surface &from, int width, int height, int depth,
+			bool CreateRGBFrom(const Surface &from, int width, int height, int depth,
 							   int pitch, Uint32 Rmask, Uint32 Gmask,
 							   Uint32 Bmask, Uint32 Amask);
 			/*!
