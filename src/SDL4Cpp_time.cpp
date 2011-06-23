@@ -44,7 +44,7 @@ namespace SDL
 		return SDL_SetTimer(interval, callback);
 	}
 
-	Timer::Timer() : m_ID(NULL)
+	Timer::Timer() : m_ID(0)
 	{
 	}
 
