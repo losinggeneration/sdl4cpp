@@ -20,7 +20,6 @@
 #include <string>
 #include "SDL_video.h"
 
-
 namespace SDL
 {
 	/*!
@@ -83,7 +82,7 @@ namespace SDL
 			 * Initializes the Rect to have width w, height h, x = x, and
 			 * y = y
 			 */
-			Rect(int x, int y, int w, int h);
+			Rect(Sint16 x, Sint16 y, Uint16 w, Uint16 h);
 
 			/*!
 			 * \brief Destructor.

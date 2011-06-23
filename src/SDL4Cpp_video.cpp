@@ -78,7 +78,7 @@ namespace SDL
 		(*this) = rect;
 	}
 
-	Rect::Rect(int x, int y, int w, int h)
+	Rect::Rect(Sint16 x, Sint16 y, Uint16 w, Uint16 h)
 	{
 		this->x = x;
 		this->y = y;
