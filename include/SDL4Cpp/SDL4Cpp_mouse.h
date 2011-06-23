@@ -61,6 +61,8 @@ namespace SDL
 			/*!
 			 * \brief Sets cursor to this image.
 			 *
+			 * \throws SDL::LogicError if image is NULL
+			 * \sa Set(const char *image[])
 			 */
 			Cursor(const char *image[]);
 			/*!
@@ -140,11 +142,14 @@ namespace SDL
 			 * };
 			 * cursor.Set(arrow);
 			 * \endcode
+			 *
+			 * \throws SDL::LogicError if image is NULL
 			 */
 			void Set(const char *image[]);
 			/*!
 			 * \brief Set the currently active mouse cursor.
 			 *
+			 * \throws SDL::LogicError if cursor's image is uninitialized
 			 */
 			friend void SetCursor(Cursor &cursor);
 			/*!

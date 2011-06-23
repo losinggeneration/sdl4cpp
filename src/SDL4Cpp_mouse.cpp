@@ -14,6 +14,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor Boston, MA 02110-1301,  USA
  */
 
+#include "SDL4Cpp_main.h"
 #include "SDL4Cpp_video.h"
 #include "SDL4Cpp_mouse.h"
 
@@ -88,6 +89,10 @@ namespace SDL
 
 		i = -1;
 
+		if(image == NULL) {
+			throw SDL::LogicError("Unable to set cursor from a NULL image.");
+		}
+
 		for(row=0; row<32; ++row)
 		{
 			for(col=0; col<32; ++col)
@@ -126,6 +131,10 @@ namespace SDL
 
 	void SetCursor(Cursor &cursor)
 	{
+		if(cursor.m_Cursor == NULL) {
+			throw SDL::LogicError("Cannot set cursor from NULL");
+		}
+
 		SDL_SetCursor(cursor.m_Cursor);
 	}
 
